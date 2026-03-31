@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant User
+    participant Chain
+    participant Memory
+    participant LLM
+
+    User->>Chain: New message
+    Chain->>Memory: 1. load_memory_variables()
+    Memory->>Chain: Returns context
+    Chain->>LLM: 2. Prompt = context + new message
+    LLM->>Chain: AI response
+    Chain->>Memory: 3. save_context(input, output)
+    Memory->>Memory: Stores the exchange
+    Chain->>User: Final response

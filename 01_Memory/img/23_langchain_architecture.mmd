@@ -1,0 +1,36 @@
+graph TD
+    subgraph INTERFACE["Memory Interface Layer"]
+        BM["BaseMemory\nAbstract base class"]
+        BCM["BaseChatMemory\nAdds ChatMessageHistory support"]
+        BM --> BCM
+    end
+
+    subgraph TYPES["Memory Types (What to store)"]
+        BCM --> BUF["ConversationBufferMemory\nKeep everything"]
+        BCM --> WIN["ConversationBufferWindowMemory\nLast K turns"]
+        BCM --> TOK["ConversationTokenBufferMemory\nToken-limited"]
+        BCM --> SUM["ConversationSummaryMemory\nRolling summary"]
+        BCM --> SUMBUF["ConversationSummaryBufferMemory\nSummary + recent raw"]
+        BCM --> ENT["ConversationEntityMemory\nEntity knowledge base"]
+        BCM --> VEC["VectorStoreRetrieverMemory\nSemantic search"]
+        BM --> SIMP["SimpleMemory\nStatic context"]
+        BM --> COMB["CombinedMemory\nMultiple types together"]
+        BM --> RO["ReadOnlySharedMemory\nRead-only wrapper"]
+    end
+
+    subgraph STORAGE["Storage Backends (Where to store)"]
+        MEM["In-Memory\n(testing)"]
+        FILE["File System\n(local dev)"]
+        REDIS["Redis\n(fast cache)"]
+        SQL["PostgreSQL / SQLite\n(relational)"]
+        NOSQL["MongoDB / DynamoDB\n(NoSQL)"]
+        VECTOR["FAISS / Pinecone / Chroma\n(vector search)"]
+        SPEC["Zep / Elasticsearch\n(specialized)"]
+    end
+
+    BUF --> MEM & REDIS & SQL
+    WIN --> MEM & REDIS & SQL
+    SUM --> MEM & REDIS & SQL
+    SUMBUF --> MEM & REDIS & SQL
+    ENT --> MEM & REDIS & SQL
+    VEC --> VECTOR

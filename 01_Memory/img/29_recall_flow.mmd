@@ -1,0 +1,23 @@
+flowchart TD
+    Q["🔍 Search Query"]
+
+    MODE{"Query length?"}
+
+    SHALLOW["⚡ Shallow Mode\nDirect vector search\nFast, one embedding call\nFor short simple queries"]
+
+    DEEP["🔬 Deep Mode\nMulti-step intelligent search\nFor long complex queries"]
+
+    D1["Step 1: LLM Breaks Query\ninto 2-3 focused sub-queries"]
+    D2["Step 2: Embed All Sub-queries\nin one API call"]
+    D3["Step 3: Parallel Search\nAll sub-queries × all scopes simultaneously"]
+    D4{"Step 4: Confidence?"}
+    D5["Return Results"]
+    D6["Step 5: LLM Explores Deeper\nExtracts best info, notes gaps\nRe-searches with new angles"]
+
+    Q --> MODE
+    MODE -->|Short| SHALLOW --> D5
+    MODE -->|Long| DEEP
+    DEEP --> D1 --> D2 --> D3 --> D4
+    D4 -->|"Score ≥ 0.8 — confident"| D5
+    D4 -->|"Score < 0.5 — unsure"| D6 --> D3
+    D4 -->|"Budget exhausted"| D5

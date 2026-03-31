@@ -1,0 +1,24 @@
+graph TD
+    subgraph LC_ALL["LangChain Memory Types"]
+        LCA["Buffer — Keep all raw turns"]
+        LCB["Buffer Window — Keep last K turns"]
+        LCC["Token Buffer — Keep within token limit"]
+        LCD["Summary — Compress all to summary"]
+        LCE["Summary Buffer — Summary + recent raw"]
+        LCF["Entity — Build entity knowledge store"]
+        LCG["Vector Store — Semantic similarity search"]
+        LCH["Combined — Multiple types together"]
+        LCI["ReadOnly Shared — Read-only wrapper"]
+        LCJ["Simple — Static constant context"]
+    end
+
+    subgraph CA_ALL["CrewAI Memory Components"]
+        CAA["MemoryRecord — One stored fact"]
+        CAB["MemoryScope — Isolated agent view"]
+        CAC["MemorySlice — Cross-agent search"]
+        CAD["EncodingFlow — 5-step save pipeline"]
+        CAE["RecallFlow — Intelligent search"]
+        CAF["Analyze Engine — LLM categorization"]
+        CAG["LanceDB — Local file storage"]
+        CAH["Qdrant Edge — Distributed storage"]
+    end

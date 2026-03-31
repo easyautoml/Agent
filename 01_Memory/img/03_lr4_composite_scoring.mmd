@@ -1,0 +1,9 @@
+graph LR
+    SEM["Semantic Similarity x 0.5\nHow close in meaning is this\nto the search query?"]
+    REC["Recency x 0.3\nHow recently was this saved?\nExponential decay, halves every 30 days"]
+    IMP["Importance x 0.2\nHow important was this\nwhen it was saved? (0.0-1.0)"]
+    SUM2["Final Score\nsum of weighted factors"]
+
+    SEM --> SUM2
+    REC --> SUM2
+    IMP --> SUM2

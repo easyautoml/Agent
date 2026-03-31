@@ -1,0 +1,12 @@
+graph TD
+    CONV["Conversation mentions Alice and Bob and Paris"]
+    CONV -->|"LLM extracts entities"| EXT["Entity Extractor"]
+
+    EXT --> STORE["Entity Store"]
+    STORE --> ALICE["Alice: doctor in Paris, has 3 kids"]
+    STORE --> BOB["Bob: software engineer in NYC"]
+    STORE --> PARIS["Paris: where Alice lives and works"]
+
+    STORE -->|"Relevant entities injected"| PROMPT["Prompt"]
+    CONV --> PROMPT
+    PROMPT --> LLM["LLM"]

@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant User
+    participant Chain
+    participant Memory
+    participant LLM
+
+    User->>Chain: "What is my name?"
+    Chain->>Memory: 1. load_memory_variables(inputs)
+    Memory-->>Chain: {history: "Human: Hi I am Alice\nAI: Hello Alice!"}
+    Chain->>LLM: 2. Prompt = history + current message
+    LLM-->>Chain: "Your name is Alice."
+    Chain->>Memory: 3. save_context(input, output)
+    Memory->>Memory: Store this exchange
+    Chain-->>User: "Your name is Alice."

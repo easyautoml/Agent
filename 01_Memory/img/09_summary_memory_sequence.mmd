@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant User
+    participant Memory
+    participant SumLLM as "Summarizer LLM"
+
+    User->>Memory: Turn 1: Hi I am Alice, a doctor in Paris
+    Memory->>SumLLM: Summarize: new message added
+    SumLLM->>Memory: Summary: Alice is a doctor in Paris.
+
+    User->>Memory: Turn 2: I have 3 kids and love sushi
+    Memory->>SumLLM: Update summary with new info
+    SumLLM->>Memory: Summary: Alice is a doctor in Paris. She has 3 kids and loves sushi.
+
+    User->>Memory: Turn 3: What do I do for work?
+    Memory->>User: Injects summary into prompt
+    Note right of Memory: LLM sees: Summary: Alice is a doctor...

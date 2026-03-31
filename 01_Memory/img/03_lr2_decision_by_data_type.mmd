@@ -1,0 +1,10 @@
+graph LR
+    subgraph DATA_TYPE["What kind of data do you store?"]
+        RAW[Raw conversation turns] -->|keep all| BUF2[Buffer Memory]
+        RAW -->|keep recent| WIN2[Window Memory]
+        FACTS[Key facts about entities] --> ENT2[Entity Memory]
+        MEANING[Compressed meaning] --> SUM2[Summary Memory]
+        EMBEDDINGS[Searchable past messages] --> VEC2[Vector Memory]
+        STATIC[Fixed instructions / constants] --> SIMP[SimpleMemory]
+        MULTIPLE[Need all of above] --> COMB2[CombinedMemory]
+    end

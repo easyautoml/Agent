@@ -1,0 +1,19 @@
+graph TD
+    subgraph ST["SHORT-TERM MEMORY\n(in-context, current session)"]
+        WM["Working Memory\nRaw conversation history\nwithin a single session"]
+    end
+
+    subgraph LT["LONG-TERM MEMORY\n(persisted, across sessions)"]
+        EP["Episodic Memory\nPast events and experiences\nsearchable by meaning or time"]
+        SEM["Semantic Memory\nFacts, entities, summaries\ncompressed knowledge"]
+        PROC["Procedural Memory\nSkills, tools, workflows\nhow-to knowledge"]
+    end
+
+    INPUT[New Experience] --> WM
+    WM -->|"Encode important info"| EP
+    WM -->|"Extract key facts"| SEM
+    EP -->|"Retrieve relevant past"| WM
+    SEM -->|"Inject known facts"| WM
+
+    style ST fill:#4a9eff22,stroke:#4a9eff
+    style LT fill:#33cc6622,stroke:#33cc66

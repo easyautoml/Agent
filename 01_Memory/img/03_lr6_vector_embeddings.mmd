@@ -1,0 +1,11 @@
+graph LR
+    TEXT1["Client prefers email"]
+    TEXT2["Customer wants email updates"]
+    TEXT3["The weather is sunny"]
+
+    TEXT1 -->|"Embedding model"| VEC1["[0.2, 0.8, 0.1, ..., 0.9]\n1536 numbers"]
+    TEXT2 -->|"Embedding model"| VEC2["[0.21, 0.79, 0.12, ..., 0.88]\n1536 numbers"]
+    TEXT3 -->|"Embedding model"| VEC3["[0.9, 0.1, 0.7, ..., 0.2]\n1536 numbers"]
+
+    VEC1 <-->|"Cosine similarity = 0.97\nVery similar meaning"| VEC2
+    VEC1 <-->|"Cosine similarity = 0.12\nCompletely different meaning"| VEC3

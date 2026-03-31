@@ -1,0 +1,48 @@
+graph TD
+    BCM["BaseChatMemory uses BaseChatMessageHistory"]
+
+    subgraph "Development"
+        DEV1["In-Memory\nFastest. Lost on restart. Good for testing."]
+        DEV2["File System\nLocal JSON file. Survives restarts. Good for dev."]
+    end
+
+    subgraph "Production - Relational"
+        PROD1["PostgreSQL\nFull SQL support. Good for structured apps."]
+        PROD2["SQLite\nFile-based SQL. No server needed."]
+    end
+
+    subgraph "Production - NoSQL"
+        PROD3["MongoDB\nDocument DB. Flexible schema."]
+        PROD4["DynamoDB\nAWS managed. Serverless-friendly."]
+        PROD5["Firestore\nGoogle Cloud. Real-time sync."]
+        PROD6["CosmosDB\nAzure managed. Global distribution."]
+    end
+
+    subgraph "Production - Cache"
+        CACHE1["Redis\nIn-memory + persistent. Very fast."]
+        CACHE2["Upstash Redis\nServerless Redis. Pay per request."]
+        CACHE3["Momento\nServerless cache. Zero ops."]
+    end
+
+    subgraph "Specialized"
+        SPEC1["Zep\nAI memory service. Built-in search."]
+        SPEC2["Elasticsearch\nSearch-first. Good for log-style history."]
+        SPEC3["Neo4j\nGraph DB. Good for relationship-heavy data."]
+        SPEC4["Streamlit\nFor Streamlit apps. Browser session-based."]
+    end
+
+    BCM --> DEV1
+    BCM --> DEV2
+    BCM --> PROD1
+    BCM --> PROD2
+    BCM --> PROD3
+    BCM --> PROD4
+    BCM --> PROD5
+    BCM --> PROD6
+    BCM --> CACHE1
+    BCM --> CACHE2
+    BCM --> CACHE3
+    BCM --> SPEC1
+    BCM --> SPEC2
+    BCM --> SPEC3
+    BCM --> SPEC4

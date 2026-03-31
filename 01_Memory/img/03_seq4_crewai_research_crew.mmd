@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant R as Researcher Agent
+    participant A as Analyst Agent
+    participant W as Writer Agent
+    participant M as Memory
+
+    R->>M: remember("Solar costs dropped 89% since 2010")
+    R->>M: remember("Wind energy = 10% of US electricity")
+    Note over M: Records saved under /crew/energy/agent/researcher
+
+    A->>M: recall("energy statistics from researcher")
+    M-->>A: Top matches from researcher scope
+
+    A->>M: remember("Renewables now cost-competitive with fossil fuels")
+    Note over M: Saved under /crew/energy/agent/analyst
+
+    W->>M: recall("all findings and conclusions") via MemorySlice
+    Note over M: MemorySlice searches BOTH researcher + analyst scopes
+    M-->>W: Combined ranked results from both agents
+
+    W->>W: Write final report using all findings

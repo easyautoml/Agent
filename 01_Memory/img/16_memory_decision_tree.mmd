@@ -1,0 +1,10 @@
+graph TD
+    Q{"How long is\nyour conversation?"}
+
+    Q -->|"Short, under 20 turns"| A1["ConversationBufferMemory\nSimplest, keep everything"]
+    Q -->|"Medium, only recent matters"| A2["ConversationBufferWindowMemory\nSliding window of last N turns"]
+    Q -->|"Token limit is critical"| A3["ConversationTokenBufferMemory\nPrune by token count"]
+    Q -->|"Long, meaning matters"| A4["ConversationSummaryMemory\nCompress to summary"]
+    Q -->|"Long, need detail + context"| A5["ConversationSummaryBufferMemory\nBest of both worlds"]
+    Q -->|"Track people and places"| A6["ConversationEntityMemory\nBuilds entity knowledge base"]
+    Q -->|"Very long, search by meaning"| A7["VectorStoreRetrieverMemory\nSemantic similarity search"]

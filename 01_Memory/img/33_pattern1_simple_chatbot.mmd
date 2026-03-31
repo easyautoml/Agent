@@ -1,0 +1,8 @@
+graph TD
+    USER[User sends message] --> APP[Application]
+    APP -->|"Load session by user_id"| REDIS[(Redis\nsession-user-42)]
+    REDIS --> MEM[SummaryBufferMemory]
+    MEM -->|"Summary + recent turns"| LLM[LLM]
+    LLM --> RESP[Response to User]
+    RESP --> MEM
+    MEM -->|"Save updated history"| REDIS

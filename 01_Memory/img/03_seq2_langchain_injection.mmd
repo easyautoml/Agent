@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant User
+    participant Chain
+    participant Memory
+    participant PromptTemplate
+    participant LLM
+
+    User->>Chain: "What is my name?"
+    Chain->>Memory: load_memory_variables({"input": "What is my name?"})
+    Memory-->>Chain: {"history": "Human: Hi I am Alice\nAI: Hello!"}
+    Chain->>PromptTemplate: Fill {history} and {input} placeholders
+    PromptTemplate-->>Chain: Full prompt assembled
+    Chain->>LLM: Full prompt with history injected
+    LLM-->>Chain: "Your name is Alice."
+    Chain->>Memory: save_context(input, output)
+    Memory->>Memory: Append to history / update summary / update entities

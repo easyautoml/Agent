@@ -1,0 +1,13 @@
+graph LR
+    subgraph "Without Memory - Each turn is isolated"
+        U1["Hi, I am Alice"] --> LLM1["LLM"]
+        U2["What is my name?"] --> LLM2["LLM"]
+        LLM2 --> R1["I do not know your name."]
+    end
+
+    subgraph "With Memory - Context carries over"
+        U3["Hi, I am Alice"] --> MEM["Memory"]
+        U4["What is my name?"] --> MEM
+        MEM --> LLM3["LLM"]
+        LLM3 --> R2["Your name is Alice!"]
+    end

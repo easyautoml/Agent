@@ -1,0 +1,13 @@
+graph TD
+    subgraph "User Alice - session-alice-001"
+        A1["Turn 1: Hi I am Alice"] --> RA["Redis key: session-alice-001"]
+        A2["Turn 2: I am a doctor"] --> RA
+    end
+
+    subgraph "User Bob - session-bob-007"
+        B1["Turn 1: Hi I am Bob"] --> RB["Redis key: session-bob-007"]
+        B2["Turn 2: I love hiking"] --> RB
+    end
+
+    RA -->|"Load Alice's history"| LLMA["LLM for Alice"]
+    RB -->|"Load Bob's history"| LLMB["LLM for Bob"]

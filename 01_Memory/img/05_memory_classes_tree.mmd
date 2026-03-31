@@ -1,0 +1,16 @@
+graph TD
+    BM["BaseMemory - Abstract Interface"]
+    BCM["BaseChatMemory - Base for chat memories"]
+    BM --> BCM
+
+    BCM --> C1["ConversationBufferMemory\nKeep everything"]
+    BCM --> C2["ConversationBufferWindowMemory\nKeep last N turns"]
+    BCM --> C3["ConversationTokenBufferMemory\nKeep within token limit"]
+    BCM --> C4["ConversationSummaryMemory\nSummarize everything"]
+    BCM --> C5["ConversationSummaryBufferMemory\nSummary + recent raw"]
+    BCM --> C6["ConversationEntityMemory\nTrack named entities"]
+    BCM --> C7["VectorStoreRetrieverMemory\nSemantic search"]
+
+    BM --> U1["CombinedMemory\nUse multiple memories together"]
+    BM --> U2["ReadOnlySharedMemory\nRead-only wrapper"]
+    BM --> U3["SimpleMemory\nStatic constant context"]

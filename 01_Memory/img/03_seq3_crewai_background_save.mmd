@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant Agent
+    participant Memory
+    participant BG as Background Thread
+    participant Storage
+
+    Agent->>Memory: remember("Client Sarah prefers quarterly reports")
+    Memory->>BG: Queue EncodingFlow task
+    Memory-->>Agent: Returns immediately (non-blocking)
+    Note over Agent: Agent keeps working on other tasks
+
+    BG->>BG: Step 1 - Embed text
+    BG->>BG: Step 2 - Dedup check
+    BG->>Storage: Step 3 - Search for similar
+    Storage-->>BG: Found similar record (0.91 similarity)
+    BG->>BG: Step 4 - LLM consolidates records
+    BG->>Storage: Step 5 - Delete old + Insert merged
+    Storage-->>BG: Saved
+
+    Agent->>Memory: recall("Client contact preferences")
+    Memory->>Memory: drain_writes() - wait for pending saves
+    Memory->>Storage: Vector search
+    Storage-->>Memory: Top results
+    Memory-->>Agent: Merged record: "Sarah Chen prefers quarterly written reports"

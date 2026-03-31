@@ -1,0 +1,11 @@
+graph TD
+    CHOICE{What are you building?}
+
+    CHOICE -->|"Chatbot, single agent,\nconversation history"| LC_GOOD["Use LangChain Memory\nSimple setup\nMany storage options\nFine control over history strategy"]
+
+    CHOICE -->|"Multi-agent pipeline,\ncrew of specialized agents"| CA_GOOD["Use CrewAI Memory\nAutomatic agent isolation\nSmart deduplication\nCross-agent knowledge sharing"]
+
+    CHOICE -->|"Need precise token budget"| LC_TOK["LangChain TokenBufferMemory"]
+    CHOICE -->|"Need to track entities"| LC_ENT["LangChain EntityMemory\nor CrewAI Analyze Engine (auto)"]
+    CHOICE -->|"Production distributed system"| CA_QDRANT["CrewAI + Qdrant Edge\nMulti-process, synced storage"]
+    CHOICE -->|"Simple local prototype"| EITHER["Either works\nLangChain = simpler\nCrewAI = more capable"]

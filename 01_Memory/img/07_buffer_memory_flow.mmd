@@ -1,0 +1,8 @@
+graph TD
+    T1["Turn 1: Hi I am Alice"] --> BUF["Buffer - All Messages"]
+    T2["Turn 2: I am a doctor"] --> BUF
+    T3["Turn 3: I love sushi"] --> BUF
+    T4["Turn 4: I have 3 kids"] --> BUF
+    T5["Turn 5: What do I do?"] --> BUF
+    BUF -->|"All 5 turns injected"| LLM["LLM"]
+    LLM --> ANS["You are a doctor."]

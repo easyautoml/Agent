@@ -1,0 +1,16 @@
+graph LR
+    subgraph NO_MEM["Without Memory"]
+        direction TB
+        U1[User: Hi I am Alice] --> A1[Agent: Hello!]
+        U2[User: What is my name?] --> A2[Agent: I don't know]
+        U3[User: We just spoke!] --> A3[Agent: I have no record of that]
+    end
+
+    subgraph WITH_MEM["With Memory"]
+        direction TB
+        U4[User: Hi I am Alice] --> A4[Agent: Hello Alice!]
+        M[(Memory)] --> A5
+        U5[User: What is my name?] --> A5[Agent: Your name is Alice]
+        A4 --> M
+        A5 --> M
+    end

@@ -1,0 +1,31 @@
+flowchart LR
+    HUMAN["💬 Human Input\nor Agent Task"] --> MEM
+
+    subgraph MEM["Memory System"]
+        LOAD["1. Load Context\nRetrieve relevant past info"]
+        INJECT["2. Inject into Prompt\nPrepend to current message"]
+        LLM["3. LLM Processes\nWith full context"]
+        SAVE["4. Save New Info\nStore what was learned"]
+        LOAD --> INJECT --> LLM --> SAVE --> LOAD
+    end
+
+    subgraph STRATEGIES["How to Load Context"]
+        S1["Raw history — Buffer"]
+        S2["Recent only — Window"]
+        S3["Compressed — Summary"]
+        S4["Entity facts — Entity"]
+        S5["Semantic search — Vector"]
+        S6["Scoped recall — CrewAI RecallFlow"]
+    end
+
+    subgraph STORES["Where to Save"]
+        ST1["RAM — InMemory"]
+        ST2["File — JSON / SQLite"]
+        ST3["Cache — Redis"]
+        ST4["Database — PostgreSQL / MongoDB"]
+        ST5["Vector DB — FAISS / Pinecone"]
+        ST6["Agent DB — LanceDB / Qdrant"]
+    end
+
+    MEM --> STRATEGIES
+    MEM --> STORES

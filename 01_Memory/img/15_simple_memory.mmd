@@ -1,0 +1,4 @@
+graph TD
+    STATIC["Static Dictionary\ntone: formal\ncompany: Acme Corp\nrules: No refunds after 30 days"] --> SM["SimpleMemory"]
+    SM -->|"Same content every turn"| PROMPT["Prompt"]
+    PROMPT --> LLM["LLM"]
