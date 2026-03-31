@@ -1,0 +1,30 @@
+graph TD
+    subgraph USERS["Users — Multiple Sessions"]
+        U1["Alice\nsession-alice-001"]
+        U2["Bob\nsession-bob-007"]
+    end
+
+    subgraph APP["App Layer"]
+        API["REST API\n/chat endpoint"]
+        R1["Alice Router"]
+        R2["Bob Router"]
+    end
+
+    subgraph MEMORY["Memory — ConversationSummaryBufferMemory"]
+        M1["Alice Memory\nSummary: 'Alice asked about refund...'\nRecent: last 3 turns raw"]
+        M2["Bob Memory\nSummary: 'Bob has order #1234...'\nRecent: last 3 turns raw"]
+    end
+
+    subgraph STORAGE["Storage — Redis Cluster"]
+        RD[("Redis\nchat:alice-001\nchat:bob-007")]
+    end
+
+    U1 --> API --> R1 --> M1
+    U2 --> API --> R2 --> M2
+    M1 <--> RD
+    M2 <--> RD
+
+    style USERS fill:#EBF5FB
+    style APP fill:#E9F7EF
+    style MEMORY fill:#FEF9E7
+    style STORAGE fill:#FDEDEC

@@ -1,0 +1,43 @@
+graph TD
+    subgraph INPUT["Input — many ways to add memory"]
+        I1["Chat message\n(addMemory: always)"]
+        I2["Browser extension\n(save this page)"]
+        I3["File upload\n(PDF, image, video)"]
+        I4["Connector\n(Google Drive, Notion)"]
+        I5["Direct API call\nclient.add(content)"]
+    end
+
+    subgraph ENGINE["Memory Engine — processing"]
+        E1["Extract facts\nfrom text"]
+        E2["Detect conflicts\nwith existing memory"]
+        E3["Resolve conflicts\n(new replaces old)"]
+        E4["Expire time-sensitive\nfacts automatically"]
+        E5["Update Static\nor Dynamic profile"]
+    end
+
+    subgraph STORE["Storage"]
+        ST1["Document Index\n(searchable content)"]
+        ST2["Profile Store\n(static + dynamic facts)"]
+        ST3["Vector Index\n(semantic embeddings)"]
+    end
+
+    subgraph RECALL["Recall — when user asks something"]
+        R1["Extract query\nfrom message"]
+        R2["Check LRU cache\n(max 100 entries)"]
+        R3["Fetch profile\n+ semantic search"]
+        R4["Deduplicate\n(static > dynamic > search)"]
+        R5["Format as markdown"]
+        R6["Inject into\nsystem prompt"]
+    end
+
+    LLM["LLM responds\nwith full user context"]
+
+    INPUT --> ENGINE --> STORE
+    STORE --> R3
+    R1 --> R2 --> R3 --> R4 --> R5 --> R6 --> LLM
+
+    style INPUT fill:#EBF5FB
+    style ENGINE fill:#FEF9E7
+    style STORE fill:#E9F7EF
+    style RECALL fill:#F5EEF8
+    style LLM fill:#27AE60,color:#fff

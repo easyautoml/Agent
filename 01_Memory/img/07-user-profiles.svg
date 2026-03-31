@@ -1,0 +1,110 @@
+<svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="url(#bg)"/>
+
+  <text x="480" y="40" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">User Profiles — Your AI Identity Card</text>
+  <text x="480" y="64" text-anchor="middle" font-size="13" fill="#94a3b8">Built automatically from all your conversations. Always fresh.</text>
+
+  <!-- Left: How it builds over time -->
+  <rect x="30" y="84" width="350" height="400" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="205" y="112" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">How Your Profile Builds Over Time</text>
+
+  <!-- Timeline -->
+  <line x1="80" y1="132" x2="80" y2="460" stroke="#334155" stroke-width="2"/>
+
+  <!-- Day 1 -->
+  <circle cx="80" cy="148" r="8" fill="#6366f1"/>
+  <rect x="98" y="132" width="266" height="38" rx="8" fill="#1e1b4b"/>
+  <text x="110" y="148" font-size="11" font-weight="600" fill="#a5b4fc">Day 1 — First chat</text>
+  <text x="110" y="162" font-size="10" fill="#c7d2fe">"Hi, I'm Alex. I work in marketing."</text>
+
+  <!-- Day 3 -->
+  <circle cx="80" cy="206" r="8" fill="#6366f1"/>
+  <rect x="98" y="190" width="266" height="38" rx="8" fill="#1e1b4b"/>
+  <text x="110" y="206" font-size="11" font-weight="600" fill="#a5b4fc">Day 3 — More context</text>
+  <text x="110" y="220" font-size="10" fill="#c7d2fe">"I prefer short emails. No jargon."</text>
+
+  <!-- Day 7 -->
+  <circle cx="80" cy="264" r="8" fill="#6366f1"/>
+  <rect x="98" y="248" width="266" height="38" rx="8" fill="#1e1b4b"/>
+  <text x="110" y="264" font-size="11" font-weight="600" fill="#a5b4fc">Day 7 — Updates</text>
+  <text x="110" y="278" font-size="10" fill="#c7d2fe">"I got promoted to Head of Marketing!"</text>
+
+  <!-- Day 14 -->
+  <circle cx="80" cy="322" r="8" fill="#8b5cf6"/>
+  <rect x="98" y="306" width="266" height="38" rx="8" fill="#2e1065"/>
+  <text x="110" y="322" font-size="11" font-weight="600" fill="#c084fc">Day 14 — New project</text>
+  <text x="110" y="336" font-size="10" fill="#e9d5ff">"Starting Q2 product launch campaign"</text>
+
+  <!-- Day 20 -->
+  <circle cx="80" cy="380" r="8" fill="#8b5cf6"/>
+  <rect x="98" y="364" width="266" height="38" rx="8" fill="#2e1065"/>
+  <text x="110" y="380" font-size="11" font-weight="600" fill="#c084fc">Day 20 — Today</text>
+  <text x="110" y="394" font-size="10" fill="#e9d5ff">"Reviewing the campaign analytics"</text>
+
+  <!-- Profile builds label -->
+  <rect x="98" y="418" width="266" height="30" rx="8" fill="#14532d"/>
+  <text x="231" y="437" text-anchor="middle" font-size="11" fill="#86efac">✓ Profile grows smarter each day</text>
+
+  <!-- Arrow to profile card -->
+  <line x1="382" y1="284" x2="422" y2="284" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- RIGHT: The Profile Card -->
+  <rect x="424" y="84" width="510" height="400" rx="14" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="2"/>
+
+  <!-- Card header -->
+  <rect x="424" y="84" width="510" height="56" rx="14" fill="#312e81"/>
+  <rect x="424" y="112" width="510" height="28" fill="#312e81"/>
+  <text x="500" y="116" font-size="22">👤</text>
+  <text x="534" y="116" font-size="16" font-weight="800" fill="#ffffff">User Profile</text>
+  <text x="800" y="108" text-anchor="middle" font-size="10" fill="#a5b4fc">~50ms</text>
+  <text x="800" y="124" text-anchor="middle" font-size="10" fill="#a5b4fc">response</text>
+
+  <!-- Static section -->
+  <text x="448" y="164" font-size="13" font-weight="700" fill="#6366f1">STATIC — Permanent Facts</text>
+  <text x="448" y="180" font-size="10" fill="#64748b">(things that don't change often)</text>
+
+  <rect x="438" y="188" width="486" height="28" rx="7" fill="#1e1b4b"/>
+  <text x="454" y="206" font-size="12" fill="#c7d2fe">👔  Head of Marketing at [Company]</text>
+
+  <rect x="438" y="220" width="486" height="28" rx="7" fill="#1e1b4b"/>
+  <text x="454" y="238" font-size="12" fill="#c7d2fe">✉️  Prefers short, simple emails — no jargon</text>
+
+  <rect x="438" y="252" width="486" height="28" rx="7" fill="#1e1b4b"/>
+  <text x="454" y="270" font-size="12" fill="#c7d2fe">🗣️  Name: Alex</text>
+
+  <rect x="438" y="284" width="486" height="28" rx="7" fill="#1e1b4b"/>
+  <text x="454" y="302" font-size="12" fill="#c7d2fe">🎯  Domain: B2B Marketing</text>
+
+  <!-- Divider -->
+  <line x1="438" y1="324" x2="924" y2="324" stroke="#334155" stroke-width="1"/>
+
+  <!-- Dynamic section -->
+  <text x="448" y="346" font-size="13" font-weight="700" fill="#10b981">DYNAMIC — Recent Activity</text>
+  <text x="448" y="362" font-size="10" fill="#64748b">(current projects, recent context)</text>
+
+  <rect x="438" y="370" width="486" height="28" rx="7" fill="#1a3020"/>
+  <text x="454" y="388" font-size="12" fill="#a7f3d0">🚀  Working on Q2 product launch campaign</text>
+
+  <rect x="438" y="402" width="486" height="28" rx="7" fill="#1a3020"/>
+  <text x="454" y="420" font-size="12" fill="#a7f3d0">📊  Reviewing campaign analytics today</text>
+
+  <rect x="438" y="434" width="486" height="28" rx="7" fill="#1a3020"/>
+  <text x="454" y="452" font-size="12" fill="#a7f3d0">💬  Asked about email subject line best practices</text>
+
+  <!-- Code snippet -->
+  <rect x="30" y="498" width="900" height="14" rx="5" fill="#1e293b"/>
+  <text x="480" y="509" text-anchor="middle" font-size="10" fill="#64748b" font-family="Courier New, monospace">const { profile } = await client.profile({ containerTag: "user_alex" })  →  profile.static + profile.dynamic returned in ~50ms</text>
+</svg>

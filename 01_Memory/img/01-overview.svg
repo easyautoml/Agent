@@ -1,0 +1,105 @@
+<svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <linearGradient id="smGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#6366f1" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="520" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="48" text-anchor="middle" font-size="26" font-weight="700" fill="#f1f5f9">What is Supermemory?</text>
+  <text x="480" y="74" text-anchor="middle" font-size="15" fill="#94a3b8">The memory layer that sits between you and your AI</text>
+
+  <!-- YOU box -->
+  <rect x="40" y="110" width="200" height="230" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="140" y="148" text-anchor="middle" font-size="36">🧑</text>
+  <text x="140" y="182" text-anchor="middle" font-size="17" font-weight="700" fill="#f1f5f9">YOU</text>
+  <line x1="60" y1="196" x2="220" y2="196" stroke="#334155" stroke-width="1"/>
+  <text x="140" y="216" text-anchor="middle" font-size="12" fill="#94a3b8">Things you say:</text>
+  <rect x="58" y="224" width="164" height="22" rx="6" fill="#0f172a"/>
+  <text x="140" y="239" text-anchor="middle" font-size="11" fill="#06b6d4">"I love TypeScript"</text>
+  <rect x="58" y="250" width="164" height="22" rx="6" fill="#0f172a"/>
+  <text x="140" y="265" text-anchor="middle" font-size="11" fill="#06b6d4">"I moved to SF"</text>
+  <rect x="58" y="276" width="164" height="22" rx="6" fill="#0f172a"/>
+  <text x="140" y="291" text-anchor="middle" font-size="11" fill="#06b6d4">"I use React daily"</text>
+  <rect x="58" y="302" width="164" height="22" rx="6" fill="#0f172a"/>
+  <text x="140" y="317" text-anchor="middle" font-size="11" fill="#06b6d4">"I prefer dark mode"</text>
+
+  <!-- Arrow YOU -> SM -->
+  <line x1="244" y1="225" x2="344" y2="225" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="294" y="214" text-anchor="middle" font-size="11" fill="#6366f1">talks to</text>
+
+  <!-- SUPERMEMORY box -->
+  <rect x="348" y="98" width="264" height="324" rx="16" fill="url(#smGrad)" filter="url(#shadow)"/>
+  <rect x="352" y="102" width="256" height="316" rx="14" fill="#1e1b4b"/>
+  <text x="480" y="140" text-anchor="middle" font-size="14" fill="#a5b4fc">⬡ ⬡ ⬡</text>
+  <text x="480" y="166" text-anchor="middle" font-size="20" font-weight="800" fill="#ffffff">SUPERMEMORY</text>
+  <text x="480" y="186" text-anchor="middle" font-size="12" fill="#a5b4fc">Memory &amp; Context Engine</text>
+  <line x1="368" y1="198" x2="592" y2="198" stroke="#3730a3" stroke-width="1"/>
+
+  <!-- SM internal items -->
+  <rect x="368" y="208" width="224" height="30" rx="8" fill="#312e81"/>
+  <text x="384" y="228" font-size="13" fill="#c7d2fe">🧠  Memory Engine</text>
+  <rect x="368" y="244" width="224" height="30" rx="8" fill="#312e81"/>
+  <text x="384" y="264" font-size="13" fill="#c7d2fe">👤  User Profiles</text>
+  <rect x="368" y="280" width="224" height="30" rx="8" fill="#312e81"/>
+  <text x="384" y="300" font-size="13" fill="#c7d2fe">🔍  Hybrid Search</text>
+  <rect x="368" y="316" width="224" height="30" rx="8" fill="#312e81"/>
+  <text x="384" y="336" font-size="13" fill="#c7d2fe">🔌  Connectors</text>
+  <rect x="368" y="352" width="224" height="30" rx="8" fill="#312e81"/>
+  <text x="384" y="372" font-size="13" fill="#c7d2fe">📄  File Processing</text>
+
+  <!-- Arrow SM -> AI -->
+  <line x1="616" y1="225" x2="716" y2="225" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+  <text x="666" y="214" text-anchor="middle" font-size="11" fill="#10b981">delivers</text>
+  <text x="666" y="244" text-anchor="middle" font-size="10" fill="#10b981">context to</text>
+
+  <!-- Arrow AI -> YOU -->
+  <line x1="720" y1="268" x2="540" y2="420" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+
+  <!-- AI box -->
+  <rect x="720" y="110" width="200" height="230" rx="16" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="820" y="148" text-anchor="middle" font-size="36">🤖</text>
+  <text x="820" y="182" text-anchor="middle" font-size="17" font-weight="700" fill="#f1f5f9">YOUR AI</text>
+  <line x1="738" y1="196" x2="902" y2="196" stroke="#334155" stroke-width="1"/>
+  <text x="820" y="216" text-anchor="middle" font-size="12" fill="#94a3b8">Now knows:</text>
+  <rect x="736" y="224" width="168" height="22" rx="6" fill="#0f172a"/>
+  <text x="820" y="239" text-anchor="middle" font-size="11" fill="#10b981">✓ Your name &amp; location</text>
+  <rect x="736" y="250" width="168" height="22" rx="6" fill="#0f172a"/>
+  <text x="820" y="265" text-anchor="middle" font-size="11" fill="#10b981">✓ Your tech preferences</text>
+  <rect x="736" y="276" width="168" height="22" rx="6" fill="#0f172a"/>
+  <text x="820" y="291" text-anchor="middle" font-size="11" fill="#10b981">✓ Your current projects</text>
+  <rect x="736" y="302" width="168" height="22" rx="6" fill="#0f172a"/>
+  <text x="820" y="317" text-anchor="middle" font-size="11" fill="#10b981">✓ Past conversations</text>
+
+  <!-- Bottom message -->
+  <rect x="200" y="430" width="560" height="58" rx="12" fill="#1e293b" stroke="#334155"/>
+  <text x="480" y="457" text-anchor="middle" font-size="13" fill="#f1f5f9" font-weight="600">"Your AI forgets everything between conversations.</text>
+  <text x="480" y="477" text-anchor="middle" font-size="13" fill="#6366f1" font-weight="700">Supermemory fixes that."</text>
+
+  <!-- #1 badge -->
+  <circle cx="862" cy="390" r="46" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="862" y="380" text-anchor="middle" font-size="11" fill="#f59e0b" font-weight="700">#1 Ranked</text>
+  <text x="862" y="396" text-anchor="middle" font-size="10" fill="#94a3b8">Memory AI</text>
+  <text x="862" y="412" text-anchor="middle" font-size="10" fill="#94a3b8">Worldwide</text>
+</svg>

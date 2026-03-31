@@ -1,0 +1,26 @@
+graph TD
+    subgraph STATIC["Static Memory — The Person"]
+        S1["Identity facts\nName, job, location"]
+        S2["Long-term preferences\n'Prefers short emails'\n'Loves TypeScript'"]
+        S3["Persistent goals\n'Building a startup'\n'Learning machine learning'"]
+        S4["Background\n'5 years experience'\n'Studied at MIT'"]
+    end
+
+    subgraph DYNAMIC["Dynamic Memory — The Activity"]
+        D1["Current projects\n'Working on SPA\nframework'"]
+        D2["Recent interests\n'Exploring LLMs\nthis week'"]
+        D3["Active context\n'Reviewing Q2\nanalytics report'"]
+        D4["Near-term plans\n'Presenting on\nFriday'"]
+    end
+
+    subgraph CHANGE["How they change"]
+        C1["Static changes when\nyou share a correction:\n'I moved to New York'\n'I quit my job at Acme'"]
+        C2["Dynamic changes\nautomatically as you\nhave new conversations\nOlder items fade out"]
+    end
+
+    STATIC --- C1
+    DYNAMIC --- C2
+
+    style STATIC fill:#3498DB,color:#fff
+    style DYNAMIC fill:#27AE60,color:#fff
+    style CHANGE fill:#FEF9E7

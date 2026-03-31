@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant U as User
+    participant AI as AI App
+    participant SM as Supermemory API
+    participant IDX as Memory Index
+
+    U->>AI: "I just moved to San Francisco"
+    AI->>AI: addMemory = always?
+    AI->>SM: POST /v4/conversations\n[messages array]
+    SM->>SM: Extract facts from text
+    Note over SM: "User lives in San Francisco"\n"Used to live in NYC"
+    SM->>SM: Check existing memory
+    Note over SM: Found old: "Lives in NYC"
+    SM->>SM: Conflict resolution
+    Note over SM: NEW replaces OLD
+    SM->>IDX: Save updated fact\n+ semantic embedding
+    SM->>AI: 200 OK
+    AI->>U: Response (no delay)
+
+    Note over IDX: Static: "Lives in SF"\nDynamic: "Recently moved"

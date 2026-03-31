@@ -1,0 +1,23 @@
+graph LR
+    subgraph DOC["Document Memory\n/v3/documents"]
+        D1["What it stores:\nFiles, PDFs, web pages\nKnowledge base entries\nExplicitly added content"]
+        D2["How to add:\nclient.add(content)\nBrowser extension\nGoogle Drive sync\nManual upload"]
+        D3["How to recall:\nSemantic search\nKeyword search\nFilter by metadata"]
+    end
+
+    subgraph CONV["Conversation Memory\n/v4/conversations"]
+        C1["What it stores:\nChat messages\nUser + AI turns\nStructured roles\n(user/assistant/system/tool)"]
+        C2["How to add:\naddMemory = always\nAuto-save each turn\naddConversation() API"]
+        C3["How to recall:\nProfile API pulls\nfacts extracted from\nconversations automatically"]
+    end
+
+    subgraph RESULT["Both feed into Profile"]
+        P["Profile API /v4/profile\nStatically: Long-lived facts\nDynamically: Recent topics\nSearch: Semantic matches"]
+    end
+
+    DOC --> RESULT
+    CONV --> RESULT
+
+    style DOC fill:#EBF5FB
+    style CONV fill:#E9F7EF
+    style RESULT fill:#F5EEF8

@@ -1,0 +1,38 @@
+graph LR
+    subgraph M1["Mode: profile"]
+        P1["Fetch user's\nstatic facts"]
+        P2["Fetch user's\ndynamic activity"]
+        P3["Output:\nWho the user is"]
+        P1 --> P3
+        P2 --> P3
+    end
+
+    subgraph M2["Mode: query"]
+        Q1["Embed the\ncurrent question"]
+        Q2["Semantic search\nover all memories"]
+        Q3["Output:\nWhat is relevant\nright now"]
+        Q1 --> Q2 --> Q3
+    end
+
+    subgraph M3["Mode: full (recommended)"]
+        F1["Get profile\n(static + dynamic)"]
+        F2["Semantic search\nfor this query"]
+        F3["Merge +\nDeduplicate"]
+        F4["Output:\nComplete context"]
+        F1 --> F3
+        F2 --> F3
+        F3 --> F4
+    end
+
+    USE1["Use when:\nGeneral chat\nAlways need user context\nPersonalization"]
+    USE2["Use when:\nDocument Q&A\nSpecific topic lookup\nRAG patterns"]
+    USE3["Use when:\nCustomer support\nPersonal assistants\nMost applications"]
+
+    M1 --> USE1
+    M2 --> USE2
+    M3 --> USE3
+
+    style M1 fill:#EBF5FB
+    style M2 fill:#E9F7EF
+    style M3 fill:#FEF9E7
+    style USE3 fill:#F5EEF8

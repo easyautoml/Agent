@@ -1,0 +1,26 @@
+graph TD
+    subgraph INGEST["Offline Ingestion"]
+        DOC["Documents\n(PDFs, pages, reports)"]
+        CHUNK["Chunker\n500 tokens, 50 overlap"]
+        EMB["Embedder\ntext-embedding-3-small"]
+        IDX[("Vector Index\nPinecone / Chroma")]
+        DOC --> CHUNK --> EMB --> IDX
+    end
+
+    subgraph QUERY["Query Time"]
+        USER["User Question"]
+        QEMB["Embed question"]
+        SRCH["Top-k=5 similarity search"]
+        CTX["Retrieved context chunks"]
+        LLM["LLM — answers with context"]
+        HIST["ConversationBufferWindowMemory\nk=3 recent turns"]
+        USER --> QEMB --> SRCH --> CTX --> LLM
+        HIST -->|"chat history"| LLM
+        LLM -->|"save turn"| HIST
+    end
+
+    IDX <-->|"search"| SRCH
+
+    style INGEST fill:#EBF5FB
+    style QUERY fill:#E9F7EF
+    style IDX fill:#FEF9E7

@@ -1,0 +1,82 @@
+<svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <marker id="arrP" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrC" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#06b6d4"/>
+    </marker>
+    <marker id="arrM" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="url(#bg)"/>
+
+  <text x="480" y="40" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">Hybrid Search — The Best of Both Worlds</text>
+  <text x="480" y="64" text-anchor="middle" font-size="13" fill="#94a3b8">One query returns personal memories AND knowledge base documents together</text>
+
+  <!-- Query box -->
+  <rect x="350" y="86" width="260" height="58" rx="14" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
+  <text x="480" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">🔍 Your Question</text>
+  <rect x="362" y="116" width="236" height="22" rx="6" fill="#0f172a"/>
+  <text x="480" y="131" text-anchor="middle" font-size="12" fill="#06b6d4" font-style="italic">"How should I deploy my app?"</text>
+
+  <!-- Split arrows -->
+  <line x1="400" y1="144" x2="220" y2="192" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrP)"/>
+  <line x1="560" y1="144" x2="740" y2="192" stroke="#06b6d4" stroke-width="2" marker-end="url(#arrC)"/>
+
+  <!-- LEFT PATH: Memory Search -->
+  <rect x="60" y="194" width="310" height="170" rx="14" fill="#2e1065" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="215" y="220" text-anchor="middle" font-size="14" font-weight="700" fill="#e9d5ff">🧠 Memory Search</text>
+  <text x="215" y="238" text-anchor="middle" font-size="11" fill="#a5b4fc">Personal facts about YOU</text>
+  <line x1="76" y1="248" x2="354" y2="248" stroke="#4c1d95" stroke-width="1"/>
+
+  <rect x="76" y="256" width="278" height="26" rx="7" fill="#1a0b3a"/>
+  <text x="84" y="273" font-size="11" fill="#c084fc">✓  You deploy to Vercel (saved 2 weeks ago)</text>
+
+  <rect x="76" y="286" width="278" height="26" rx="7" fill="#1a0b3a"/>
+  <text x="84" y="303" font-size="11" fill="#c084fc">✓  You use GitHub Actions for CI/CD</text>
+
+  <rect x="76" y="316" width="278" height="26" rx="7" fill="#1a0b3a"/>
+  <text x="84" y="333" font-size="11" fill="#c084fc">✓  You have a Next.js app called "myapp"</text>
+
+  <text x="215" y="358" text-anchor="middle" font-size="10" fill="#64748b">Results: things specific to you</text>
+
+  <!-- RIGHT PATH: Document Search -->
+  <rect x="590" y="194" width="310" height="170" rx="14" fill="#164e63" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="745" y="220" text-anchor="middle" font-size="14" font-weight="700" fill="#a5f3fc">📄 Document Search</text>
+  <text x="745" y="238" text-anchor="middle" font-size="11" fill="#67e8f9">Knowledge base content (RAG)</text>
+  <line x1="606" y1="248" x2="884" y2="248" stroke="#155e75" stroke-width="1"/>
+
+  <rect x="606" y="256" width="278" height="26" rx="7" fill="#083344"/>
+  <text x="614" y="273" font-size="11" fill="#67e8f9">✓  Deployment guide (from your Google Drive)</text>
+
+  <rect x="606" y="286" width="278" height="26" rx="7" fill="#083344"/>
+  <text x="614" y="303" font-size="11" fill="#67e8f9">✓  README.md with deploy instructions</text>
+
+  <rect x="606" y="316" width="278" height="26" rx="7" fill="#083344"/>
+  <text x="614" y="333" font-size="11" fill="#67e8f9">✓  Vercel docs page (uploaded last month)</text>
+
+  <text x="745" y="358" text-anchor="middle" font-size="10" fill="#64748b">Results: documents you've stored</text>
+
+  <!-- Merge arrows -->
+  <line x1="215" y1="366" x2="390" y2="418" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrM)"/>
+  <line x1="745" y1="366" x2="570" y2="418" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrM)"/>
+
+  <!-- MERGED RESULT -->
+  <rect x="200" y="420" width="560" height="86" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="444" text-anchor="middle" font-size="14" font-weight="700" fill="#fde68a">⚡ Combined Result — Ranked by Relevance</text>
+  <line x1="216" y1="452" x2="744" y2="452" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="470" text-anchor="middle" font-size="12" fill="#f1f5f9">Personal context (how YOU deploy) + Reference docs (how to deploy)</text>
+  <text x="480" y="490" text-anchor="middle" font-size="11" fill="#94a3b8">AI gets the full picture in one query — no two separate calls needed</text>
+
+  <!-- Search modes bar -->
+  <rect x="30" y="72" width="900" height="0" rx="0" fill="none"/>
+
+  <!-- Mode labels at bottom -->
+  <rect x="30" y="510" width="280" height="0" fill="none"/>
+</svg>

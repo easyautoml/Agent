@@ -16,8 +16,9 @@
 9. [Case 5 — Research Agent](#9-case-5--research-agent)
 10. [Case 6 — Multi-Agent Crew](#10-case-6--multi-agent-crew)
 11. [Case 7 — RAG + Chat Hybrid](#11-case-7--rag--chat-hybrid)
-12. [Anti-Patterns to Avoid](#12-anti-patterns-to-avoid)
-13. [Quick Reference Card](#13-quick-reference-card)
+12. [Case 8 — Managed Memory with Supermemory](#12-case-8--managed-memory-with-supermemory)
+13. [Anti-Patterns to Avoid](#13-anti-patterns-to-avoid)
+14. [Quick Reference Card](#14-quick-reference-card)
 
 ---
 
@@ -429,7 +430,93 @@ result = chain({"question": "What about the pricing?"})  # uses memory to resolv
 
 ---
 
-## 12. Anti-Patterns to Avoid
+## 12. Case 8 — Managed Memory with Supermemory
+
+### Scenario
+You are building a user-facing product — a personal assistant, customer support bot, or onboarding agent — and you do not want to build and operate memory infrastructure. You need smart conflict resolution (users update their info over time), cross-session persistence, and semantic recall, all without managing Redis, FAISS, or vector databases.
+
+### Memory Architecture
+
+![Supermemory Full Pipeline](./img/sm_d10_full_pipeline.png)
+
+### Design Decisions
+
+| Decision | Choice | Reason |
+|----------|--------|--------|
+| Memory framework | Supermemory managed service | Zero infra, automatic extraction + conflict resolution |
+| Retrieval mode | `full` | Profile (who the user is) + semantic search (what's relevant now) |
+| Auto-save | `addMemory: "always"` | Every conversation saved automatically |
+| User isolation | `containerTag` per user | Built-in; no manual session management |
+| Conflict handling | Automatic (new > old) | User says "I moved" — old location replaced immediately |
+
+### Code
+
+```typescript
+import { withSupermemory } from "@supermemory/tools/ai-sdk"
+import { anthropic } from "@ai-sdk/anthropic"
+import { generateText } from "ai"
+
+// Wrap your model — memory is now automatic
+const model = withSupermemory(
+  anthropic("claude-sonnet-4-6"),
+  "user-alice",              // one container tag per user
+  {
+    mode: "full",            // profile + semantic search
+    addMemory: "always"      // auto-save every conversation
+  }
+)
+
+const result = await generateText({
+  model,
+  messages: [{ role: "user", content: "Help me with my React migration" }]
+})
+// AI already knows: Alice is a senior dev, currently leading React migration,
+// team of 4, deadline end of quarter — all from past conversations
+```
+
+### What Supermemory injects automatically
+
+```
+## What I know about Alice (Profile)
+Static:
+  - Senior software engineer at Acme
+  - 7 years of React experience
+  - Prefers direct, concise communication
+
+Dynamic:
+  - Currently leading React migration project
+  - Deadline: end of quarter
+  - Team size: 4 developers
+
+## Relevant to this question
+  - "Two team members worried about timeline" (last meeting, 3 days ago)
+  - "Migration scope: replace class components with hooks"
+  - "Alice prefers async team communication"
+```
+
+### How Static vs Dynamic memory looks over time
+
+![Static vs Dynamic Memory](./img/sm_d05_static_vs_dynamic.png)
+
+### Key Design Rules
+1. **Use `full` mode for most user-facing products** — you almost always need both "who the user is" and "what's relevant now."
+2. **One `containerTag` per user** — never share tags across users.
+3. **Use a project tag for shared team context** — `"sm_project_x"` lets multiple users access the same knowledge.
+4. **Call `client.add()` for important one-off facts** — for facts you know are important but may not surface from conversation alone.
+5. **Supermemory does NOT replace RAG** — for large private document corpora, combine Supermemory (user memory) with your own vector store (document retrieval).
+
+### When to choose Supermemory over LangChain/CrewAI
+
+| Choose Supermemory when | Choose LangChain/CrewAI when |
+|------------------------|------------------------------|
+| You want working memory in hours, not days | You need full data sovereignty (data can't leave your infra) |
+| Users update their info often (conflict resolution matters) | You have complex custom memory logic |
+| You are building a product, not infrastructure | You are already in a LangChain or CrewAI ecosystem |
+| Small team, limited DevOps capacity | You need fine-grained control over every memory decision |
+
+---
+
+## 13. Anti-Patterns to Avoid
 
 ![Memory Anti-Patterns and Fixes](./img/04_d10_anti_patterns.png)
 
@@ -452,21 +539,23 @@ result = chain({"question": "What about the pricing?"})  # uses memory to resolv
 
 ---
 
-## 13. Quick Reference Card
+## 14. Quick Reference Card
 
 ### Pick Your Memory Type
 
-| Your situation | LangChain | CrewAI |
-|----------------|-----------|--------|
-| Quick prototype | `ConversationBufferMemory` | — |
-| Short sessions, no persistence | `BufferWindowMemory` (k=5) | — |
-| Long sessions, token cap needed | `SummaryBufferMemory` | CrewAI Short-term |
-| Track people and facts | `EntityMemory` | CrewAI Entity scope |
-| Search all past conversations | `VectorStoreRetrieverMemory` | CrewAI Long-term |
-| Many users, isolated sessions | Any + Redis + `session_id` | — |
-| Multiple agents coordinating | `CombinedMemory` + `ReadOnlySharedMemory` | Scoped Memory + MemorySlice |
-| Documents + conversation | `ConversationalRetrievalChain` | RAG + CrewAI LT |
-| Static system rules | `SimpleMemory` | System prompt |
+| Your situation | LangChain | CrewAI | Supermemory |
+|----------------|-----------|--------|-------------|
+| Quick prototype | `ConversationBufferMemory` | — | `withSupermemory(model, userId)` |
+| Short sessions, no persistence | `BufferWindowMemory` (k=5) | — | `mode: "profile"` |
+| Long sessions, token cap needed | `SummaryBufferMemory` | CrewAI Short-term | Auto (managed, no token limit concern) |
+| Track people and facts | `EntityMemory` | CrewAI Entity scope | Static Memory (auto-extracted) |
+| Search all past conversations | `VectorStoreRetrieverMemory` | CrewAI Long-term | `mode: "query"` or `"full"` |
+| Many users, isolated sessions | Any + Redis + `session_id` | — | `containerTag` per user (built-in) |
+| Multiple agents coordinating | `CombinedMemory` + `ReadOnlySharedMemory` | Scoped Memory + MemorySlice | Shared `containerTag` |
+| Documents + conversation | `ConversationalRetrievalChain` | RAG + CrewAI LT | Document Memory + `mode: "full"` |
+| Static system rules | `SimpleMemory` | System prompt | System prompt (Supermemory doesn't replace this) |
+| Cross-session user identity | Manual EntityMemory + SQLite | — | Static Memory (automatic, persistent) |
+| Conflict resolution (user moved, changed job) | Manual | Analyze Engine | Automatic (new > old, built-in) |
 
 ### Pick Your Storage Backend
 
@@ -480,8 +569,9 @@ result = chain({"question": "What about the pricing?"})  # uses memory to resolv
 | Semantic search, production | Pinecone / Chroma | Distributed, scalable |
 | CrewAI, local | LanceDB | Built-in to CrewAI |
 | CrewAI, distributed | Qdrant Edge | Multi-node support |
+| No infra at all | **Supermemory API** | Fully managed; containerTag per user |
 
-### The 6 Design Rules (Never Break These)
+### The 7 Design Rules (Never Break These)
 
 1. **One memory object per user** — never share across sessions.
 2. **Cap your token budget** — always set `max_token_limit` for buffer memories.
@@ -489,6 +579,7 @@ result = chain({"question": "What about the pricing?"})  # uses memory to resolv
 4. **Persist what matters** — if users would be upset to repeat it, store it.
 5. **Scope your agents** — in multi-agent systems, private scope first, share explicitly.
 6. **Search by meaning, not keyword** — use vector retrieval, not string search, for recall.
+7. **Don't build memory infra if you don't need to** — if your use case fits Supermemory's model (user-facing product, need conflict resolution, cross-session identity), start managed and only move to self-hosted if data sovereignty demands it.
 
 ---
 
@@ -497,9 +588,17 @@ result = chain({"question": "What about the pricing?"})  # uses memory to resolv
 ```
 1. Fill the requirements checklist (Section 3)
 2. Follow the decision flow (Section 4)
-3. Find your case (Sections 5-11)
-4. Check anti-patterns (Section 12)
-5. Confirm storage backend (Section 13)
+3. Find your case (Sections 5-12)
+4. Check anti-patterns (Section 13)
+5. Confirm storage backend (Section 14)
 ```
 
-> **The core truth:** Memory design is not about picking the fanciest component. It is about understanding what the agent needs to remember, when it needs it, and who else needs to see it. Start simple, measure the gaps, and add complexity only where reality demands it.
+**The three paths:**
+
+| If you are... | Start with |
+|---------------|-----------|
+| Building a prototype or internal tool | LangChain + BufferMemory |
+| Building a multi-agent system | CrewAI + scoped memory |
+| Building a user-facing product fast | Supermemory + `withSupermemory()` |
+
+> **The core truth:** Memory design is not about picking the fanciest component. It is about understanding what the agent needs to remember, when it needs it, and who else needs to see it. Start simple, measure the gaps, and add complexity only where reality demands it. If you can avoid building memory infrastructure entirely — do it.

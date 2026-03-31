@@ -1,0 +1,81 @@
+<svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="500" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#f1f5f9">The Problem Supermemory Solves</text>
+
+  <!-- Divider -->
+  <line x1="480" y1="65" x2="480" y2="460" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- LEFT SIDE: Without -->
+  <text x="240" y="88" text-anchor="middle" font-size="16" font-weight="700" fill="#ef4444">❌  Without Supermemory</text>
+
+  <!-- Chat 1 -->
+  <rect x="40" y="104" width="380" height="90" rx="12" fill="#1e293b" stroke="#334155"/>
+  <text x="58" y="126" font-size="11" fill="#94a3b8">Monday — Chat 1</text>
+  <rect x="56" y="134" width="200" height="26" rx="8" fill="#312e81"/>
+  <text x="66" y="151" font-size="12" fill="#c7d2fe">You: I love TypeScript!</text>
+  <rect x="176" y="164" width="228" height="26" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="186" y="181" font-size="12" fill="#94a3b8">AI: Great, I will remember that!</text>
+
+  <!-- X mark -->
+  <circle cx="240" cy="216" r="20" fill="#ef444422" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="240" y="222" text-anchor="middle" font-size="20">❌</text>
+  <text x="240" y="248" text-anchor="middle" font-size="11" fill="#ef4444">Chat session ends → Memory wiped</text>
+
+  <!-- Chat 2 -->
+  <rect x="40" y="262" width="380" height="110" rx="12" fill="#1e293b" stroke="#334155"/>
+  <text x="58" y="284" font-size="11" fill="#94a3b8">Tuesday — Chat 2 (new session)</text>
+  <rect x="56" y="292" width="260" height="26" rx="8" fill="#312e81"/>
+  <text x="66" y="309" font-size="12" fill="#c7d2fe">You: What do I like to use?</text>
+  <rect x="56" y="322" width="348" height="42" rx="8" fill="#7f1d1d"/>
+  <text x="66" y="337" font-size="12" fill="#fca5a5">AI: I'm sorry, I have no memory of</text>
+  <text x="66" y="355" font-size="12" fill="#fca5a5">previous conversations. Who are you?</text>
+
+  <!-- Sad emoji -->
+  <text x="240" y="410" text-anchor="middle" font-size="40">😞</text>
+  <text x="240" y="445" text-anchor="middle" font-size="12" fill="#ef4444">Every chat = Starting from zero</text>
+
+  <!-- RIGHT SIDE: With -->
+  <text x="720" y="88" text-anchor="middle" font-size="16" font-weight="700" fill="#10b981">✅  With Supermemory</text>
+
+  <!-- Chat 1 -->
+  <rect x="520" y="104" width="400" height="90" rx="12" fill="#1e293b" stroke="#334155"/>
+  <text x="538" y="126" font-size="11" fill="#94a3b8">Monday — Chat 1</text>
+  <rect x="536" y="134" width="200" height="26" rx="8" fill="#312e81"/>
+  <text x="546" y="151" font-size="12" fill="#c7d2fe">You: I love TypeScript!</text>
+  <rect x="656" y="164" width="248" height="26" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="666" y="181" font-size="12" fill="#94a3b8">AI: Got it! I'll remember that.</text>
+
+  <!-- Save arrow -->
+  <rect x="536" y="202" width="368" height="22" rx="6" fill="#14532d"/>
+  <text x="720" y="217" text-anchor="middle" font-size="11" fill="#86efac">💾  Supermemory saves: "User loves TypeScript"</text>
+
+  <!-- Chat 2 -->
+  <rect x="520" y="234" width="400" height="140" rx="12" fill="#1e293b" stroke="#334155"/>
+  <text x="538" y="256" font-size="11" fill="#94a3b8">Tuesday — Chat 2 (new session)</text>
+  <rect x="536" y="264" width="260" height="26" rx="8" fill="#312e81"/>
+  <text x="546" y="281" font-size="12" fill="#c7d2fe">You: What do I like to use?</text>
+
+  <!-- Memory injected -->
+  <rect x="536" y="295" width="368" height="20" rx="5" fill="#1a3a1a"/>
+  <text x="720" y="309" text-anchor="middle" font-size="10" fill="#4ade80">🔄 Supermemory injects context automatically</text>
+
+  <rect x="536" y="319" width="368" height="46" rx="8" fill="#14532d"/>
+  <text x="546" y="335" font-size="12" fill="#86efac">AI: Based on what I know about you,</text>
+  <text x="546" y="353" font-size="12" fill="#86efac">you love TypeScript and prefer React!</text>
+
+  <!-- Happy emoji -->
+  <text x="720" y="410" text-anchor="middle" font-size="40">😊</text>
+  <text x="720" y="445" text-anchor="middle" font-size="12" fill="#10b981">AI remembers you across ALL conversations</text>
+
+  <!-- Bottom bar -->
+  <rect x="40" y="462" width="880" height="28" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="480" y="480" text-anchor="middle" font-size="12" fill="#94a3b8">Supermemory works silently in the background — you just talk naturally, it handles the rest</text>
+</svg>

@@ -1,0 +1,22 @@
+graph LR
+    BORN["Born\nUser says something\nfactual or important\n'I work at Acme'"]
+
+    STORED["Stored\nFact extracted and saved\nas Static memory\nwith embedding"]
+
+    UPDATED["Updated\nUser shares new info\n'I left Acme, now at\nStartup Y'\nOLD replaced by NEW"]
+
+    EXPIRED["Expired\nTime-sensitive fact\n'I have a meeting\ntomorrow'\nAutomatically deleted\nafter the day"]
+
+    FORGOTTEN["Forgotten\nUser explicitly says\n'Forget that I use\nWindows'\nSoft-deleted via API"]
+
+    BORN -->|"Memory Engine\nextracts"| STORED
+    STORED -->|"Conflict\ndetected"| UPDATED
+    STORED -->|"Temporal\ndetection"| EXPIRED
+    STORED -->|"User command\nor API call"| FORGOTTEN
+    UPDATED -->|"still valid"| STORED
+
+    style BORN fill:#3498DB,color:#fff
+    style STORED fill:#27AE60,color:#fff
+    style UPDATED fill:#F39C12,color:#fff
+    style EXPIRED fill:#95A5A6,color:#fff
+    style FORGOTTEN fill:#E74C3C,color:#fff

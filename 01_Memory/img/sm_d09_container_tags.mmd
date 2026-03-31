@@ -1,0 +1,25 @@
+graph TD
+    subgraph USERS["Multiple users, one Supermemory"]
+        U1["Alice\ncontainerTag: user-alice"]
+        U2["Bob\ncontainerTag: user-bob"]
+        U3["Project X\ncontainerTag: sm_project_x"]
+    end
+
+    subgraph MEMORIES["Memory Bank"]
+        MA["Alice's memories:\n- Software engineer\n- Prefers dark mode\n- Working on auth service"]
+        MB["Bob's memories:\n- Product manager\n- No-code tools fan\n- Planning Q3 roadmap"]
+        MP["Project X docs:\n- Tech spec v2\n- Meeting notes\n- Deployment guide"]
+    end
+
+    subgraph API["Same API, different tag"]
+        E1["GET /v4/profile\n?containerTag=user-alice\n→ Alice's context only"]
+        E2["GET /v4/profile\n?containerTag=user-bob\n→ Bob's context only"]
+    end
+
+    U1 --> MA --> E1
+    U2 --> MB --> E2
+    U3 --> MP
+
+    style USERS fill:#EBF5FB
+    style MEMORIES fill:#E9F7EF
+    style API fill:#FEF9E7

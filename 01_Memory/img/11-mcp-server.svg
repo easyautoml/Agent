@@ -1,0 +1,132 @@
+<svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <linearGradient id="mcpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#312e81"/>
+    </linearGradient>
+    <marker id="arrB" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+    <marker id="arrL" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="9 0, 0 3.5, 9 7" fill="#6366f1"/>
+    </marker>
+  </defs>
+  <rect width="960" height="520" fill="url(#bg)"/>
+
+  <text x="480" y="38" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">MCP Server — Connect Any AI Tool</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#94a3b8">One standard plug-in that works with every major AI assistant</text>
+
+  <!-- AI Clients column -->
+  <text x="110" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">AI Tools (clients)</text>
+
+  <rect x="22" y="110" width="176" height="52" rx="10" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+  <text x="60" y="140" font-size="26">🤖</text>
+  <text x="80" y="132" font-size="13" font-weight="600" fill="#fed7aa">Claude Desktop</text>
+  <text x="80" y="150" font-size="10" fill="#64748b">Anthropic</text>
+
+  <rect x="22" y="172" width="176" height="52" rx="10" fill="#1e293b" stroke="#1d9bf0" stroke-width="1.5"/>
+  <text x="60" y="202" font-size="26">🖱️</text>
+  <text x="80" y="194" font-size="13" font-weight="600" fill="#bae6fd">Cursor</text>
+  <text x="80" y="212" font-size="10" fill="#64748b">AI code editor</text>
+
+  <rect x="22" y="234" width="176" height="52" rx="10" fill="#1e293b" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="60" y="264" font-size="26">🌊</text>
+  <text x="80" y="256" font-size="13" font-weight="600" fill="#bbf7d0">Windsurf</text>
+  <text x="80" y="274" font-size="10" fill="#64748b">AI code editor</text>
+
+  <rect x="22" y="296" width="176" height="52" rx="10" fill="#1e293b" stroke="#007acc" stroke-width="1.5"/>
+  <text x="60" y="326" font-size="26">🆚</text>
+  <text x="80" y="318" font-size="13" font-weight="600" fill="#93c5fd">VS Code</text>
+  <text x="80" y="336" font-size="10" fill="#64748b">Microsoft editor</text>
+
+  <rect x="22" y="358" width="176" height="52" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="60" y="388" font-size="26">⌨️</text>
+  <text x="80" y="380" font-size="13" font-weight="600" fill="#e9d5ff">Claude Code</text>
+  <text x="80" y="396" font-size="10" fill="#64748b">CLI / terminal</text>
+
+  <rect x="22" y="420" width="176" height="52" rx="10" fill="#1e293b" stroke="#6b7280" stroke-width="1.5"/>
+  <text x="60" y="450" font-size="26">🔧</text>
+  <text x="80" y="442" font-size="13" font-weight="600" fill="#f1f5f9">Any MCP client</text>
+  <text x="80" y="460" font-size="10" fill="#64748b">Universal standard</text>
+
+  <!-- Arrows to MCP -->
+  <line x1="200" y1="136" x2="300" y2="250" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrB)"/>
+  <line x1="200" y1="198" x2="300" y2="258" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrB)"/>
+  <line x1="200" y1="260" x2="300" y2="266" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrB)"/>
+  <line x1="200" y1="322" x2="300" y2="274" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrB)"/>
+  <line x1="200" y1="384" x2="300" y2="282" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrB)"/>
+  <line x1="200" y1="446" x2="300" y2="290" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrB)"/>
+
+  <!-- Label on arrows -->
+  <rect x="228" y="232" width="74" height="18" rx="5" fill="#1e1b4b"/>
+  <text x="265" y="244" text-anchor="middle" font-size="9" fill="#a5b4fc">MCP Protocol</text>
+
+  <!-- MCP Server box -->
+  <rect x="302" y="120" width="296" height="360" rx="16" fill="url(#mcpGrad)" stroke="#6366f1" stroke-width="2"/>
+  <text x="450" y="152" text-anchor="middle" font-size="15" font-weight="800" fill="#ffffff">⚡ MCP Server</text>
+  <text x="450" y="170" text-anchor="middle" font-size="10" fill="#a5b4fc">mcp.supermemory.ai</text>
+  <line x1="318" y1="180" x2="582" y2="180" stroke="#4c1d95" stroke-width="1"/>
+
+  <!-- Durable Objects box inside -->
+  <rect x="318" y="188" width="264" height="82" rx="10" fill="#0f172a" stroke="#4338ca"/>
+  <text x="450" y="210" text-anchor="middle" font-size="11" font-weight="600" fill="#c7d2fe">Cloudflare Durable Objects</text>
+  <text x="450" y="228" text-anchor="middle" font-size="9" fill="#94a3b8">• Session state per connection</text>
+  <text x="450" y="244" text-anchor="middle" font-size="9" fill="#94a3b8">• Persistent client info</text>
+  <text x="450" y="260" text-anchor="middle" font-size="9" fill="#94a3b8">• MCP protocol handling</text>
+
+  <text x="450" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#f1f5f9">Available Tools:</text>
+
+  <!-- Tool: memory -->
+  <rect x="318" y="302" width="264" height="48" rx="10" fill="#14532d" stroke="#10b981"/>
+  <text x="334" y="322" font-size="12" font-weight="700" fill="#86efac">memory</text>
+  <text x="334" y="338" font-size="10" fill="#a7f3d0">Save or forget information about you</text>
+  <text x="576" y="338" text-anchor="end" font-size="9" fill="#64748b">action: save | forget</text>
+
+  <!-- Tool: recall -->
+  <rect x="318" y="356" width="264" height="48" rx="10" fill="#1e3a5f" stroke="#3b82f6"/>
+  <text x="334" y="376" font-size="12" font-weight="700" fill="#93c5fd">recall</text>
+  <text x="334" y="392" font-size="10" fill="#bfdbfe">Search memories + get user profile</text>
+  <text x="576" y="392" text-anchor="end" font-size="9" fill="#64748b">query + includeProfile</text>
+
+  <!-- Tool: whoAmI -->
+  <rect x="318" y="410" width="264" height="48" rx="10" fill="#3a1a00" stroke="#f59e0b"/>
+  <text x="334" y="430" font-size="12" font-weight="700" fill="#fde68a">context</text>
+  <text x="334" y="446" font-size="10" fill="#fde68a">Inject your full profile at start</text>
+  <text x="576" y="446" text-anchor="end" font-size="9" fill="#64748b">type /context</text>
+
+  <!-- Auth label -->
+  <rect x="318" y="464" width="264" height="8" rx="4" fill="#1e293b"/>
+  <text x="450" y="470" text-anchor="middle" font-size="8" fill="#64748b">Auth: OAuth 2.0  |  API Key (sm_...)</text>
+
+  <!-- Arrow to API -->
+  <line x1="600" y1="300" x2="640" y2="300" stroke="#6366f1" stroke-width="2" marker-end="url(#arrB)"/>
+
+  <!-- Supermemory API box -->
+  <rect x="642" y="140" width="286" height="320" rx="16" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="785" y="172" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">Supermemory API</text>
+  <text x="785" y="190" text-anchor="middle" font-size="10" fill="#94a3b8">api.supermemory.ai</text>
+  <line x1="658" y1="200" x2="912" y2="200" stroke="#334155" stroke-width="1"/>
+
+  <rect x="658" y="210" width="254" height="34" rx="8" fill="#0f172a"/>
+  <text x="658" y="222" font-size="9" fill="#64748b" dx="10">Route</text>
+  <text x="785" y="232" text-anchor="middle" font-size="11" fill="#a5b4fc">POST /v3/documents  (add memory)</text>
+
+  <rect x="658" y="250" width="254" height="34" rx="8" fill="#0f172a"/>
+  <text x="785" y="270" text-anchor="middle" font-size="11" fill="#a5b4fc">GET /v3/search  (recall)</text>
+
+  <rect x="658" y="290" width="254" height="34" rx="8" fill="#0f172a"/>
+  <text x="785" y="310" text-anchor="middle" font-size="11" fill="#a5b4fc">GET /v3/profile  (context)</text>
+
+  <rect x="658" y="340" width="254" height="60" rx="8" fill="#0f172a"/>
+  <text x="785" y="358" text-anchor="middle" font-size="11" fill="#94a3b8">Auth validation</text>
+  <text x="785" y="374" text-anchor="middle" font-size="11" fill="#94a3b8">Memory engine</text>
+  <text x="785" y="390" text-anchor="middle" font-size="11" fill="#94a3b8">Vector database</text>
+
+  <!-- Install box -->
+  <rect x="302" y="492" width="636" height="22" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="620" y="507" text-anchor="middle" font-size="10" fill="#64748b" font-family="Courier New">npx -y install-mcp@latest https://mcp.supermemory.ai/mcp --client claude --oauth=yes</text>
+</svg>

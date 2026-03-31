@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant U as User
+    participant AI as AI App
+    participant C as Cache (LRU)
+    participant SM as Supermemory API
+
+    U->>AI: "Help me with my React app"
+    AI->>AI: Extract query text:\n"Help me with my React app"
+    AI->>C: Cache hit for this query?
+    alt Cache HIT
+        C->>AI: Return cached memories
+        Note over AI: Skip API call!
+    else Cache MISS
+        AI->>SM: POST /v4/profile\n{ q, containerTag }
+        SM->>SM: Semantic search\n(cosine similarity >= 0.6)
+        SM->>AI: Returns:\n- static: [facts about user]\n- dynamic: [recent activity]\n- searchResults: [relevant matches]
+        AI->>AI: Deduplicate results
+        AI->>C: Store in cache (max 100 items)
+    end
+    AI->>AI: Format as markdown
+    AI->>AI: Inject into system prompt
+    AI->>U: Response with full context (~50ms)

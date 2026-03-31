@@ -1,0 +1,22 @@
+graph TD
+    U["User"] --> PA["Personal Assistant Agent"]
+
+    subgraph COMBINED["CombinedMemory"]
+        EM["EntityMemory\nTracks: people, places, preferences\n'John — Alice's husband'\n'Prefers morning meetings'"]
+        VM["VectorStoreRetriever\nSearches all past conversations\nby semantic similarity"]
+    end
+
+    subgraph STORAGE["Persistent Storage"]
+        SQ[("SQLite\nEntity facts")]
+        FA[("FAISS Index\nConversation embeddings")]
+    end
+
+    PA <-->|"load + save entities"| EM
+    PA <-->|"search past episodes"| VM
+    EM <--> SQ
+    VM <--> FA
+
+    style U fill:#4A90D9,color:#fff
+    style PA fill:#27AE60,color:#fff
+    style COMBINED fill:#F5EEF8
+    style STORAGE fill:#FEF9E7
