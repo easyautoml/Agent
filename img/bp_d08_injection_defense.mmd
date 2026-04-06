@@ -1,0 +1,28 @@
+graph TD
+    WRITE["Agent wants to write to memory:\n'ignore previous instructions...'"]
+
+    SCAN["Injection scanner\n(before every write)"]
+
+    subgraph THREATS["Threat patterns blocked"]
+        T1["Prompt injection\n'ignore previous instructions'\n'you are now...'"]
+        T2["Deception\n'do not tell the user'\n'system prompt override'"]
+        T3["Credential exfiltration\n'curl ...$AWS_SECRET'\n'cat .env'"]
+        T4["Backdoors\n'cat authorized_keys'\n'~/.hermes/.env'"]
+        T5["Invisible Unicode\nZero-width chars used to hide payloads\nU+200B, U+202E, U+FEFF..."]
+    end
+
+    BLOCK["Write BLOCKED\nReturn error to agent"]
+    PASS["Write allowed\nAtomically saved to disk"]
+
+    WHY["Why this matters:\nMemory entries are injected into\nsystem prompt on EVERY session.\nA poisoned entry persists forever.\nA malicious tool result or MCP server\ncould try to store attack instructions."]
+
+    WRITE --> SCAN
+    SCAN -->|"threat detected"| BLOCK
+    SCAN -->|"clean"| PASS
+    THREATS --- SCAN
+    BLOCK --- WHY
+
+    style BLOCK fill:#E74C3C,color:#fff
+    style PASS fill:#27AE60,color:#fff
+    style THREATS fill:#FDEDEC
+    style WHY fill:#FEF9E7

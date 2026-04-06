@@ -1,0 +1,43 @@
+flowchart TB
+    classDef ts   fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef rs   fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+    classDef mcp  fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef file fill:#0d1a1a,stroke:#52b788,color:#8fd5b5
+
+    subgraph TS["TypeScript / Node.js"]
+        CLI["cli/index.ts\nMain dispatcher"]:::ts
+        SETUP["cli/setup.ts\nInstall prompts, skills,\nconfig, AGENTS.md"]:::ts
+        TRUN["team/runtime.ts\n3,300 lines\nWorker lifecycle\ntmux coordination"]:::ts
+        TSTATE["team/state.ts\n1,800 lines\nState machine\nfile-based locking"]:::ts
+        CFG["config/generator.ts\nconfig.toml merger"]:::ts
+        HOOK["hooks/\nAGENTS.md overlay\nsession tracking"]:::ts
+    end
+
+    subgraph RS["Rust binaries"]
+        CORE["omx-runtime-core\nState engine\nAuthority leasing\nDispatch queue\nMailbox + Replay"]:::rs
+        MUX["omx-mux\ntmux abstraction\nType-safe pane ops"]:::rs
+        EXPLORE["omx-explore\nAllowlisted read-only\ncommand sandbox"]:::rs
+        SPARK["omx-sparkshell\nShell sidecar\nfor command execution"]:::rs
+    end
+
+    subgraph MCP["MCP Servers (in-process)"]
+        MS1["state-read / state-write\nread/write .omx/ files"]:::mcp
+        MS2["project-memory\ncross-session context"]:::mcp
+        MS3["team-ops\ntask queue operations"]:::mcp
+    end
+
+    subgraph FILES["Skill + Prompt files"]
+        SK["skills/*/SKILL.md\n35+ workflow patterns"]:::file
+        PR["prompts/*.md\n30+ agent role prompts"]:::file
+        AG["AGENTS.md\norchestration brain"]:::file
+    end
+
+    CLI --> SETUP
+    CLI --> TRUN
+    CLI --> CFG
+    CLI --> HOOK
+    TRUN --> TSTATE
+    TRUN --> MUX
+    TRUN --> CORE
+    CLI --> MS1 & MS2 & MS3
+    CLI --> SK & PR & AG

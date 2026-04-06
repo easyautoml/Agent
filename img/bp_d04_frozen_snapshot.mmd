@@ -1,0 +1,28 @@
+sequenceDiagram
+    participant D as Disk (MEMORY.md)
+    participant S as MemoryStore
+    participant P as System Prompt (frozen)
+    participant A as Agent
+    participant T as Tool Response (live)
+
+    Note over D,T: Session Start
+    D->>S: load_from_disk()
+    S->>P: capture frozen snapshot
+    P->>A: inject into system prompt\n(never changes mid-session)
+
+    Note over D,T: Turn 1 — Agent learns new fact
+    A->>S: memory(add, "User is in docker group")
+    S->>S: injection scan (check for threats)
+    S->>D: atomic write (temp + os.replace)
+    D->>T: tool response shows LIVE state
+    Note over P: System prompt UNCHANGED\nPrefix cache preserved
+
+    Note over D,T: Turn 2 — Agent reads memory tool
+    A->>T: memory(action="read")
+    T->>A: shows NEW entry in live state
+    Note over P: Still frozen from session start
+
+    Note over D,T: Next Session Start
+    D->>S: load_from_disk() — now includes new entry
+    S->>P: new frozen snapshot (with new entry)
+    P->>A: NEW entry now in system prompt

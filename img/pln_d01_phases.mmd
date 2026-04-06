@@ -1,0 +1,24 @@
+flowchart TD
+    P1["Phase 1\nProject Setup\n─────────────────\nFolders, deps, config, .env"]
+    P2["Phase 2\nSlack Connection\n─────────────────\nSocket Mode, event routing"]
+    P3["Phase 3\nWorkspace Manager\n─────────────────\nCreate dirs, SQLite, naming"]
+    P4["Phase 4\nFile Collector\n─────────────────\nDownload, classify, save raw/"]
+    P5["Phase 5\nProcessing Pipeline\n─────────────────\nExtract → Markdown → ChromaDB"]
+    P6["Phase 6\nCommon Knowledge\n─────────────────\nIndex common/knowledge/"]
+    P7["Phase 7\nProposal Agent\n─────────────────\nLangGraph ReAct + all tools"]
+    P8["Phase 8\nQ&A Excel Loop\n─────────────────\nGenerate → wait → read answers"]
+    P9["Phase 9\nFeedback Handler\n─────────────────\nParse instructions, update agent"]
+    P10["Phase 10\nEnd-to-End Test\n─────────────────\nFull flow, multi-workspace"]
+
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8 --> P9 --> P10
+
+    style P1 fill:#EBF5FB
+    style P2 fill:#EBF5FB
+    style P3 fill:#E9F7EF
+    style P4 fill:#E9F7EF
+    style P5 fill:#E9F7EF
+    style P6 fill:#FEF9E7
+    style P7 fill:#FDEDEC
+    style P8 fill:#FDEDEC
+    style P9 fill:#F5EEF8
+    style P10 fill:#F5EEF8

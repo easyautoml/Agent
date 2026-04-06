@@ -1,0 +1,29 @@
+graph TD
+    subgraph L1["Layer 1 — Working Memory (milliseconds)"]
+        WM["LLM Context Window\nEverything injected this turn\n4K - 128K tokens\nGone after turn ends"]
+    end
+
+    subgraph L2["Layer 2 — Session Memory (minutes to hours)"]
+        BUF["BufferMemory / SummaryBuffer\nCurrent conversation\nKept in RAM or Redis\nGone when session ends"]
+    end
+
+    subgraph L3["Layer 3 — Long-term Memory (days to forever)"]
+        VEC["VectorStoreRetriever / CrewAI Long-term\nAll past conversations embedded\nSearched by semantic similarity\nPersists across sessions"]
+        ENT["EntityMemory / CrewAI Entity\nFacts about people and places\nStructured key-value\nPersists across sessions"]
+    end
+
+    subgraph L4["Layer 4 — External Knowledge (static)"]
+        RAG["RAG — Document Index\nCompany docs, wikis, papers\nRead-only\nUpdated by humans"]
+        SYS["SimpleMemory\nSystem prompt constants\nHardcoded rules\nNever changes"]
+    end
+
+    L4 -->|"inject at query time"| L1
+    L3 -->|"recall relevant past"| L1
+    L2 -->|"append recent turns"| L1
+    L1 -->|"save new info"| L2
+    L2 -->|"compress or embed"| L3
+
+    style L1 fill:#FDEDEC
+    style L2 fill:#FEF9E7
+    style L3 fill:#E9F7EF
+    style L4 fill:#EBF5FB

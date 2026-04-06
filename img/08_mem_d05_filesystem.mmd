@@ -1,0 +1,38 @@
+flowchart TD
+    classDef root  fill:#1e3a5f,stroke:#4a90d9,color:#fff,font-weight:bold
+    classDef dir   fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef file  fill:#0d1a1a,stroke:#52b788,color:#8fd5b5
+    classDef db    fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef sess  fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+
+    HOME["~/.codex/"]:::root
+
+    MEM["memories/"]:::dir
+    MR["raw_memories.md\n(all Phase-1 outputs merged,\nlatest first)"]:::file
+    MS["memory_summary.md\n(compact overview,\nwritten by Phase-2 agent)"]:::file
+    MM["MEMORY.md\n(curated final memory,\nwritten by Phase-2 agent)"]:::file
+    RS["rollout_summaries/\n(one .md per session,\n named by timestamp + slug)"]:::dir
+    RSF["2024-01-15T12-30-45-abcd-api_refactor.md"]:::file
+    SK["skills/\n(reusable patterns,\nwritten by Phase-2 agent)"]:::dir
+
+    HIST["history.jsonl\n(all turns, global,\nappend-only)"]:::file
+
+    SESS["sessions/\n(session rollouts)"]:::dir
+    SESSDT["2024/01/15/"]:::dir
+    SESST["thread-uuid/\n  session-id.jsonl"]:::file
+
+    SQLDB["codex.db  (SQLite)\n• Phase-1 job queue & results\n• Phase-2 job claim & watermark\n• Thread metadata index\n• Recent threads for realtime ctx"]:::db
+
+    HOME --> MEM
+    HOME --> HIST
+    HOME --> SESS
+    HOME --> SQLDB
+
+    MEM --> MR
+    MEM --> MS
+    MEM --> MM
+    MEM --> RS
+    RS --> RSF
+    MEM --> SK
+
+    SESS --> SESSDT --> SESST

@@ -1,0 +1,7 @@
+graph TD
+    SHARED["Shared Memory\n(real memory object)"] --> RO["ReadOnlySharedMemory\n(wrapper)"]
+    RO -->|"Can read"| Chain1["Chain 1"]
+    RO -->|"Can read"| Chain2["Chain 2"]
+    Chain1 -. cannot write .-> RO
+    Chain2 -. cannot write .-> RO
+    MainChain["Main Chain"] -->|"Can read AND write"| SHARED

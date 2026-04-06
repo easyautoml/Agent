@@ -1,0 +1,24 @@
+graph TD
+    subgraph USERS["Concurrent Users"]
+        U1["Alice — session-alice-001"]
+        U2["Bob — session-bob-007"]
+        U3["Carol — session-carol-042"]
+    end
+
+    subgraph APP["Application Layer"]
+        API[REST API]
+        API --> M1["Alice's Memory\nConversationSummaryBufferMemory"]
+        API --> M2["Bob's Memory\nConversationSummaryBufferMemory"]
+        API --> M3["Carol's Memory\nConversationSummaryBufferMemory"]
+    end
+
+    subgraph STORAGE_LAYER["Storage"]
+        R[(Redis Cluster)]
+        M1 <--> R
+        M2 <--> R
+        M3 <--> R
+    end
+
+    U1 --> API
+    U2 --> API
+    U3 --> API

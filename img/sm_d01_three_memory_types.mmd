@@ -1,0 +1,26 @@
+graph TD
+    subgraph SM["Supermemory — 3 Memory Types"]
+
+        STATIC["Static Memory\n────────────────\nCore facts about you\nChanges rarely\n\nExamples:\n- Name: Alice\n- Job: Head of Marketing\n- Prefers short emails\n- Loves TypeScript\n- Senior developer"]
+
+        DYNAMIC["Dynamic Memory\n────────────────\nWhat you are doing now\nChanges often\n\nExamples:\n- Working on Q2 launch\n- Reviewing analytics\n- Current project: SPA\n- Team size: 2 devs\n- Deadline: Friday"]
+
+        SEARCH["Search Results\n────────────────\nWhat is relevant\nto this question\nChanges per query\n\nExamples:\n- You asked about\n  hooks 2 days ago\n- You use Next.js\n  in production"]
+    end
+
+    Q["Your question:\nI need React help"]
+    LLM["LLM gets all three\ncombined in prompt"]
+
+    Q -->|"profile mode"| STATIC
+    Q -->|"profile mode"| DYNAMIC
+    Q -->|"semantic search"| SEARCH
+
+    STATIC --> LLM
+    DYNAMIC --> LLM
+    SEARCH --> LLM
+
+    style STATIC fill:#3498DB,color:#fff
+    style DYNAMIC fill:#27AE60,color:#fff
+    style SEARCH fill:#9B59B6,color:#fff
+    style LLM fill:#E74C3C,color:#fff
+    style SM fill:#EBF5FB

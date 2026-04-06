@@ -1,0 +1,51 @@
+flowchart TB
+    classDef ui     fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef core   fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef sdk    fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef ext    fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+    classDef store  fill:#1a1a2e,stroke:#7ec8e3,color:#cce8f0
+
+    subgraph FRONT["User Interfaces"]
+        TUI["Terminal UI\n(Ratatui / Rust)"]:::ui
+        EXEC["Exec Mode\n(headless / CI)"]:::ui
+        IDE["IDE Extension\n(VS Code, Cursor)"]:::ui
+    end
+
+    subgraph SDKS["SDKs"]
+        PY["Python SDK"]:::sdk
+        TS["TypeScript SDK"]:::sdk
+    end
+
+    APP["App-Server\nJSON-RPC v2"]:::core
+
+    subgraph CORE["codex-core  (Rust library)"]
+        direction LR
+        ORCH["Orchestrator\ncodex.rs"]:::core
+        CTX["Context Manager\n(history, compaction)"]:::core
+        TOOLS["Tool Registry\n& Router"]:::core
+        POLICY["Exec Policy\n& Approval"]:::core
+        MEM["Memory Pipeline\n(2-phase)"]:::core
+        SAND["Sandbox Layer"]:::core
+    end
+
+    subgraph MODELS["AI Models"]
+        OAI["OpenAI\nResponses API"]:::ext
+        ANT["Anthropic"]:::ext
+        LOC["Local LLMs\n(Ollama, LM Studio)"]:::ext
+    end
+
+    subgraph STORAGE["Persistent Storage"]
+        ROLL["Session Rollout\n(JSONL)"]:::store
+        DB["State DB\n(SQLite)"]:::store
+        RULES["Rules Files\n(.rules)"]:::store
+    end
+
+    TUI -->|in-process| CORE
+    EXEC -->|in-process| CORE
+    IDE -->|JSON-RPC| APP
+    PY -->|JSON-RPC| APP
+    TS -->|JSON-RPC| APP
+    APP --> CORE
+
+    CORE --> MODELS
+    CORE --> STORAGE

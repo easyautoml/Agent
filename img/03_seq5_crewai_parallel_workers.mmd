@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant W1 as Worker 1
+    participant W2 as Worker 2
+    participant W3 as Worker 3
+    participant L1 as Local Shard 1
+    participant L2 as Local Shard 2
+    participant L3 as Local Shard 3
+    participant C as Central Shard
+
+    W1->>L1: Process Case A, save memories
+    W2->>L2: Process Case B, save memories
+    W3->>L3: Process Case C, save memories
+
+    W1->>C: Sync on close
+    W2->>C: Sync on close
+    W3->>C: Sync on close
+
+    Note over C: All worker memories merged and searchable

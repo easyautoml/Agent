@@ -1,0 +1,125 @@
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFBEB"/>
+      <stop offset="100%" style="stop-color:#FEF3C7"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00000018"/></filter>
+  </defs>
+
+  <rect width="900" height="520" fill="url(#bg)" rx="16"/>
+  <text x="450" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#78350F">Debounce Queue — Why Wait 30 Seconds?</text>
+  <text x="450" y="54" text-anchor="middle" font-size="12" fill="#92400E">Batches rapid messages so the AI extraction runs once, not 10 times</text>
+
+  <!-- Timeline -->
+  <line x1="40" y1="120" x2="860" y2="120" stroke="#CBD5E1" stroke-width="2.5"/>
+
+  <!-- Time markers -->
+  <text x="40" y="112" text-anchor="middle" font-size="10" fill="#64748B">t=0s</text>
+  <text x="160" y="112" text-anchor="middle" font-size="10" fill="#64748B">t=5s</text>
+  <text x="280" y="112" text-anchor="middle" font-size="10" fill="#64748B">t=12s</text>
+  <text x="400" y="112" text-anchor="middle" font-size="10" fill="#64748B">t=20s</text>
+  <text x="560" y="112" text-anchor="middle" font-size="10" fill="#64748B">t=50s</text>
+  <text x="720" y="112" text-anchor="middle" font-size="10" fill="#64748B">t=80s</text>
+  <text x="860" y="112" text-anchor="middle" font-size="10" fill="#64748B">t=110s</text>
+
+  <!-- Tick marks -->
+  <line x1="40" y1="114" x2="40" y2="126" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="160" y1="114" x2="160" y2="126" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="280" y1="114" x2="280" y2="126" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="400" y1="114" x2="400" y2="126" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="560" y1="114" x2="560" y2="126" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="720" y1="114" x2="720" y2="126" stroke="#94A3B8" stroke-width="1.5"/>
+  <line x1="860" y1="114" x2="860" y2="126" stroke="#94A3B8" stroke-width="1.5"/>
+
+  <!-- SCENARIO 1: Rapid messages, timer resets -->
+  <rect x="20" y="140" width="520" height="150" rx="12" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="280" y="164" text-anchor="middle" font-size="13" font-weight="bold" fill="#D97706">Scenario A — You send 3 messages quickly</text>
+  <text x="280" y="182" text-anchor="middle" font-size="11" fill="#6B7280">Each new message resets the timer → only ONE extraction runs</text>
+
+  <!-- msg events -->
+  <circle cx="80" cy="220" r="14" fill="#1D4ED8"/>
+  <text x="80" y="225" text-anchor="middle" font-size="10" fill="white">1</text>
+  <text x="80" y="248" text-anchor="middle" font-size="10" fill="#374151">Message</text>
+  <text x="80" y="262" text-anchor="middle" font-size="9" fill="#6B7280">t=0s</text>
+
+  <!-- timer reset arrows -->
+  <rect x="95" y="212" width="100" height="16" rx="4" fill="#FEF3C7"/>
+  <text x="145" y="224" text-anchor="middle" font-size="9" fill="#D97706">⏳ timer 30s</text>
+
+  <circle cx="200" cy="220" r="14" fill="#1D4ED8"/>
+  <text x="200" y="225" text-anchor="middle" font-size="10" fill="white">2</text>
+  <text x="200" y="248" text-anchor="middle" font-size="10" fill="#374151">Message</text>
+  <text x="200" y="262" text-anchor="middle" font-size="9" fill="#6B7280">t=5s</text>
+
+  <!-- reset indicator -->
+  <text x="200" y="204" text-anchor="middle" font-size="9" fill="#DC2626">↺ reset!</text>
+
+  <rect x="215" y="212" width="100" height="16" rx="4" fill="#FEF3C7"/>
+  <text x="265" y="224" text-anchor="middle" font-size="9" fill="#D97706">⏳ timer 30s</text>
+
+  <circle cx="320" cy="220" r="14" fill="#1D4ED8"/>
+  <text x="320" y="225" text-anchor="middle" font-size="10" fill="white">3</text>
+  <text x="320" y="248" text-anchor="middle" font-size="10" fill="#374151">Message</text>
+  <text x="320" y="262" text-anchor="middle" font-size="9" fill="#6B7280">t=12s</text>
+  <text x="320" y="204" text-anchor="middle" font-size="9" fill="#DC2626">↺ reset!</text>
+
+  <rect x="335" y="212" width="168" height="16" rx="4" fill="#FEF3C7"/>
+  <text x="419" y="224" text-anchor="middle" font-size="9" fill="#D97706">⏳ timer runs 30s from t=12s...</text>
+
+  <!-- Fire at t=42s marker -->
+  <circle cx="500" cy="220" r="16" fill="#059669"/>
+  <text x="500" y="225" text-anchor="middle" font-size="9" fill="white">FIRE</text>
+  <text x="500" y="248" text-anchor="middle" font-size="9" fill="#15803D">1x LLM call</text>
+  <text x="500" y="262" text-anchor="middle" font-size="9" fill="#6B7280">t=42s</text>
+
+  <!-- SCENARIO 2: Per-thread dedup -->
+  <rect x="20" y="306" width="520" height="130" rx="12" fill="white" filter="url(#sh)" stroke="#BFDBFE" stroke-width="1.5"/>
+  <text x="280" y="330" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">Scenario B — Same thread sends again before timer fires</text>
+  <text x="280" y="348" text-anchor="middle" font-size="11" fill="#6B7280">Queue deduplicates per thread_id — old entry replaced with newest</text>
+
+  <rect x="60" y="366" width="140" height="52" rx="8" fill="#DBEAFE"/>
+  <text x="130" y="384" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="bold">Queue entry:</text>
+  <text x="130" y="398" text-anchor="middle" font-size="10" fill="#374151">thread_123</text>
+  <text x="130" y="412" text-anchor="middle" font-size="9" fill="#6B7280">3 old messages</text>
+
+  <text x="230" y="394" text-anchor="middle" font-size="14" fill="#D97706">→</text>
+  <text x="230" y="410" text-anchor="middle" font-size="9" fill="#D97706">new msg arrives</text>
+
+  <rect x="250" y="366" width="140" height="52" rx="8" fill="#DCFCE7"/>
+  <text x="320" y="384" text-anchor="middle" font-size="10" fill="#15803D" font-weight="bold">Queue entry:</text>
+  <text x="320" y="398" text-anchor="middle" font-size="10" fill="#374151">thread_123</text>
+  <text x="320" y="412" text-anchor="middle" font-size="9" fill="#6B7280">4 messages  (replaced)</text>
+
+  <text x="420" y="394" text-anchor="middle" font-size="11" fill="#D97706">→</text>
+  <text x="430" y="394" text-anchor="middle" font-size="10" fill="#6B7280">LLM sees</text>
+  <text x="430" y="408" text-anchor="middle" font-size="10" fill="#6B7280">FULL history</text>
+
+  <!-- RIGHT: config box -->
+  <rect x="558" y="140" width="322" height="296" rx="12" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <rect x="558" y="140" width="322" height="44" rx="12" fill="#D97706"/>
+  <rect x="558" y="168" width="322" height="16" fill="#D97706"/>
+  <text x="719" y="170" text-anchor="middle" font-size="13" font-weight="bold" fill="white">⚙️ Config Options</text>
+
+  <text x="574" y="206" font-size="11" fill="#374151" font-weight="bold">memory.enabled</text>
+  <text x="574" y="222" font-size="11" fill="#6B7280">true/false — master switch</text>
+
+  <text x="574" y="248" font-size="11" fill="#374151" font-weight="bold">memory.debounce_seconds</text>
+  <text x="574" y="264" font-size="11" fill="#6B7280">default: 30s   range: 1–300s</text>
+  <text x="574" y="280" font-size="11" fill="#6B7280">lower = more frequent updates</text>
+
+  <text x="574" y="306" font-size="11" fill="#374151" font-weight="bold">memory.max_facts</text>
+  <text x="574" y="322" font-size="11" fill="#6B7280">default: 100   range: 10–500</text>
+
+  <text x="574" y="348" font-size="11" fill="#374151" font-weight="bold">memory.fact_confidence_threshold</text>
+  <text x="574" y="364" font-size="11" fill="#6B7280">default: 0.7   range: 0.0–1.0</text>
+  <text x="574" y="380" font-size="11" fill="#6B7280">facts below this score are ignored</text>
+
+  <text x="574" y="406" font-size="11" fill="#374151" font-weight="bold">memory.max_injection_tokens</text>
+  <text x="574" y="422" font-size="11" fill="#6B7280">default: 2000   range: 100–8000</text>
+
+  <!-- Bottom summary -->
+  <rect x="20" y="450" width="860" height="50" rx="10" fill="#D97706" filter="url(#sh)"/>
+  <text x="450" y="470" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Why debounce? — Calling the AI model costs money and time. Without debounce, every single</text>
+  <text x="450" y="490" text-anchor="middle" font-size="12" font-weight="bold" fill="white">message would trigger a full LLM extraction. Debounce = cheaper + smarter.</text>
+</svg>

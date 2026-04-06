@@ -1,0 +1,10 @@
+graph LR
+    R["MemoryRecord"] --> ID["id\nunique identifier"]
+    R --> C["content\nthe actual text"]
+    R --> SC["scope\nwhere it belongs"]
+    R --> CA["categories\nsemantic tags"]
+    R --> I["importance\n0.0 to 1.0"]
+    R --> TS["timestamps\ncreated & accessed"]
+    R --> EM["embedding\n1536 float numbers"]
+    R --> SRC["source\nwho created it"]
+    R --> PV["private\nvisibility flag"]

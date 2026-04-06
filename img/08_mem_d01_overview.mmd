@@ -1,0 +1,39 @@
+flowchart TB
+    classDef sess  fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef p1    fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef p2    fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef store fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+    classDef inj   fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+
+    SESSION["User Session\n(conversation turns\n+ tool calls)"]:::sess
+
+    subgraph PERSIST["Persistence (real-time)"]
+        ROLL["Session Rollout\n~/.codex/sessions/\nAPPEND-ONLY JSONL"]:::store
+        HIST["Message History\n~/.codex/history.jsonl\nlatest turns, global"]:::store
+    end
+
+    subgraph PHASE1["Phase 1 — Extract  (background, parallel, up to 8 at once)"]
+        P1A["Claim rollout\nfrom SQLite DB"]:::p1
+        P1B["Send rollout to\ngpt-5.4-mini"]:::p1
+        P1C["Get back:\nraw_memory +\nrollout_summary"]:::p1
+        P1A --> P1B --> P1C
+    end
+
+    subgraph PHASE2["Phase 2 — Consolidate  (background, global, one at a time)"]
+        P2A["Claim global job\n(mutual exclusion)"]:::p2
+        P2B["Sync filesystem:\nraw_memories.md\nrollout_summaries/"]:::p2
+        P2C["Spawn consolidation\nsub-agent\n(gpt-5.3-codex)"]:::p2
+        P2D["Agent writes:\nmemory_summary.md\nMEMORY.md\nskills/"]:::p2
+        P2A --> P2B --> P2C --> P2D
+    end
+
+    subgraph INJECT["Injection at Next Session Start"]
+        I1["memory_summary.md\n→ developer instructions\n(5,000 tokens)"]:::inj
+        I2["Realtime context\n(cwd, recent threads,\nworkspace tree)\n(5,300 tokens)"]:::inj
+    end
+
+    SESSION --> PERSIST
+    PERSIST --> PHASE1
+    PHASE1 --> PHASE2
+    PHASE2 --> INJECT
+    INJECT --> SESSION

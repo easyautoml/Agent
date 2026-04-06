@@ -1,0 +1,19 @@
+graph TD
+    ROOT["Project Root"]
+
+    subgraph WS["workspaces/  — one per Slack channel"]
+        W1["proj-acme-crm/\n└── data/\n    ├── raw/     ← ALL uploads land here\n    ├── clean/   ← processed Markdown\n    ├── output/  ← proposals\n    ├── vector_index/\n    └── state/\n        ├── workspace.json\n        ├── jobs.sqlite\n        ├── agent.sqlite\n        └── feedback.jsonl"]
+        W2["proj-beta-mvp/\n└── data/ ..."]
+        W3["proj-xyz-2026/\n└── data/ ..."]
+    end
+
+    subgraph CK["common/  — shared, read-only"]
+        C1["knowledge/\n├── proposal_template.md\n├── tech_standards.md\n├── pricing_guide.md\n├── sla_templates.md\n├── security_checklist.md\n└── index/ (vector)"]
+    end
+
+    ROOT --> WS
+    ROOT --> CK
+
+    style WS fill:#EBF5FB
+    style CK fill:#E9F7EF
+    style ROOT fill:#4A154B,color:#fff

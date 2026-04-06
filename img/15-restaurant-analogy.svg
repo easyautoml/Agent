@@ -1,0 +1,90 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFBEB"/>
+      <stop offset="100%" style="stop-color:#FEF9C3"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000020"/></filter>
+  </defs>
+
+  <rect width="900" height="560" fill="url(#bg)" rx="16"/>
+  <text x="450" y="36" text-anchor="middle" font-size="22" font-weight="bold" fill="#713F12">DeerFlow = A Restaurant Kitchen</text>
+  <text x="450" y="58" text-anchor="middle" font-size="13" fill="#92400E">Every part has an analogy you already understand</text>
+
+  <!-- 9 cards in 3x3 grid -->
+
+  <!-- Row 1 -->
+  <!-- Card 1 -->
+  <rect x="30" y="76" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="160" y="106" text-anchor="middle" font-size="32">🪟</text>
+  <text x="160" y="136" text-anchor="middle" font-size="14" font-weight="bold" fill="#1E40AF">Frontend</text>
+  <text x="160" y="158" text-anchor="middle" font-size="12" fill="#374151">= The Dining Room</text>
+  <text x="160" y="178" text-anchor="middle" font-size="11" fill="#6B7280">What guests (users) see.</text>
+  <text x="160" y="194" text-anchor="middle" font-size="11" fill="#6B7280">The chat window &amp; settings.</text>
+
+  <!-- Card 2 -->
+  <rect x="320" y="76" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="450" y="106" text-anchor="middle" font-size="32">📋</text>
+  <text x="450" y="136" text-anchor="middle" font-size="14" font-weight="bold" fill="#059669">Gateway API</text>
+  <text x="450" y="158" text-anchor="middle" font-size="12" fill="#374151">= The Waiter</text>
+  <text x="450" y="178" text-anchor="middle" font-size="11" fill="#6B7280">Takes your order, handles</text>
+  <text x="450" y="194" text-anchor="middle" font-size="11" fill="#6B7280">files, settings &amp; requests.</text>
+
+  <!-- Card 3 -->
+  <rect x="610" y="76" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="740" y="106" text-anchor="middle" font-size="32">👨‍🍳</text>
+  <text x="740" y="136" text-anchor="middle" font-size="14" font-weight="bold" fill="#B91C1C">Lead Agent</text>
+  <text x="740" y="158" text-anchor="middle" font-size="12" fill="#374151">= Head Chef</text>
+  <text x="740" y="178" text-anchor="middle" font-size="11" fill="#6B7280">Plans the meal, delegates</text>
+  <text x="740" y="194" text-anchor="middle" font-size="11" fill="#6B7280">to cooks, checks quality.</text>
+
+  <!-- Row 2 -->
+  <!-- Card 4 -->
+  <rect x="30" y="234" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="160" y="264" text-anchor="middle" font-size="32">👩‍🍳</text>
+  <text x="160" y="294" text-anchor="middle" font-size="14" font-weight="bold" fill="#D97706">Sub-Agents</text>
+  <text x="160" y="316" text-anchor="middle" font-size="12" fill="#374151">= Sous Chefs</text>
+  <text x="160" y="336" text-anchor="middle" font-size="11" fill="#6B7280">Each cooks one dish at the</text>
+  <text x="160" y="352" text-anchor="middle" font-size="11" fill="#6B7280">same time. 3 max at once.</text>
+
+  <!-- Card 5 -->
+  <rect x="320" y="234" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="450" y="264" text-anchor="middle" font-size="32">🏠</text>
+  <text x="450" y="294" text-anchor="middle" font-size="14" font-weight="bold" fill="#7C3AED">Sandbox</text>
+  <text x="450" y="316" text-anchor="middle" font-size="12" fill="#374151">= The Kitchen</text>
+  <text x="450" y="336" text-anchor="middle" font-size="11" fill="#6B7280">Safe space to cook. Mess</text>
+  <text x="450" y="352" text-anchor="middle" font-size="11" fill="#6B7280">stays in the kitchen.</text>
+
+  <!-- Card 6 -->
+  <rect x="610" y="234" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="740" y="264" text-anchor="middle" font-size="32">📚</text>
+  <text x="740" y="294" text-anchor="middle" font-size="14" font-weight="bold" fill="#B45309">Skills</text>
+  <text x="740" y="316" text-anchor="middle" font-size="12" fill="#374151">= Recipe Books</text>
+  <text x="740" y="336" text-anchor="middle" font-size="11" fill="#6B7280">Step-by-step guides for</text>
+  <text x="740" y="352" text-anchor="middle" font-size="11" fill="#6B7280">specific meals (tasks).</text>
+
+  <!-- Row 3 -->
+  <!-- Card 7 -->
+  <rect x="30" y="392" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="160" y="422" text-anchor="middle" font-size="32">🔧</text>
+  <text x="160" y="452" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803D">Tools</text>
+  <text x="160" y="474" text-anchor="middle" font-size="12" fill="#374151">= Kitchen Equipment</text>
+  <text x="160" y="494" text-anchor="middle" font-size="11" fill="#6B7280">Knives, pans, blenders.</text>
+  <text x="160" y="510" text-anchor="middle" font-size="11" fill="#6B7280">You add more anytime.</text>
+
+  <!-- Card 8 -->
+  <rect x="320" y="392" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="450" y="422" text-anchor="middle" font-size="32">📓</text>
+  <text x="450" y="452" text-anchor="middle" font-size="14" font-weight="bold" fill="#4C1D95">Memory</text>
+  <text x="450" y="474" text-anchor="middle" font-size="12" fill="#374151">= Chef's Notebook</text>
+  <text x="450" y="494" text-anchor="middle" font-size="11" fill="#6B7280">"Table 5 is allergic</text>
+  <text x="450" y="510" text-anchor="middle" font-size="11" fill="#6B7280">to gluten — noted."</text>
+
+  <!-- Card 9 -->
+  <rect x="610" y="392" width="260" height="140" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.5"/>
+  <text x="740" y="422" text-anchor="middle" font-size="32">📱</text>
+  <text x="740" y="452" text-anchor="middle" font-size="14" font-weight="bold" fill="#0369A1">IM Channels</text>
+  <text x="740" y="474" text-anchor="middle" font-size="12" fill="#374151">= Delivery Apps</text>
+  <text x="740" y="494" text-anchor="middle" font-size="11" fill="#6B7280">Order from Telegram,</text>
+  <text x="740" y="510" text-anchor="middle" font-size="11" fill="#6B7280">Slack, or Feishu.</text>
+</svg>

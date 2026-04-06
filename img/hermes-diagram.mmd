@@ -1,0 +1,89 @@
+flowchart TB
+    classDef smart  fill:#FFD700,stroke:#b8860b,color:#000,font-weight:bold
+    classDef core   fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef gate   fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef tool   fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef model  fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+    classDef note   fill:#111,stroke:#FFD700,color:#FFD700
+
+    %% Row 0 — Entry
+    CLI["🖥️ CLI  hermes"]:::gate
+    GW["🌐 Gateway\nTelegram · Discord\nSlack · WhatsApp\nSignal · Email"]:::gate
+
+    %% Row 1 — Prompt Builder
+    subgraph PB["📝 Prompt Builder"]
+        direction LR
+        SOUL["SOUL.md\nPersona"]:::core
+        MEMREF["MEMORY.md\nFacts"]:::core
+        SKIREF["Skills\nIndex"]:::core
+        INJ["🛡️ Injection\nScanner"]:::smart
+    end
+
+    %% Row 2 — Brain
+    subgraph BRAIN["🧠 Agent Core"]
+        direction LR
+        ROUTE["⚡ Smart Model\nRouter"]:::smart
+        LOOP["🔄 Agent Loop\n128 threads"]:::core
+        COMP["🗜️ Context\nCompressor"]:::smart
+        SUB["🤖 Subagent\nDelegator"]:::smart
+    end
+
+    %% Row 3 — Tools + Models side-by-side
+    subgraph TOOLBOX["🔧 Tools (40+)"]
+        direction LR
+        T1["💻 Terminal\nlocal/docker/ssh\nmodal/daytona"]:::tool
+        T2["📁 File Ops"]:::tool
+        T3["🌍 Web"]:::tool
+        T4["🔌 MCP"]:::tool
+        T5["📤 Send\nMessage"]:::tool
+    end
+
+    subgraph MODS["🤖 Models — provider-agnostic"]
+        direction LR
+        PAR["🔄 Parsers\nDeepSeek · Llama\nMistral · GLM\nKimi · Qwen3"]:::smart
+        PRV["☁️ 200+ models\nOpenRouter / OpenAI\nAnthropic / Nous"]:::model
+    end
+
+    %% Row 4 — Learning Loop
+    subgraph LEARN["✨ Closed Learning Loop  ← What Makes It Outstanding"]
+        direction LR
+        SC["🧪 Skill\nCreator"]:::smart
+        SI["🔧 Skill\nSelf-Improver"]:::smart
+        FTS["🔍 FTS5\nSession Search"]:::smart
+        HO["👤 User\nModelling"]:::smart
+        NUD["💡 Memory\nNudge"]:::smart
+    end
+
+    %% Row 5 — Autonomous
+    subgraph AUTO["⏰ Autonomous Ops"]
+        direction LR
+        CRON["🕐 Cron\nScheduler\n[SILENT] protocol"]:::smart
+        BAT["📊 RL Batch\nRunner\ntrajectory.jsonl"]:::smart
+    end
+
+    %% Row 6 — Callout
+    NOTE["🌟 Why it beats other agents\n① Auto-creates AND improves skills from every task\n② Persistent memory + user profile across all sessions\n③ FTS5 full-text search over past conversations\n④ Custom parsers for 9 open-source LLMs — zero lock-in\n⑤ Smart routing — cheap model on casual turns, saves cost\n⑥ Prompt-injection defense in all context files\n⑦ [SILENT] cron — agent self-decides if worth reporting\n⑧ Parallel child agents, MAX_DEPTH=2 prevents runaway loops"]:::note
+
+    %% Edges — entry → prompt
+    CLI --> PB
+    GW  --> PB
+
+    %% Edges — prompt → brain
+    PB --> BRAIN
+
+    %% Edges — brain → tools / models
+    BRAIN --> TOOLBOX
+    TOOLBOX --> BRAIN
+    BRAIN --> MODS
+    MODS  --> BRAIN
+
+    %% Edges — brain → learning
+    BRAIN --> LEARN
+    LEARN --> MEMREF
+    LEARN --> SKIREF
+
+    %% Edges — auto → brain
+    AUTO --> BRAIN
+
+    %% Note floats beside Learning
+    LEARN -.- NOTE

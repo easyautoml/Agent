@@ -1,0 +1,38 @@
+flowchart LR
+    classDef src  fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef proc fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef out  fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef model fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+
+    subgraph FILES["~/.codex/memories/"]
+        MS["memory_summary.md\n(compact, high-level)"]:::src
+    end
+
+    subgraph DB["SQLite State DB"]
+        TH["recent threads metadata\n(cwd, branch, first user msg)"]:::src
+    end
+
+    subgraph FS["Filesystem"]
+        CWD["Directory trees\n(cwd, git root, home)"]:::src
+    end
+
+    subgraph MEM_INJ["Memory Tool Instructions\n(developer role)"]
+        MI["Render read_path.md template\nwith memory_summary\n→ 5,000 token limit\nTells model: 'use memory tool\nto read memory files'"]:::proc
+    end
+
+    subgraph REAL_INJ["Realtime Startup Context\n(contextual user role)"]
+        R1["Current Thread\n(last 2 turns)\n1,200 tokens"]:::proc
+        R2["Recent Work\n(up to 40 threads\ngrouped by git repo)\n2,200 tokens"]:::proc
+        R3["Workspace Map\n(dir trees, depth 2)\n1,600 tokens"]:::proc
+        R4["Notes\n(source metadata)\n300 tokens"]:::proc
+    end
+
+    MODEL["AI Model\nsees everything\nin context"]:::model
+
+    MS --> MEM_INJ
+    TH --> R2
+    DB --> R1
+    FS --> R3
+
+    MEM_INJ --> MODEL
+    R1 & R2 & R3 & R4 --> MODEL

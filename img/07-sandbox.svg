@@ -1,0 +1,94 @@
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF1F2"/>
+      <stop offset="100%" style="stop-color:#FEE2E2"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000020"/></filter>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB"/>
+    </marker>
+    <marker id="arrR" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#DC2626"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="620" fill="url(#bg)" rx="16"/>
+  <text x="450" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#7F1D1D">The Sandbox — Safe Isolated Workspace</text>
+  <text x="450" y="57" text-anchor="middle" font-size="12" fill="#B91C1C">Code runs safely inside a virtual box — your computer is never touched</text>
+
+  <!-- Left: Without Sandbox -->
+  <rect x="30" y="76" width="380" height="240" rx="14" fill="white" filter="url(#sh)" stroke="#FCA5A5" stroke-width="2"/>
+  <rect x="30" y="76" width="380" height="44" rx="14" fill="#DC2626"/>
+  <rect x="30" y="104" width="380" height="16" fill="#DC2626"/>
+  <text x="220" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="white">❌ Without Sandbox</text>
+
+  <text x="220" y="144" text-anchor="middle" font-size="12" fill="#374151">AI runs code directly on YOUR computer</text>
+  <rect x="60" y="158" width="320" height="36" rx="8" fill="#FEF2F2"/>
+  <text x="220" y="178" text-anchor="middle" font-size="12" fill="#DC2626">🗑️ Could accidentally delete your files</text>
+  <rect x="60" y="200" width="320" height="36" rx="8" fill="#FEF2F2"/>
+  <text x="220" y="220" text-anchor="middle" font-size="12" fill="#DC2626">🔓 Could access private documents</text>
+  <rect x="60" y="242" width="320" height="36" rx="8" fill="#FEF2F2"/>
+  <text x="220" y="262" text-anchor="middle" font-size="12" fill="#DC2626">⚠️ One task could crash other tasks</text>
+  <rect x="60" y="284" width="320" height="22" rx="6" fill="#FEE2E2"/>
+  <text x="220" y="299" text-anchor="middle" font-size="11" fill="#991B1B">💥 Very risky — not safe to use</text>
+
+  <!-- Right: With Sandbox -->
+  <rect x="490" y="76" width="380" height="240" rx="14" fill="white" filter="url(#sh)" stroke="#86EFAC" stroke-width="2"/>
+  <rect x="490" y="76" width="380" height="44" rx="14" fill="#15803D"/>
+  <rect x="490" y="104" width="380" height="16" fill="#15803D"/>
+  <text x="680" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="white">✅ With Sandbox (DeerFlow)</text>
+
+  <text x="680" y="144" text-anchor="middle" font-size="12" fill="#374151">Code runs in a sealed virtual box</text>
+  <rect x="520" y="158" width="320" height="36" rx="8" fill="#F0FDF4"/>
+  <text x="680" y="178" text-anchor="middle" font-size="12" fill="#15803D">🔒 Your computer stays completely safe</text>
+  <rect x="520" y="200" width="320" height="36" rx="8" fill="#F0FDF4"/>
+  <text x="680" y="220" text-anchor="middle" font-size="12" fill="#15803D">📦 Each chat has its own private space</text>
+  <rect x="520" y="242" width="320" height="36" rx="8" fill="#F0FDF4"/>
+  <text x="680" y="262" text-anchor="middle" font-size="12" fill="#15803D">🗑️ Box is removed after session ends</text>
+  <rect x="520" y="284" width="320" height="22" rx="6" fill="#DCFCE7"/>
+  <text x="680" y="299" text-anchor="middle" font-size="11" fill="#14532D">✨ Fully auditable and safe</text>
+
+  <!-- File System section -->
+  <text x="450" y="350" text-anchor="middle" font-size="16" font-weight="bold" fill="#7F1D1D">📁 Inside the Sandbox — Virtual File System</text>
+  <text x="450" y="372" text-anchor="middle" font-size="12" fill="#6B7280">The AI sees these paths — they map to real folders on the host machine</text>
+
+  <!-- Tree -->
+  <rect x="100" y="386" width="700" height="180" rx="14" fill="white" filter="url(#sh)" stroke="#FECDD3" stroke-width="1.5"/>
+
+  <!-- /mnt/skills -->
+  <text x="140" y="418" font-size="13" font-weight="bold" fill="#374151">/mnt/</text>
+  <line x1="160" y1="424" x2="160" y2="548" stroke="#CBD5E1" stroke-width="1.5"/>
+
+  <line x1="160" y1="444" x2="200" y2="444" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="202" y="432" width="180" height="24" rx="6" fill="#FEF3C7"/>
+  <text x="220" y="448" font-size="12" fill="#92400E" font-weight="bold">📚 skills/</text>
+  <text x="400" y="448" font-size="11" fill="#6B7280">→ Instruction books for the AI</text>
+
+  <line x1="160" y1="478" x2="200" y2="478" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="202" y="466" width="180" height="24" rx="6" fill="#DBEAFE"/>
+  <text x="220" y="482" font-size="12" fill="#1E40AF" font-weight="bold">📂 user-data/</text>
+  <text x="400" y="482" font-size="11" fill="#6B7280">→ Your personal work area</text>
+
+  <!-- sub items of user-data -->
+  <line x1="220" y1="490" x2="220" y2="550" stroke="#CBD5E1" stroke-width="1.3" stroke-dasharray="3,2"/>
+
+  <line x1="220" y1="506" x2="260" y2="506" stroke="#CBD5E1" stroke-width="1.3"/>
+  <rect x="262" y="494" width="130" height="22" rx="5" fill="#F0FDF4"/>
+  <text x="280" y="509" font-size="11" fill="#059669">📥 uploads/</text>
+  <text x="400" y="509" font-size="11" fill="#6B7280">← Files you give the AI</text>
+
+  <line x1="220" y1="528" x2="260" y2="528" stroke="#CBD5E1" stroke-width="1.3"/>
+  <rect x="262" y="516" width="130" height="22" rx="5" fill="#FFF7ED"/>
+  <text x="280" y="531" font-size="11" fill="#D97706">🔧 workspace/</text>
+  <text x="400" y="531" font-size="11" fill="#6B7280">← AI works here (temp files)</text>
+
+  <line x1="220" y1="550" x2="260" y2="550" stroke="#CBD5E1" stroke-width="1.3"/>
+  <rect x="262" y="538" width="130" height="22" rx="5" fill="#EDE9FE"/>
+  <text x="280" y="553" font-size="11" fill="#7C3AED">📤 outputs/</text>
+  <text x="400" y="553" font-size="11" fill="#6B7280">← Final files you can download</text>
+
+  <!-- Tools row -->
+  <rect x="100" y="580" width="700" height="28" rx="8" fill="#1E40AF"/>
+  <text x="450" y="598" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🔧 Sandbox Tools:  bash · read_file · write_file · str_replace · ls</text>
+</svg>

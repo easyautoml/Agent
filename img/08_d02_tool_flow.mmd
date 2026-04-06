@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant M  as AI Model
+    participant R  as Tool Router
+    participant P  as Exec Policy
+    participant U  as User
+    participant S  as Sandbox
+    participant H  as Tool Handler
+
+    M->>R: tool_call(name, args)
+    R->>P: check(command)
+
+    alt Auto-approved by rules
+        P-->>R: Allow
+        R->>S: wrap in sandbox
+        S->>H: execute
+        H-->>M: result
+    else Requires approval
+        P-->>R: RequireApproval
+        R->>U: show command + context
+        U-->>R: Approve / Deny
+        R->>S: wrap in sandbox
+        S->>H: execute
+        H-->>M: result
+    else Denied
+        P-->>R: Deny
+        R-->>M: error: denied
+    end

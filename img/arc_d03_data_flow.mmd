@@ -1,0 +1,42 @@
+sequenceDiagram
+    participant S as Slack
+    participant EH as Event Handler
+    participant FC as File Collector
+    participant PP as Processing Pipeline
+    participant AG as Proposal Agent
+    participant VDB as Vector Store
+    participant FS as File System
+
+    Note over S,FS: Phase 1 — File Ingestion
+    S->>EH: file_shared event (WebSocket)
+    EH->>FC: enqueue collect task
+    FC->>S: download file (bot token)
+    FC->>FS: save to data/raw/
+    FC->>FC: classify (document or qa_answer)
+    FC->>PP: enqueue processing job
+
+    Note over S,FS: Phase 2 — Document Processing (background)
+    PP->>FS: read from data/raw/
+    PP->>PP: extract text (parser by type)
+    PP->>PP: LLM → clean Markdown (Haiku)
+    PP->>FS: save to data/clean/
+    PP->>PP: chunk (heading-aware)
+    PP->>VDB: embed + upsert chunks
+
+    Note over S,FS: Phase 3 — Proposal Generation
+    S->>EH: app_mention — "create proposal" (WebSocket)
+    EH->>AG: enqueue agent task
+    AG->>VDB: search_workspace_docs(requirement)
+    AG->>VDB: search_common_knowledge(requirement)
+    AG->>AG: gap analysis (LLM — Sonnet)
+    alt info missing
+        AG->>FS: generate_qa_excel → save to data/raw/
+        AG->>S: post Q&A file to Slack
+        S->>EH: file_shared (answered Excel, WebSocket)
+        EH->>FC: collect → classify as qa_answer
+        FC->>AG: trigger QA evaluation
+        AG->>AG: re-run gap analysis with answers
+    end
+    AG->>AG: generate proposal (LLM — Sonnet)
+    AG->>FS: write_proposal → data/output/proposal_v1.md
+    AG->>S: post proposal to Slack

@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant Alice as Alice
+    participant Memory as SummaryBufferMemory
+    participant Summarizer as Summarizer LLM
+    participant Chat as Chat LLM
+
+    Alice->>Memory: Turn 1: Hi, I am Alice, a doctor in Paris
+    Memory->>Chat: [No history yet] + Turn 1 message
+    Chat->>Alice: Nice to meet you, Alice!
+    Memory->>Memory: Save Turn 1. Total = 40 tokens. OK.
+
+    Alice->>Memory: Turn 2: I have 3 kids and love sushi
+    Memory->>Chat: [Turn 1 raw] + Turn 2 message
+    Chat->>Alice: What a full life!
+    Memory->>Memory: Save Turn 2. Total = 90 tokens. OK.
+
+    Alice->>Memory: Turn 3: I am thinking of moving to London
+    Memory->>Chat: [Turns 1-2 raw] + Turn 3 message
+    Chat->>Alice: That is a big change. What is driving the move?
+    Memory->>Memory: Save Turn 3. Total = 160 tokens. OVER LIMIT!
+    Memory->>Summarizer: Summarize Turn 1
+    Summarizer->>Memory: Alice is a doctor in Paris with 3 kids who loves sushi.
+    Memory->>Memory: Summary stored. Raw = Turns 2-3. Total = 120 tokens. OK.
+
+    Alice->>Memory: Turn 4: What is my job?
+    Memory->>Chat: [Summary + Turns 2-3 raw] + Turn 4 message
+    Chat->>Alice: You are a doctor.

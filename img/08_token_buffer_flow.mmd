@@ -1,0 +1,8 @@
+graph TD
+    T1["Turn 1 - 80 tokens - PRUNED"]
+    T2["Turn 2 - 60 tokens - Kept"] --> TB["Token Buffer\nmax 200 tokens"]
+    T3["Turn 3 - 70 tokens - Kept"] --> TB
+    T4["Turn 4 - 50 tokens - Kept"] --> TB
+    TB -->|"180 tokens total - under limit"| LLM["LLM"]
+
+    note1["When Turn 5 arrives and total exceeds 200,\nTurn 2 gets pruned first."]

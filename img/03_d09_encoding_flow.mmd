@@ -1,0 +1,29 @@
+flowchart TD
+    IN["Content to Save"]
+
+    S1["Step 1: Batch Embed\nConvert ALL text to vectors\nin ONE API call"]
+
+    S2["Step 2: Intra-Batch Dedup\nAre items in this batch\nnearly identical?\nSimilarity 98% or more - DROP"]
+
+    S3["Step 3: Find Similar in Storage\nSearch existing records\nfor each item in parallel"]
+
+    S4{"Step 4: Decide Path\nFast or LLM?"}
+
+    FAST["Fast Path\nAll fields given + no similar found\nSkip LLM - just insert"]
+
+    ANALYZE["LLM Analyze\nInfer scope, categories,\nimportance, metadata"]
+
+    CONSOLIDATE["LLM Consolidate\nShould we merge, update,\nor delete existing records?"]
+
+    S5["Step 5: Execute\nDelete + Update + Insert\natomically"]
+
+    OUT["Saved to Storage"]
+
+    IN --> S1 --> S2 --> S3 --> S4
+    S4 -->|"Fields given, no similar"| FAST
+    S4 -->|"Fields missing"| ANALYZE
+    S4 -->|"Similar record found"| CONSOLIDATE
+    FAST --> S5
+    ANALYZE --> S5
+    CONSOLIDATE --> S5
+    S5 --> OUT

@@ -1,0 +1,33 @@
+graph LR
+    subgraph SLACK["Slack"]
+        SL1["slack-bolt\nEvent handling"]
+        SL2["slack-sdk\nWebSocket + file API"]
+    end
+
+    subgraph AGENT["Agent"]
+        AG1["langgraph\nReAct graph + checkpointing"]
+        AG2["langchain-anthropic\nClaude Sonnet 4.6 / Haiku 4.5"]
+        AG3["langchain-core\n@tool decorator"]
+        AG4["langchain-chroma\nVector store"]
+        AG5["langchain-text-splitters\nChunking"]
+    end
+
+    subgraph PARSE["File Parsing"]
+        PA1["pypdf + pdfplumber\nPDF extraction"]
+        PA2["python-docx\nWord docs"]
+        PA3["python-pptx\nPowerPoint"]
+        PA4["openpyxl\nExcel Q&A"]
+        PA5["pytesseract\nOCR fallback"]
+    end
+
+    subgraph INFRA["Infrastructure"]
+        IN1["pydantic-settings\nConfig / .env"]
+        IN2["chromadb\nVector store client"]
+        IN3["watchdog\nAuto re-index common/"]
+        IN4["SQLite stdlib\nJob + agent state"]
+    end
+
+    style SLACK fill:#4A154B,color:#fff
+    style AGENT fill:#FDEDEC
+    style PARSE fill:#E9F7EF
+    style INFRA fill:#EBF5FB

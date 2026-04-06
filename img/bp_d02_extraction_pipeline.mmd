@@ -1,0 +1,37 @@
+graph TD
+    CHAT["Conversation ends"]
+
+    subgraph P1["Phase 1 — Filter"]
+        F1["Keep: HumanMessage\n(strip upload blocks)"]
+        F2["Keep: AIMessage\n(final response, no tool_calls)"]
+        F3["Drop: AIMessage with tool_calls\n(intermediate thinking)"]
+        F4["Drop: ToolMessage\n(raw tool output, noisy)"]
+        F5["Drop: upload-only turns\n(file paths won't exist next session)"]
+    end
+
+    subgraph P2["Phase 2 — Debounce Queue"]
+        D1["Per-thread entry\n(thread_id → latest messages)"]
+        D2["Timer: 30 seconds\nResets on every new message"]
+        D3["3 messages in 10s\n= 1 LLM call (not 3)"]
+    end
+
+    subgraph P3["Phase 3 — AI Extraction"]
+        E1["Load current memory state"]
+        E2["Send: current memory + filtered conversation\nto extraction LLM"]
+        E3["LLM returns JSON:\nnewFacts, factsToRemove\nshouldUpdate per section"]
+        E4["Apply updates\n(shouldUpdate=false → preserve existing)"]
+        E5["Atomic save to disk\n(temp file + os.replace)"]
+    end
+
+    subgraph P4["Phase 4 — Inject"]
+        I1["Session starts\nLoad memory snapshot"]
+        I2["Frozen snapshot injected\ninto system prompt\n(never changes mid-session)"]
+        I3["Ranks facts by confidence\nand recency before injection"]
+    end
+
+    CHAT --> P1 --> P2 --> P3 --> P4
+
+    style P1 fill:#EBF5FB
+    style P2 fill:#FEF9E7
+    style P3 fill:#E9F7EF
+    style P4 fill:#F5EEF8

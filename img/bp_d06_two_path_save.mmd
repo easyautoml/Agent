@@ -1,0 +1,37 @@
+graph TD
+    TURN["Agent turn ends\n(no pending tool calls)"]
+
+    P1["Path 1 — Main Agent (Immediate)\nAgent judged during conversation\n'remember this' or threshold crossed\nCalls Write tool directly to memory"]
+
+    P2["Path 2 — Background Extractor (Automatic)\nFire-and-forget after every turn\nForked copy of conversation\nRestricted tool set (read + write mem only)"]
+
+    CHK{"Did main agent\nwrite to memory\nthis turn?"}
+
+    SKIP["Skip extraction\nAdvance cursor\n(already handled)"]
+
+    THROTTLE{"Enough turns\nsince last\nextraction?"}
+
+    WAIT["Wait — check\nnext turn"]
+
+    RUN["Run forked extraction agent\nMax 5 turns\nTurn 1: Read all candidate files\nTurn 2: Write/Edit in parallel"]
+
+    CURSOR["Advance cursor\n(lastMemoryMessageUuid)\nNext run sees only NEW messages"]
+
+    STASH{"Extraction\nalready in\nprogress?"}
+
+    STASH_ACT["Stash context\n(latest wins)\nRun after current\nextraction finishes"]
+
+    TURN --> P1
+    TURN --> CHK
+    CHK -->|"YES"| SKIP --> CURSOR
+    CHK -->|"NO"| STASH
+    STASH -->|"YES"| STASH_ACT
+    STASH -->|"NO"| THROTTLE
+    THROTTLE -->|"NO"| WAIT
+    THROTTLE -->|"YES"| RUN --> CURSOR
+
+    style P1 fill:#27AE60,color:#fff
+    style P2 fill:#3498DB,color:#fff
+    style SKIP fill:#95A5A6,color:#fff
+    style WAIT fill:#F39C12,color:#fff
+    style RUN fill:#9B59B6,color:#fff

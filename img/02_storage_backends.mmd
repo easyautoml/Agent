@@ -1,0 +1,10 @@
+graph LR
+    BCH["BaseChatMessageHistory"]
+
+    BCH --> G1["In-Memory\nIn-Memory default\nLost on restart"]
+    BCH --> G2["File System\nJSON files\nPersistent local"]
+    BCH --> G3["SQL\nPostgres\nSQLite\nSingleStore"]
+    BCH --> G4["NoSQL\nMongoDB\nDynamoDB\nCosmos DB\nFirestore\nAstraDB\nCassandra\nNeo4j"]
+    BCH --> G5["Cache\nRedis\nUpstash Redis\nMomento"]
+    BCH --> G6["Search\nElasticsearch"]
+    BCH --> G7["Specialized\nZep\nRockset\nXata\nStreamlit"]

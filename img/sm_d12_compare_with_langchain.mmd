@@ -1,0 +1,28 @@
+graph LR
+    subgraph LC["LangChain / CrewAI — DIY Memory"]
+        L1["You choose: Buffer?\nSummary? Window?"]
+        L2["You set up:\nRedis? FAISS? SQLite?"]
+        L3["You write:\nload_memory + save_context\non every call"]
+        L4["You handle:\nsession_id isolation\ntoken limits\nconflict resolution"]
+        L1 --> L2 --> L3 --> L4
+    end
+
+    subgraph SUP["Supermemory — Managed Memory"]
+        S1["You call:\nclient.add(content)\nor addMemory: always"]
+        S2["Supermemory handles:\nExtraction, conflict,\nexpiry, embedding,\nprofile building"]
+        S3["You call:\nwithSupermemory(model, userId)\nor /v4/profile"]
+        S4["LLM gets:\nFormatted context\nalready injected\nin 50ms"]
+        S1 --> S2 --> S3 --> S4
+    end
+
+    subgraph TRADEOFFS["Trade-offs"]
+        T1["LangChain:\n+ Full control\n+ Runs locally\n- You build everything\n- Complex setup"]
+        T2["Supermemory:\n+ Zero infra\n+ Works immediately\n+ Handles conflicts\n- External service\n- API latency"]
+    end
+
+    LC --> T1
+    SUP --> T2
+
+    style LC fill:#EBF5FB
+    style SUP fill:#E9F7EF
+    style TRADEOFFS fill:#FEF9E7

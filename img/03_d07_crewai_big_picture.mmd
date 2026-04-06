@@ -1,0 +1,34 @@
+graph TD
+    subgraph API["Memory API Layer"]
+        MEM["Memory\nMain coordinator"]
+        MS["MemoryScope\nFiltered view (one path)"]
+        ML["MemorySlice\nMulti-scope search"]
+        MEM --> MS
+        MEM --> ML
+    end
+
+    subgraph DATA["Data Models"]
+        MR["MemoryRecord\nOne stored fact"]
+        MM["MemoryMatch\nSearch result + score"]
+        MC["MemoryConfig\nScoring weights + thresholds"]
+    end
+
+    subgraph FLOWS["Processing Pipelines"]
+        EF["EncodingFlow\n5-step save pipeline"]
+        RF["RecallFlow\nIntelligent search pipeline"]
+        AE["Analyze Engine\nLLM-powered categorization"]
+        EF --> AE
+        RF --> AE
+    end
+
+    subgraph STORAGE["Storage"]
+        LDB["LanceDB\nDefault, local files"]
+        QE["Qdrant Edge\nMulti-process / distributed"]
+    end
+
+    MEM -->|remember| EF
+    MEM -->|recall| RF
+    EF -->|write| LDB & QE
+    RF -->|search| LDB & QE
+    LDB & QE -->|returns| MM
+    MM --> MR

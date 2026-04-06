@@ -1,0 +1,26 @@
+flowchart LR
+    classDef skill fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef gate  fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+    classDef out   fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef exec  fill:#1e3a5f,stroke:#4a90d9,color:#fff
+
+    START(["Vague or\ncomplex request"])
+
+    DI["$deep-interview\n1 question per round\nambiguity score < 0.20\nmax 12 rounds"]:::skill
+    DIOUT[".omx/specs/\nclarified requirements"]:::out
+
+    RP["$ralplan\nArchitecture review\nTest strategy\nAgent selection"]:::skill
+    RPOUT[".omx/plans/\nprd-*.md + test-spec-*.md"]:::out
+
+    GATE{"Approve?"}:::gate
+
+    RH["$ralph\nPersistence loop\nImplement → Verify → Fix\nArchitect sign-off"]:::exec
+    TM["$team N:role\nParallel workers\nShared task queue"]:::exec
+
+    DONE(["Verified\ncomplete code"])
+
+    START --> DI --> DIOUT --> RP --> RPOUT --> GATE
+    GATE -->|"Yes, simple task"| RH
+    GATE -->|"Yes, parallel work"| TM
+    RH --> DONE
+    TM --> DONE

@@ -1,0 +1,27 @@
+graph TD
+    ROOT["/ — All Memories"]
+    ROOT --> CREW1["/crew/sales-team"]
+    ROOT --> CREW2["/crew/research-team"]
+    ROOT --> CREW3["/crew/support-team"]
+
+    CREW1 --> A1["/crew/sales-team/agent/hunter"]
+    CREW1 --> A2["/crew/sales-team/agent/closer"]
+    CREW1 --> A3["/crew/sales-team/leads"]
+
+    CREW2 --> A4["/crew/research-team/agent/analyst"]
+    CREW2 --> A5["/crew/research-team/findings"]
+
+    CREW3 --> A6["/crew/support-team/tickets"]
+    CREW3 --> A7["/crew/support-team/agent/tier1"]
+
+    style ROOT fill:#ff9900,color:#fff
+    style CREW1 fill:#4a9eff,color:#fff
+    style CREW2 fill:#33cc66,color:#fff
+    style CREW3 fill:#cc4444,color:#fff
+    style A1 fill:#7bb8ff,color:#fff
+    style A2 fill:#7bb8ff,color:#fff
+    style A3 fill:#7bb8ff,color:#fff
+    style A4 fill:#66dd99,color:#fff
+    style A5 fill:#66dd99,color:#fff
+    style A6 fill:#dd7777,color:#fff
+    style A7 fill:#dd7777,color:#fff

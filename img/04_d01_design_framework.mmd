@@ -1,0 +1,31 @@
+flowchart TD
+    START(["Start: Design Memory"]) --> Q1{"Multi-agent\nor single-agent?"}
+
+    Q1 -->|Multi-agent| Q2{"Need agent\nisolation?"}
+    Q1 -->|Single-agent| Q3{"Session\nlength?"}
+
+    Q2 -->|Yes| A1["CrewAI — Scoped Memory\n+ MemorySlice for sharing"]
+    Q2 -->|No| A2["CrewAI — Shared scope\nor LangChain CombinedMemory"]
+
+    Q3 -->|Short < 10 turns| Q4{"Need persistence\nacross sessions?"}
+    Q3 -->|Long 10-100 turns| Q5{"Token budget\nconstrained?"}
+    Q3 -->|Very long > 100| A3["SummaryBufferMemory\nor CrewAI Long-term"]
+
+    Q4 -->|No| A4["BufferMemory\nInMemory backend"]
+    Q4 -->|Yes| A5["BufferWindowMemory\nRedis backend"]
+
+    Q5 -->|Yes| A6["TokenBufferMemory\nor SummaryMemory"]
+    Q5 -->|No| Q6{"Track entities\nor people?"}
+
+    Q6 -->|Yes| A7["EntityMemory\n+ VectorStoreRetriever"]
+    Q6 -->|No| A8["SummaryBufferMemory\nPostgreSQL backend"]
+
+    style START fill:#4A90D9,color:#fff
+    style A1 fill:#27AE60,color:#fff
+    style A2 fill:#27AE60,color:#fff
+    style A3 fill:#F39C12,color:#fff
+    style A4 fill:#3498DB,color:#fff
+    style A5 fill:#3498DB,color:#fff
+    style A6 fill:#E74C3C,color:#fff
+    style A7 fill:#9B59B6,color:#fff
+    style A8 fill:#F39C12,color:#fff

@@ -1,0 +1,24 @@
+graph TD
+    A["Raw results from API"]
+
+    subgraph RAW["Before deduplication"]
+        S1["Static:\n'Loves TypeScript'\n'Works at Acme'\n'Loves TypeScript'"]
+        D1["Dynamic:\n'Loves TypeScript'\n'Working on SPA'\n'Using React'"]
+        R1["Search results:\n'Working on SPA'\n'Prefers TypeScript'\n'Team size: 2'"]
+    end
+
+    B["Deduplication algorithm\nPriority: Static > Dynamic > Search\nRemove anything already seen"]
+
+    subgraph AFTER["After deduplication"]
+        S2["Static (kept):\n'Loves TypeScript'\n'Works at Acme'"]
+        D2["Dynamic (duplicate removed):\n'Working on SPA'\n'Using React'"]
+        R2["Search (duplicates removed):\n'Team size: 2'"]
+    end
+
+    C["Final prompt injection:\n## Your Profile\n- Loves TypeScript\n- Works at Acme\n- Working on SPA\n- Using React\n\n## Relevant to this question:\n- Team size: 2"]
+
+    A --> RAW --> B --> AFTER --> C
+
+    style RAW fill:#FDEDEC
+    style AFTER fill:#E9F7EF
+    style C fill:#EBF5FB

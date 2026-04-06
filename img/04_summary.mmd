@@ -1,0 +1,26 @@
+graph LR
+    subgraph "The Memory Loop"
+        U["User Message"] --> LOAD["1. Load Memory"]
+        LOAD --> PROMPT["2. Build Prompt\nmemory context + message"]
+        PROMPT --> LLM["3. Call LLM"]
+        LLM --> SAVE["4. Save Context"]
+        SAVE --> NEXT["Next Turn"]
+    end
+
+    subgraph "Memory Strategies"
+        S1["Buffer - Keep all"]
+        S2["Window - Keep last N"]
+        S3["Token Buffer - Keep within limit"]
+        S4["Summary - Compress to text"]
+        S5["Summary Buffer - Compress + keep recent"]
+        S6["Entity - Track named things"]
+        S7["Vector - Search by meaning"]
+    end
+
+    subgraph "Storage Backends"
+        B1["In-Memory - dev"]
+        B2["Redis - fast prod"]
+        B3["Postgres - structured prod"]
+        B4["MongoDB - flexible prod"]
+        B5["Files - local persist"]
+    end

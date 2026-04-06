@@ -1,0 +1,132 @@
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0FDF4"/>
+      <stop offset="100%" style="stop-color:#DCFCE7"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000020"/></filter>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="620" fill="url(#bg)" rx="16"/>
+  <text x="480" y="35" text-anchor="middle" font-size="20" font-weight="bold" fill="#14532D">Memory Injection — How DeerFlow Remembers You</text>
+  <text x="480" y="55" text-anchor="middle" font-size="12" fill="#166534">Before every AI response, your profile is loaded into the system prompt</text>
+
+  <!-- LEFT: memory.json -->
+  <rect x="20" y="72" width="280" height="500" rx="14" fill="white" filter="url(#sh)" stroke="#86EFAC" stroke-width="1.5"/>
+  <rect x="20" y="72" width="280" height="44" rx="14" fill="#7C3AED"/>
+  <rect x="20" y="100" width="280" height="16" fill="#7C3AED"/>
+  <text x="160" y="103" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🗄️ memory.json</text>
+
+  <text x="36" y="138" font-size="11" fill="#374151" font-weight="bold">User Context</text>
+  <rect x="36" y="144" width="248" height="70" rx="6" fill="#F5F3FF"/>
+  <text x="52" y="162" font-size="10" fill="#6B7280">workContext:</text>
+  <text x="52" y="176" font-size="10" fill="#374151">"PM at a tech startup, working on</text>
+  <text x="52" y="190" font-size="10" fill="#374151"> AI product, uses Python + React"</text>
+  <text x="52" y="206" font-size="10" fill="#6B7280">topOfMind: "Preparing Q3 report..."</text>
+
+  <text x="36" y="232" font-size="11" fill="#374151" font-weight="bold">History</text>
+  <rect x="36" y="238" width="248" height="60" rx="6" fill="#EFF6FF"/>
+  <text x="52" y="256" font-size="10" fill="#6B7280">recentMonths:</text>
+  <text x="52" y="270" font-size="10" fill="#374151">"Has worked on AI research,</text>
+  <text x="52" y="284" font-size="10" fill="#374151"> reports, and slide decks"</text>
+
+  <text x="36" y="314" font-size="11" fill="#374151" font-weight="bold">Facts  (sorted by confidence)</text>
+  <rect x="36" y="320" width="248" height="230" rx="6" fill="#FFF7ED"/>
+  <rect x="44" y="328" width="232" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="52" y="342" font-size="10" fill="#92400E">[preference | 0.95]  Prefers bullets</text>
+  <rect x="44" y="352" width="232" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="52" y="366" font-size="10" fill="#92400E">[knowledge  | 0.88]  Uses Python+React</text>
+  <rect x="44" y="376" width="232" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="52" y="390" font-size="10" fill="#92400E">[context    | 0.80]  Works at startup</text>
+  <rect x="44" y="400" width="232" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="52" y="414" font-size="10" fill="#92400E">[behavior   | 0.75]  Morning worker</text>
+  <rect x="44" y="424" width="232" height="20" rx="4" fill="#FEF3C7"/>
+  <text x="52" y="438" font-size="10" fill="#92400E">[goal       | 0.72]  Learning ML ops</text>
+  <text x="160" y="468" text-anchor="middle" font-size="10" fill="#D97706">... up to 100 facts stored</text>
+  <text x="160" y="488" text-anchor="middle" font-size="10" fill="#D97706">fit as many as possible</text>
+  <text x="160" y="504" text-anchor="middle" font-size="10" fill="#D97706">within 2000 token budget</text>
+  <text x="160" y="524" text-anchor="middle" font-size="10" fill="#D97706">exact count via tiktoken</text>
+
+  <!-- Arrow to middle -->
+  <line x1="300" y1="320" x2="346" y2="320" stroke="#059669" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="323" y="312" text-anchor="middle" font-size="9" fill="#059669">format_memory</text>
+  <text x="323" y="328" text-anchor="middle" font-size="9" fill="#059669">_for_injection()</text>
+
+  <!-- CENTER: Formatted memory block -->
+  <rect x="348" y="72" width="276" height="500" rx="14" fill="white" filter="url(#sh)" stroke="#A7F3D0" stroke-width="1.5"/>
+  <rect x="348" y="72" width="276" height="44" rx="14" fill="#059669"/>
+  <rect x="348" y="100" width="276" height="16" fill="#059669"/>
+  <text x="486" y="103" text-anchor="middle" font-size="13" font-weight="bold" fill="white">Formatted Memory String</text>
+
+  <rect x="364" y="126" width="244" height="420" rx="8" fill="#0F172A"/>
+  <text x="380" y="148" font-size="11" fill="#86EFAC">User Context:</text>
+  <text x="380" y="164" font-size="10" fill="#94A3B8">- Work: PM at a tech startup,</text>
+  <text x="380" y="178" font-size="10" fill="#94A3B8">  working on AI product,</text>
+  <text x="380" y="192" font-size="10" fill="#94A3B8">  uses Python + React</text>
+  <text x="380" y="208" font-size="10" fill="#94A3B8">- Current Focus: Preparing Q3</text>
+  <text x="380" y="222" font-size="10" fill="#94A3B8">  report, tracking AI trends</text>
+  <line x1="364" y1="232" x2="608" y2="232" stroke="#334155" stroke-width="1"/>
+  <text x="380" y="250" font-size="11" fill="#86EFAC">History:</text>
+  <text x="380" y="266" font-size="10" fill="#94A3B8">- Recent: Has worked on AI</text>
+  <text x="380" y="280" font-size="10" fill="#94A3B8">  research, reports, slides</text>
+  <line x1="364" y1="294" x2="608" y2="294" stroke="#334155" stroke-width="1"/>
+  <text x="380" y="312" font-size="11" fill="#86EFAC">Facts:</text>
+  <text x="380" y="328" font-size="10" fill="#FDE68A">- [preference | 0.95] Prefers</text>
+  <text x="380" y="342" font-size="10" fill="#FDE68A">  bullet points</text>
+  <text x="380" y="360" font-size="10" fill="#86EFAC">- [knowledge  | 0.88] Uses</text>
+  <text x="380" y="374" font-size="10" fill="#86EFAC">  Python + React stack</text>
+  <text x="380" y="392" font-size="10" fill="#FCA5A5">- [context    | 0.80] Works</text>
+  <text x="380" y="406" font-size="10" fill="#FCA5A5">  at a startup</text>
+  <text x="380" y="424" font-size="10" fill="#C4B5FD">- [behavior   | 0.75] Morning</text>
+  <text x="380" y="438" font-size="10" fill="#C4B5FD">  worker</text>
+  <text x="380" y="456" font-size="10" fill="#7DD3FC">- [goal       | 0.72] Learning</text>
+  <text x="380" y="470" font-size="10" fill="#7DD3FC">  ML ops</text>
+  <text x="380" y="490" font-size="10" fill="#475569">// max 2000 tokens</text>
+  <text x="380" y="506" font-size="10" fill="#475569">// fit as many facts as possible</text>
+  <text x="380" y="522" font-size="10" fill="#475569">// tiktoken exact count</text>
+
+  <!-- Arrow to right -->
+  <line x1="624" y1="320" x2="668" y2="320" stroke="#059669" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="646" y="310" text-anchor="middle" font-size="9" fill="#059669">wrapped in</text>
+  <text x="646" y="326" text-anchor="middle" font-size="9" fill="#059669">&lt;memory&gt; tags</text>
+
+  <!-- RIGHT: System Prompt -->
+  <rect x="670" y="72" width="270" height="500" rx="14" fill="white" filter="url(#sh)" stroke="#A7F3D0" stroke-width="1.5"/>
+  <rect x="670" y="72" width="270" height="44" rx="14" fill="#1D4ED8"/>
+  <rect x="670" y="100" width="270" height="16" fill="#1D4ED8"/>
+  <text x="805" y="103" text-anchor="middle" font-size="13" font-weight="bold" fill="white">System Prompt (to AI)</text>
+
+  <rect x="686" y="126" width="238" height="420" rx="8" fill="#0F172A"/>
+  <text x="702" y="148" font-size="10" fill="#94A3B8">You are DeerFlow, a helpful</text>
+  <text x="702" y="162" font-size="10" fill="#94A3B8">AI assistant...</text>
+  <text x="702" y="178" font-size="10" fill="#94A3B8">[skills loaded here]</text>
+  <text x="702" y="194" font-size="10" fill="#94A3B8">[tools available]</text>
+  <line x1="686" y1="202" x2="924" y2="202" stroke="#334155" stroke-width="1"/>
+
+  <!-- Memory block highlighted -->
+  <rect x="688" y="208" width="234" height="274" rx="6" fill="#0F2E0A"/>
+  <text x="805" y="228" text-anchor="middle" font-size="11" fill="#86EFAC" font-weight="bold">&lt;memory&gt;</text>
+  <text x="702" y="248" font-size="10" fill="#6EE7B7">User Context:</text>
+  <text x="702" y="262" font-size="10" fill="#94A3B8">- Work: PM at startup...</text>
+  <text x="702" y="278" font-size="10" fill="#94A3B8">- Current Focus: Q3 report...</text>
+  <text x="702" y="298" font-size="10" fill="#6EE7B7">History:</text>
+  <text x="702" y="312" font-size="10" fill="#94A3B8">- Recent: AI research, slides...</text>
+  <text x="702" y="332" font-size="10" fill="#6EE7B7">Facts:</text>
+  <text x="702" y="346" font-size="10" fill="#FDE68A">- [preference|0.95] Bullets</text>
+  <text x="702" y="360" font-size="10" fill="#86EFAC">- [knowledge |0.88] Python</text>
+  <text x="702" y="374" font-size="10" fill="#FCA5A5">- [context   |0.80] Startup</text>
+  <text x="702" y="388" font-size="10" fill="#C4B5FD">- [behavior  |0.75] Morning</text>
+  <text x="702" y="402" font-size="10" fill="#7DD3FC">- [goal      |0.72] ML ops</text>
+  <text x="805" y="422" text-anchor="middle" font-size="11" fill="#86EFAC" font-weight="bold">&lt;/memory&gt;</text>
+
+  <line x1="686" y1="488" x2="924" y2="488" stroke="#334155" stroke-width="1"/>
+  <text x="702" y="508" font-size="10" fill="#94A3B8">... rest of prompt</text>
+  <text x="702" y="524" font-size="10" fill="#94A3B8">[user's message here]</text>
+
+  <!-- Result note -->
+  <rect x="20" y="588" width="920" height="24" rx="8" fill="#059669" opacity="0.9"/>
+  <text x="480" y="604" text-anchor="middle" font-size="12" font-weight="bold" fill="white">✨ AI reads your profile before replying — like an assistant who reviewed their notes before the meeting</text>
+</svg>

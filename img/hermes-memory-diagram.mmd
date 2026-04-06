@@ -1,0 +1,90 @@
+flowchart TB
+    classDef layer1 fill:#1e3a5f,stroke:#4a90d9,color:#fff,font-weight:bold
+    classDef layer2 fill:#1a3a1a,stroke:#52b788,color:#bef0cc,font-weight:bold
+    classDef layer3 fill:#3e2a00,stroke:#f39c12,color:#ffe5a0,font-weight:bold
+    classDef layer4 fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff,font-weight:bold
+    classDef guard  fill:#5a0000,stroke:#e74c3c,color:#ffcccc,font-weight:bold
+    classDef note   fill:#111,stroke:#aaa,color:#ccc,font-size:11px
+
+    %% ── USER INPUT ──────────────────────────────────────────
+    USER["💬  User message / session start"]
+
+    %% ── LAYER 1: File Memory ────────────────────────────────
+    subgraph L1["🗂️  Layer 1 — File Memory   (~/.hermes/memories/)"]
+        direction LR
+        MEM["MEMORY.md\nAgent's personal notes\nenv facts · conventions\ntool quirks · lessons\n—\nLimit: 2,200 chars"]:::layer1
+        USRMD["USER.md\nWho the user is\nname · role · prefs\ncommunication style\n—\nLimit: 1,375 chars"]:::layer1
+        DELIM["Entry delimiter: §\nAtomic writes\n(temp file + os.replace)\nFile lock per write\nDeduplicated on load"]:::layer1
+    end
+
+    %% INJECTION GUARD
+    GUARD["🛡️  Injection Scanner\nBlocks before any write:\nprompt injection · role hijack\nexfil curl/wget · ssh backdoor\ninvisible unicode chars"]:::guard
+
+    %% SNAPSHOT PATTERN
+    SNAP["❄️  Frozen Snapshot Pattern\nSystem prompt snapshot captured\nonce at session start.\nMid-session writes → disk only.\nPrompt unchanged → prefix cache\nstays valid all session."]:::note
+
+    %% ── LAYER 2: SQLite Session DB ──────────────────────────
+    subgraph L2["🗄️  Layer 2 — SQLite Session DB   (~/.hermes/state.db)"]
+        direction LR
+        SCHEMA["sessions table\nid · source · model\ntokens · cost · title\nparent_session_id\n—\nSchema v6"]:::layer2
+        MSGS["messages table\nrole · content · timestamp\ntool_calls · reasoning\nfinish_reason"]:::layer2
+        FTS5["messages_fts\nFTS5 virtual table\nauto-synced via triggers\nINSERT / DELETE / UPDATE\n—\nBoolean · prefix · phrase"]:::layer2
+        WAL["WAL Mode\nConcurrent readers\n+ single writer\nJitter retry on lock\nCheckpoint every 50 writes"]:::layer2
+    end
+
+    %% SESSION SEARCH
+    subgraph SRCH["🔍  Session Search Tool"]
+        direction TB
+        FTS5Q["1. FTS5 query\ntop 50 ranked matches"]:::layer2
+        DEDUP["2. Deduplicate\nresolve child→parent\nskip current session"]:::layer2
+        SUMM["3. LLM Summarisation\n(cheap/fast model)\nparallel per session\ncentered on match\nmax 100k chars"]:::layer2
+    end
+
+    %% ── LAYER 3: Honcho User Modelling ──────────────────────
+    subgraph L3["🧠  Layer 3 — Honcho User Modelling   (optional, cloud)"]
+        direction TB
+        PEERS["Two Peers\nuser peer — what Honcho knows\n  about the human\nai peer — Hermes's identity\n  representation"]:::layer3
+        DIAL["Dialectic Query\npeer.chat(question)\nHoncho runs LLM on its\nfull user representation\n—\nDynamic reasoning level:\n<120 chars → low\n120-400 → medium\n>400 → high"]:::layer3
+        CARD["Peer Card\nfast, no LLM\nstructured facts\ninferred by Honcho\nname/role/prefs/patterns"]:::layer3
+        CONC["Conclusions\nHermes writes observations\nabout the user back to Honcho\n'User prefers dark mode'\n→ feeds peer card over time"]:::layer3
+        ASYNCW["Async Write Queue\nBackground daemon thread\nwrites messages to Honcho\nzero blocking per turn\n—\nModes: async · turn\n  session · every N"]:::layer3
+    end
+
+    %% MEMORY MODES
+    MODES["3 Recall Modes\nhybrid — auto-inject + tools\ncontext — inject only\ntools — tools only"]:::note
+
+    %% ── LAYER 4: Insights ───────────────────────────────────
+    subgraph L4["📊  Layer 4 — Insights Engine   (/insights command)"]
+        direction LR
+        OVER["Overview\ntoken totals\ncost estimate\nactive time\navg msgs/session"]:::layer4
+        BREAK["Breakdowns\nby model · provider\nby platform (telegram/cli)\ntool usage ranking\n% of total calls"]:::layer4
+        ACT["Activity Patterns\nday-of-week histogram\nhour-of-day peaks\nbest streak\nactive days count"]:::layer4
+    end
+
+    %% ── SYSTEM PROMPT ASSEMBLY ──────────────────────────────
+    SYSPROMPT["📝  System Prompt (built once at session start)\n═══════════════════════════════════\nMEMORY  [47% — 1,034/2,200 chars]\n══════════════════════════════════\n<memory entries joined by §>\n═══════════════════════════════════\nUSER PROFILE  [31% — 426/1,375 chars]\n═══════════════════════════════════\n<user entries joined by §>\n═══════════════════════════════════\n+ Honcho peer card + dialectic result (if enabled)"]:::note
+
+    %% ── FLOWS ───────────────────────────────────────────────
+    USER --> GUARD
+    GUARD -->|"content scanned\npass / block"| L1
+    L1 --> SNAP
+    SNAP --> SYSPROMPT
+
+    USER --> L2
+    L2 --> SRCH
+    FTS5Q --> DEDUP --> SUMM
+
+    USER --> L3
+    L3 --> MODES
+    CONC --> L3
+    L3 --> SYSPROMPT
+
+    L2 --> L4
+
+    %% ANNOTATION
+    NOTE1["Key insight: MEMORY.md is injected into\nthe system prompt as a static snapshot.\nTools write to disk immediately (durable)\nbut the model's view is frozen for the\nentire session to preserve prefix cache."]:::note
+
+    NOTE2["Key insight: Session Search is separate\nfrom Memory. Memory = curated facts.\nSession Search = searchable archive of\nevery full conversation, forever."]:::note
+
+    L1 -.- NOTE1
+    SRCH -.- NOTE2

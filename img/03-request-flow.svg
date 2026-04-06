@@ -1,0 +1,102 @@
+<svg viewBox="0 0 860 700" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F8FAFF"/>
+      <stop offset="100%" style="stop-color:#EFF6FF"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB"/>
+    </marker>
+    <marker id="arrG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#00000015"/></filter>
+  </defs>
+
+  <rect width="860" height="700" fill="url(#bg)" rx="16"/>
+  <text x="430" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E3A8A">How a Request Flows Through DeerFlow</text>
+  <text x="430" y="58" text-anchor="middle" font-size="12" fill="#64748B">From "you type" to "answer arrives" — every step explained</text>
+
+  <!-- Step numbers on left -->
+  <!-- STEP 1 -->
+  <circle cx="60" cy="106" r="20" fill="#2563EB"/>
+  <text x="60" y="112" text-anchor="middle" font-size="14" font-weight="bold" fill="white">1</text>
+  <rect x="92" y="82" width="724" height="48" rx="10" fill="white" filter="url(#sh)" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="112" y="103" font-size="13" font-weight="bold" fill="#1E40AF">👤 You type a message</text>
+  <text x="112" y="122" font-size="12" fill="#64748B">"Research AI trends and create a 5-slide presentation"</text>
+
+  <line x1="60" y1="128" x2="60" y2="156" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- STEP 2 -->
+  <circle cx="60" cy="170" r="20" fill="#0369A1"/>
+  <text x="60" y="176" text-anchor="middle" font-size="14" font-weight="bold" fill="white">2</text>
+  <rect x="92" y="148" width="724" height="48" rx="10" fill="white" filter="url(#sh)" stroke="#BAE6FD" stroke-width="1.2"/>
+  <text x="112" y="169" font-size="13" font-weight="bold" fill="#0369A1">🔀 NGINX receives and routes</text>
+  <text x="112" y="188" font-size="12" fill="#64748B">Port 2026 gets the request → sends to LangGraph Server (port 2024)</text>
+
+  <line x1="60" y1="196" x2="60" y2="222" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- STEP 3 -->
+  <circle cx="60" cy="236" r="20" fill="#7C3AED"/>
+  <text x="60" y="242" text-anchor="middle" font-size="14" font-weight="bold" fill="white">3</text>
+  <rect x="92" y="214" width="724" height="62" rx="10" fill="white" filter="url(#sh)" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="112" y="235" font-size="13" font-weight="bold" fill="#7C3AED">🔧 Middleware checklist runs (12 automatic steps)</text>
+  <text x="112" y="254" font-size="12" fill="#64748B">Create workspace folder → Load uploaded files → Open sandbox →</text>
+  <text x="112" y="270" font-size="12" fill="#64748B">Load memory ("User likes bullet points") → Check safety rules</text>
+
+  <line x1="60" y1="278" x2="60" y2="304" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- STEP 4 -->
+  <circle cx="60" cy="318" r="20" fill="#1D4ED8"/>
+  <text x="60" y="324" text-anchor="middle" font-size="14" font-weight="bold" fill="white">4</text>
+  <rect x="92" y="296" width="724" height="62" rx="10" fill="white" filter="url(#sh)" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="112" y="317" font-size="13" font-weight="bold" fill="#1D4ED8">🧠 Lead Agent reads &amp; plans</text>
+  <text x="112" y="336" font-size="12" fill="#64748B">AI model reads the message, loads the right skill (e.g. "slide-creation"),</text>
+  <text x="112" y="352" font-size="12" fill="#64748B">decides what tools to use, and forms a plan of action</text>
+
+  <line x1="60" y1="360" x2="60" y2="386" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- STEP 5 -->
+  <circle cx="60" cy="400" r="20" fill="#D97706"/>
+  <text x="60" y="406" text-anchor="middle" font-size="14" font-weight="bold" fill="white">5</text>
+  <rect x="92" y="378" width="724" height="78" rx="10" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="1.2"/>
+  <text x="112" y="399" font-size="13" font-weight="bold" fill="#D97706">🤝 Sub-Agents are spawned (if needed)</text>
+  <!-- sub-agent boxes -->
+  <rect x="112" y="408" width="210" height="36" rx="8" fill="#FEF3C7"/>
+  <text x="217" y="422" text-anchor="middle" font-size="11" fill="#92400E">🔍 Sub-Agent 1</text>
+  <text x="217" y="437" text-anchor="middle" font-size="10" fill="#78350F">Search: AI trends 2025</text>
+  <rect x="338" y="408" width="210" height="36" rx="8" fill="#FEF3C7"/>
+  <text x="443" y="422" text-anchor="middle" font-size="11" fill="#92400E">📊 Sub-Agent 2</text>
+  <text x="443" y="437" text-anchor="middle" font-size="10" fill="#78350F">Find: slide examples</text>
+  <rect x="564" y="408" width="210" height="36" rx="8" fill="#FEF3C7"/>
+  <text x="669" y="422" text-anchor="middle" font-size="11" fill="#92400E">🖼️ Sub-Agent 3</text>
+  <text x="669" y="437" text-anchor="middle" font-size="10" fill="#78350F">Generate: chart images</text>
+
+  <line x1="60" y1="458" x2="60" y2="484" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- STEP 6 -->
+  <circle cx="60" cy="498" r="20" fill="#B91C1C"/>
+  <text x="60" y="504" text-anchor="middle" font-size="14" font-weight="bold" fill="white">6</text>
+  <rect x="92" y="476" width="724" height="62" rx="10" fill="white" filter="url(#sh)" stroke="#FCA5A5" stroke-width="1.2"/>
+  <text x="112" y="497" font-size="13" font-weight="bold" fill="#B91C1C">🛡️ Sandbox executes code safely</text>
+  <text x="112" y="516" font-size="12" fill="#64748B">Python scripts run inside an isolated container. Files are written to</text>
+  <text x="112" y="532" font-size="12" fill="#64748B">/mnt/user-data/workspace/ → final output saved to /mnt/user-data/outputs/</text>
+
+  <line x1="60" y1="540" x2="60" y2="566" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- STEP 7 -->
+  <circle cx="60" cy="580" r="20" fill="#059669"/>
+  <text x="60" y="586" text-anchor="middle" font-size="14" font-weight="bold" fill="white">7</text>
+  <rect x="92" y="558" width="724" height="48" rx="10" fill="white" filter="url(#sh)" stroke="#A7F3D0" stroke-width="1.2"/>
+  <text x="112" y="579" font-size="13" font-weight="bold" fill="#059669">📤 Result delivered to you</text>
+  <text x="112" y="598" font-size="12" fill="#64748B">Answer shown on screen with download links for any files created</text>
+
+  <line x1="60" y1="608" x2="60" y2="634" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- STEP 8 -->
+  <circle cx="60" cy="648" r="20" fill="#6B7280"/>
+  <text x="60" y="654" text-anchor="middle" font-size="14" font-weight="bold" fill="white">8</text>
+  <rect x="92" y="626" width="724" height="48" rx="10" fill="white" filter="url(#sh)" stroke="#E5E7EB" stroke-width="1.2"/>
+  <text x="112" y="647" font-size="13" font-weight="bold" fill="#374151">🧠 Memory updates in background (after 30 sec)</text>
+  <text x="112" y="666" font-size="12" fill="#64748B">AI extracts facts from this conversation → saved for next time you chat</text>
+</svg>

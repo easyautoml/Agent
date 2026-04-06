@@ -1,0 +1,42 @@
+flowchart TD
+    classDef db    fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef proc  fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef model fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef out   fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+    classDef guard fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+
+    START(["Session Starts"])
+
+    subgraph FILTER["Eligibility Filters (SQLite check)"]
+        F1["Source = interactive session?"]:::guard
+        F2["Session idle ≥ min_rollout_idle_hours?"]:::guard
+        F3["Session age ≤ max_rollout_age_days?"]:::guard
+        F4["Not already claimed (lease check)?"]:::guard
+        F1 --> F2 --> F3 --> F4
+    end
+
+    CLAIM["Claim up to\nmax_rollouts_per_startup\njobs from DB\n(3,600s lease)"]:::db
+
+    subgraph PARALLEL["Parallel extraction  (up to 8 concurrent)"]
+        direction LR
+        J1["Job 1\nRollout A"]:::proc
+        J2["Job 2\nRollout B"]:::proc
+        J3["Job N\nRollout ..."]:::proc
+    end
+
+    subgraph PERJOB["Per-job logic"]
+        L1["Load rollout JSONL\nfrom disk"]:::proc
+        L2["Filter items:\ndrop developer msgs\ndrop excluded fragments"]:::proc
+        L3["Truncate to 70%\nof model context window\n(max 150,000 tokens)"]:::proc
+        L4["Send to gpt-5.4-mini\nwith stage_one_system.md prompt"]:::model
+        L5["Parse StageOneOutput JSON:\n- raw_memory (markdown)\n- rollout_summary (1 line)\n- rollout_slug (filename hint)"]:::model
+        L6["Redact secrets"]:::proc
+        L7["Store in SQLite DB"]:::db
+        L1 --> L2 --> L3 --> L4 --> L5 --> L6 --> L7
+    end
+
+    DONE(["Phase 1 complete\n→ trigger Phase 2"])
+
+    START --> FILTER --> CLAIM --> PARALLEL
+    PARALLEL --> PERJOB
+    PERJOB --> DONE

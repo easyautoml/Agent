@@ -1,0 +1,135 @@
+<svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <rect width="960" height="500" fill="url(#bg)"/>
+
+  <text x="480" y="38" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">File Processing — Upload Anything, Find Everything</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#94a3b8">PDFs, images, videos, code — all become searchable in seconds</text>
+
+  <!-- File types (left column) -->
+  <text x="100" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">📂 File Types</text>
+
+  <rect x="22" y="114" width="156" height="58" rx="12" fill="#1e293b" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="54" y="144" font-size="28">📕</text>
+  <text x="100" y="136" font-size="13" font-weight="600" fill="#fca5a5">PDF</text>
+  <text x="100" y="154" font-size="10" fill="#94a3b8">Reports, contracts,</text>
+  <text x="100" y="166" font-size="10" fill="#94a3b8">research papers</text>
+
+  <rect x="22" y="182" width="156" height="58" rx="12" fill="#1e293b" stroke="#0284c7" stroke-width="1.5"/>
+  <text x="54" y="212" font-size="28">🖼️</text>
+  <text x="100" y="204" font-size="13" font-weight="600" fill="#7dd3fc">Images</text>
+  <text x="100" y="222" font-size="10" fill="#94a3b8">Screenshots, photos,</text>
+  <text x="100" y="234" font-size="10" fill="#94a3b8">whiteboards, receipts</text>
+
+  <rect x="22" y="250" width="156" height="58" rx="12" fill="#1e293b" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="54" y="280" font-size="28">🎬</text>
+  <text x="100" y="272" font-size="13" font-weight="600" fill="#c4b5fd">Videos</text>
+  <text x="100" y="290" font-size="10" fill="#94a3b8">Lectures, demos,</text>
+  <text x="100" y="302" font-size="10" fill="#94a3b8">meetings, tutorials</text>
+
+  <rect x="22" y="318" width="156" height="58" rx="12" fill="#1e293b" stroke="#059669" stroke-width="1.5"/>
+  <text x="54" y="348" font-size="28">💻</text>
+  <text x="100" y="340" font-size="13" font-weight="600" fill="#6ee7b7">Code</text>
+  <text x="100" y="358" font-size="10" fill="#94a3b8">Source files, repos,</text>
+  <text x="100" y="370" font-size="10" fill="#94a3b8">config, scripts</text>
+
+  <rect x="22" y="386" width="156" height="58" rx="12" fill="#1e293b" stroke="#d97706" stroke-width="1.5"/>
+  <text x="54" y="416" font-size="28">🌐</text>
+  <text x="100" y="408" font-size="13" font-weight="600" fill="#fcd34d">Web Pages</text>
+  <text x="100" y="426" font-size="10" fill="#94a3b8">Articles, docs,</text>
+  <text x="100" y="438" font-size="10" fill="#94a3b8">HTML content</text>
+
+  <!-- Processing pipeline steps -->
+  <!-- Arrow in -->
+  <line x1="180" y1="280" x2="218" y2="280" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 1: Detect -->
+  <rect x="220" y="200" width="130" height="160" rx="12" fill="#3a1a00" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="285" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#fde68a">DETECT</text>
+  <text x="285" y="250" text-anchor="middle" font-size="22">🔬</text>
+  <text x="285" y="278" text-anchor="middle" font-size="10" fill="#fde68a">Identify file type</text>
+  <line x1="232" y1="288" x2="338" y2="288" stroke="#92400e" stroke-width="1"/>
+  <text x="285" y="306" text-anchor="middle" font-size="9" fill="#94a3b8">PDF → text extract</text>
+  <text x="285" y="320" text-anchor="middle" font-size="9" fill="#94a3b8">Image → run OCR</text>
+  <text x="285" y="334" text-anchor="middle" font-size="9" fill="#94a3b8">Video → transcribe</text>
+  <text x="285" y="348" text-anchor="middle" font-size="9" fill="#94a3b8">Code → parse AST</text>
+
+  <!-- Arrow -->
+  <line x1="352" y1="280" x2="386" y2="280" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 2: Extract -->
+  <rect x="388" y="200" width="130" height="160" rx="12" fill="#1a3020" stroke="#10b981" stroke-width="1.5"/>
+  <text x="453" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#6ee7b7">EXTRACT</text>
+  <text x="453" y="250" text-anchor="middle" font-size="22">📖</text>
+  <text x="453" y="278" text-anchor="middle" font-size="10" fill="#6ee7b7">Pull out content</text>
+  <line x1="400" y1="288" x2="506" y2="288" stroke="#065f46" stroke-width="1"/>
+  <text x="453" y="306" text-anchor="middle" font-size="9" fill="#94a3b8">OCR: reads text</text>
+  <text x="453" y="320" text-anchor="middle" font-size="9" fill="#94a3b8">from any image</text>
+  <text x="453" y="334" text-anchor="middle" font-size="9" fill="#94a3b8">Audio → words</text>
+  <text x="453" y="348" text-anchor="middle" font-size="9" fill="#94a3b8">HTML → clean text</text>
+
+  <!-- Arrow -->
+  <line x1="520" y1="280" x2="554" y2="280" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 3: Chunk -->
+  <rect x="556" y="200" width="130" height="160" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="621" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#a5b4fc">CHUNK</text>
+  <text x="621" y="250" text-anchor="middle" font-size="22">✂️</text>
+  <text x="621" y="278" text-anchor="middle" font-size="10" fill="#a5b4fc">Smart splitting</text>
+  <line x1="568" y1="288" x2="674" y2="288" stroke="#3730a3" stroke-width="1"/>
+  <text x="621" y="306" text-anchor="middle" font-size="9" fill="#94a3b8">Not random cuts —</text>
+  <text x="621" y="320" text-anchor="middle" font-size="9" fill="#94a3b8">splits by meaning</text>
+  <text x="621" y="334" text-anchor="middle" font-size="9" fill="#94a3b8">Code: by function</text>
+  <text x="621" y="348" text-anchor="middle" font-size="9" fill="#94a3b8">Docs: by section</text>
+
+  <!-- Arrow -->
+  <line x1="688" y1="280" x2="722" y2="280" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 4: Embed + Store -->
+  <rect x="724" y="200" width="130" height="160" rx="12" fill="#083344" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="789" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#a5f3fc">EMBED</text>
+  <text x="789" y="250" text-anchor="middle" font-size="22">🔢</text>
+  <text x="789" y="278" text-anchor="middle" font-size="10" fill="#a5f3fc">Vector search ready</text>
+  <line x1="736" y1="288" x2="842" y2="288" stroke="#155e75" stroke-width="1"/>
+  <text x="789" y="306" text-anchor="middle" font-size="9" fill="#94a3b8">Converts text to</text>
+  <text x="789" y="320" text-anchor="middle" font-size="9" fill="#94a3b8">numbers (vectors)</text>
+  <text x="789" y="334" text-anchor="middle" font-size="9" fill="#94a3b8">Enables search</text>
+  <text x="789" y="348" text-anchor="middle" font-size="9" fill="#94a3b8">by meaning/concept</text>
+
+  <!-- Arrow to result -->
+  <line x1="856" y1="280" x2="898" y2="280" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- RESULT -->
+  <rect x="900" y="232" width="48" height="96" rx="10" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
+  <text x="924" y="257" text-anchor="middle" font-size="14">✅</text>
+  <text x="924" y="276" text-anchor="middle" font-size="8" fill="#6ee7b7" writing-mode="tb">READY</text>
+  <text x="924" y="316" text-anchor="middle" font-size="8" fill="#6ee7b7" writing-mode="tb">TO SEARCH</text>
+
+  <!-- Example cards at bottom -->
+  <rect x="22" y="455" width="440" height="34" rx="9" fill="#1e293b" stroke="#334155"/>
+  <text x="32" y="467" font-size="10" fill="#f59e0b" font-weight="600">📸 Image example:</text>
+  <text x="32" y="481" font-size="10" fill="#94a3b8">Upload whiteboard photo → OCR reads "Project deadline: March 15" → Searchable text</text>
+
+  <rect x="498" y="455" width="440" height="34" rx="9" fill="#1e293b" stroke="#334155"/>
+  <text x="508" y="467" font-size="10" fill="#8b5cf6" font-weight="600">🎬 Video example:</text>
+  <text x="508" y="481" font-size="10" fill="#94a3b8">Upload meeting recording → Transcribed → "John said we need to fix the login bug by Friday"</text>
+
+  <!-- Title bar over steps -->
+  <text x="560" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">⚙️ Processing Pipeline</text>
+  <text x="560" y="120" text-anchor="middle" font-size="11" fill="#94a3b8">Every file goes through the same 4-step pipeline automatically</text>
+  <rect x="218" y="136" width="686" height="52" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="310" y="156" text-anchor="middle" font-size="12" fill="#f59e0b">1. Detect type</text>
+  <text x="453" y="156" text-anchor="middle" font-size="12" fill="#10b981">2. Extract text</text>
+  <text x="621" y="156" text-anchor="middle" font-size="12" fill="#6366f1">3. Smart chunk</text>
+  <text x="789" y="156" text-anchor="middle" font-size="12" fill="#06b6d4">4. Embed &amp; index</text>
+  <line x1="360" y1="140" x2="360" y2="184" stroke="#334155" stroke-width="1"/>
+  <line x1="530" y1="140" x2="530" y2="184" stroke="#334155" stroke-width="1"/>
+  <line x1="700" y1="140" x2="700" y2="184" stroke="#334155" stroke-width="1"/>
+</svg>

@@ -1,0 +1,27 @@
+flowchart LR
+    classDef session fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef phase1  fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef phase2  fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef output  fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+
+    S1["Session A\n(JSONL)"]:::session
+    S2["Session B\n(JSONL)"]:::session
+    S3["Session C\n(JSONL)"]:::session
+
+    subgraph P1["Phase 1 — Extract (per thread, parallel)"]
+        E1["Claim rollout job\nfrom state DB"]:::phase1
+        E2["Model call:\nextract raw_memory\n+ rollout_summary"]:::phase1
+        E1 --> E2
+    end
+
+    subgraph P2["Phase 2 — Consolidate (global, serialized)"]
+        C1["Collect all\nraw_memories.md"]:::phase2
+        C2["Spawn consolidation\nsub-agent"]:::phase2
+        C1 --> C2
+    end
+
+    OUT["Long-term memory\ninjected at next\nconversation start"]:::output
+
+    S1 & S2 & S3 --> P1
+    P1 --> P2
+    P2 --> OUT

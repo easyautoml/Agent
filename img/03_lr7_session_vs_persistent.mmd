@@ -1,0 +1,17 @@
+graph LR
+    subgraph SESSION["Session Memory\n(dies when process ends)"]
+        SM1["LangChain InMemory backend"]
+        SM2["CrewAI without persistence config"]
+    end
+
+    subgraph PERSISTENT["Persistent Memory\n(survives restarts)"]
+        PM1["LangChain Redis / PostgreSQL backend"]
+        PM2["LangChain File backend"]
+        PM3["CrewAI LanceDB (default)"]
+        PM4["CrewAI Qdrant Edge (distributed)"]
+    end
+
+    subgraph SEMANTIC["Semantic / Vector Memory\n(search by meaning)"]
+        VM1["LangChain VectorStoreRetrieverMemory\n+ FAISS / Pinecone / Chroma"]
+        VM2["CrewAI all records indexed as vectors\n(built-in, always on)"]
+    end

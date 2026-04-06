@@ -1,0 +1,101 @@
+<svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+
+  <text x="480" y="38" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">Framework Tools — Add Memory in 2 Lines</text>
+  <text x="480" y="62" text-anchor="middle" font-size="13" fill="#94a3b8">Drop-in wrappers for every major AI framework. No complex setup needed.</text>
+
+  <!-- BEFORE -->
+  <rect x="30" y="84" width="420" height="120" rx="14" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="240" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#fca5a5">❌ BEFORE — Normal AI (no memory)</text>
+  <rect x="44" y="116" width="392" height="74" rx="9" fill="#0f172a"/>
+  <text x="52" y="136" font-size="11" fill="#ef4444" font-family="Courier New">// Plain model — forgets everything</text>
+  <text x="52" y="154" font-size="11" fill="#f1f5f9" font-family="Courier New">const model = openai("gpt-4o")</text>
+  <text x="52" y="172" font-size="11" fill="#94a3b8" font-family="Courier New">// User asks same question → no context</text>
+
+  <!-- Arrow -->
+  <line x1="454" y1="144" x2="498" y2="144" stroke="#10b981" stroke-width="3" marker-end="url(#arr)"/>
+  <text x="476" y="134" text-anchor="middle" font-size="11" font-weight="700" fill="#10b981">+</text>
+  <text x="476" y="164" text-anchor="middle" font-size="9" fill="#10b981">1 line</text>
+
+  <!-- AFTER -->
+  <rect x="502" y="84" width="428" height="120" rx="14" fill="#14532d" stroke="#10b981" stroke-width="1.5"/>
+  <text x="716" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#86efac">✅ AFTER — AI with Memory</text>
+  <rect x="516" y="116" width="400" height="74" rx="9" fill="#0f172a"/>
+  <text x="524" y="136" font-size="11" fill="#10b981" font-family="Courier New">import { withSupermemory } from "@supermemory/tools/ai-sdk"</text>
+  <text x="524" y="154" font-size="11" fill="#86efac" font-family="Courier New">const model = withSupermemory(openai("gpt-4o"), "user_123")</text>
+  <text x="524" y="172" font-size="11" fill="#94a3b8" font-family="Courier New">// Now AI remembers user across ALL chats ✓</text>
+
+  <!-- Modes section -->
+  <text x="480" y="232" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">Memory Retrieval Modes</text>
+
+  <rect x="30" y="248" width="276" height="140" rx="14" fill="#1e293b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="168" y="274" text-anchor="middle" font-size="13" font-weight="700" fill="#a5b4fc">📋 profile  (default)</text>
+  <text x="168" y="292" text-anchor="middle" font-size="10" fill="#94a3b8">Get full user profile card</text>
+  <line x1="46" y1="300" x2="290" y2="300" stroke="#334155" stroke-width="1"/>
+  <rect x="44" y="308" width="242" height="18" rx="5" fill="#0f172a"/>
+  <text x="46" y="320" font-size="9" fill="#a5b4fc" font-family="Courier New">mode: "profile"</text>
+  <text x="168" y="348" text-anchor="middle" font-size="10" fill="#94a3b8">Returns: stable facts + recent activity</text>
+  <text x="168" y="364" text-anchor="middle" font-size="10" fill="#64748b">Best for: general personalization</text>
+  <text x="168" y="380" text-anchor="middle" font-size="9" fill="#6366f1">Example: "Alex, Head of Marketing, prefers..."</text>
+
+  <rect x="342" y="248" width="276" height="140" rx="14" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="480" y="274" text-anchor="middle" font-size="13" font-weight="700" fill="#a5f3fc">🔍 query</text>
+  <text x="480" y="292" text-anchor="middle" font-size="10" fill="#94a3b8">Search by current question</text>
+  <line x1="358" y1="300" x2="602" y2="300" stroke="#334155" stroke-width="1"/>
+  <rect x="358" y="308" width="242" height="18" rx="5" fill="#0f172a"/>
+  <text x="360" y="320" font-size="9" fill="#a5f3fc" font-family="Courier New">mode: "query"</text>
+  <text x="480" y="348" text-anchor="middle" font-size="10" fill="#94a3b8">Returns: memories related to this question</text>
+  <text x="480" y="364" text-anchor="middle" font-size="10" fill="#64748b">Best for: specific lookups</text>
+  <text x="480" y="380" text-anchor="middle" font-size="9" fill="#06b6d4">Example: "your deploy uses Vercel + GitHub Actions"</text>
+
+  <rect x="654" y="248" width="276" height="140" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="792" y="274" text-anchor="middle" font-size="13" font-weight="700" fill="#fde68a">⚡ full</text>
+  <text x="792" y="292" text-anchor="middle" font-size="10" fill="#94a3b8">Profile + query combined</text>
+  <line x1="670" y1="300" x2="914" y2="300" stroke="#334155" stroke-width="1"/>
+  <rect x="670" y="308" width="242" height="18" rx="5" fill="#0f172a"/>
+  <text x="672" y="320" font-size="9" fill="#fde68a" font-family="Courier New">mode: "full"</text>
+  <text x="792" y="348" text-anchor="middle" font-size="10" fill="#94a3b8">Returns: everything about user + relevant docs</text>
+  <text x="792" y="364" text-anchor="middle" font-size="10" fill="#64748b">Best for: assistants, support bots</text>
+  <text x="792" y="380" text-anchor="middle" font-size="9" fill="#f59e0b">Most context — slightly more time</text>
+
+  <!-- Framework grid -->
+  <text x="480" y="414" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">Supported Frameworks</text>
+
+  <rect x="30" y="428" width="132" height="48" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="96" y="448" text-anchor="middle" font-size="14">⚡</text>
+  <text x="96" y="466" text-anchor="middle" font-size="11" fill="#f1f5f9">Vercel AI SDK</text>
+
+  <rect x="172" y="428" width="132" height="48" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="238" y="448" text-anchor="middle" font-size="14">🟢</text>
+  <text x="238" y="466" text-anchor="middle" font-size="11" fill="#f1f5f9">OpenAI SDK</text>
+
+  <rect x="314" y="428" width="132" height="48" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="380" y="448" text-anchor="middle" font-size="14">🤖</text>
+  <text x="380" y="466" text-anchor="middle" font-size="11" fill="#f1f5f9">Mastra</text>
+
+  <rect x="456" y="428" width="132" height="48" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="522" y="448" text-anchor="middle" font-size="14">🔷</text>
+  <text x="522" y="466" text-anchor="middle" font-size="11" fill="#f1f5f9">LangChain</text>
+
+  <rect x="598" y="428" width="132" height="48" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="664" y="448" text-anchor="middle" font-size="14">🐍</text>
+  <text x="664" y="466" text-anchor="middle" font-size="11" fill="#f1f5f9">Python Agents</text>
+
+  <rect x="740" y="428" width="190" height="48" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="782" y="448" text-anchor="middle" font-size="14">🎙️</text>
+  <text x="835" y="466" text-anchor="middle" font-size="11" fill="#f1f5f9">Pipecat (Voice AI)</text>
+
+  <!-- Install -->
+  <rect x="30" y="488" width="900" height="40" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="480" y="504" text-anchor="middle" font-size="11" fill="#94a3b8" font-family="Courier New">npm install @supermemory/tools    # TypeScript / JavaScript</text>
+  <text x="480" y="520" text-anchor="middle" font-size="11" fill="#94a3b8" font-family="Courier New">pip install supermemory            # Python</text>
+</svg>

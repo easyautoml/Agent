@@ -1,0 +1,20 @@
+graph LR
+    U["User"] --> A["Chatbot Agent"]
+
+    subgraph MEM["Memory — ConversationBufferMemory"]
+        H["Full History\n[Human: Hi\nAI: Hello!\nHuman: How are you?\nAI: Fine!]"]
+    end
+
+    subgraph STORE["Storage — InMemory (dict)"]
+        D["Python dict\nkey: session_id\nvalue: list of messages"]
+    end
+
+    A -->|"load_memory_variables()"| H
+    H -->|"prepend to prompt"| A
+    A -->|"save_context(input, output)"| D
+    D --> H
+
+    style U fill:#4A90D9,color:#fff
+    style A fill:#27AE60,color:#fff
+    style MEM fill:#EBF5FB
+    style STORE fill:#FEF9E7

@@ -1,0 +1,41 @@
+graph TD
+    subgraph L1["Layer 1 — File Memory (Fast, Bounded)"]
+        F1["MEMORY.md\nAgent notes, environment facts\nproject conventions, tool quirks\nChar limit: 2200 (~800 tokens)"]
+        F2["USER.md\nUser profile, preferences\ncommunication style, pet peeves\nChar limit: 1375 (~500 tokens)"]
+        F3["Frozen snapshot at session start\nPersists across restarts\nAgent manages via add/replace/remove"]
+    end
+
+    subgraph L2["Layer 2 — Session Database (Complete, Searchable)"]
+        S1["SQLite + FTS5\nEvery message from every session\nForever, full-text searchable"]
+        S2["Boolean: python NOT java\nPrefix: deploy*\nPhrase: docker networking"]
+        S3["Accessed only on demand\n'What did we discuss last week?'"]
+    end
+
+    subgraph L3["Layer 3 — User Modelling (Deep, Inferred)"]
+        H1["Honcho / AI-native model\nInferred personality and patterns\nNot just explicit facts"]
+        H2["Peer card: fast structured facts\nPeer representation: prose summary\nDialectic: ask questions about user"]
+        H3["Prefetched in background thread\nZero latency impact"]
+    end
+
+    subgraph L4["Layer 4 — Analytics (Aggregated)"]
+        A1["Insights engine\nSession counts, token usage\nCost tracking, tool usage patterns"]
+        A2["No LLM calls\nPure SQL aggregation"]
+    end
+
+    subgraph WHEN["When Each Layer is Used"]
+        W1["L1: Every session — injected at start"]
+        W2["L2: On demand — when past context needed"]
+        W3["L3: Every session — prefetched background"]
+        W4["L4: On demand — /insights command"]
+    end
+
+    L1 --> W1
+    L2 --> W2
+    L3 --> W3
+    L4 --> W4
+
+    style L1 fill:#EBF5FB
+    style L2 fill:#E9F7EF
+    style L3 fill:#F5EEF8
+    style L4 fill:#FEF9E7
+    style WHEN fill:#FDEDEC

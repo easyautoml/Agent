@@ -1,0 +1,131 @@
+<svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrRed" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrGreen" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+
+  <text x="480" y="40" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">Memory Engine — How Facts Are Processed</text>
+  <text x="480" y="64" text-anchor="middle" font-size="13" fill="#94a3b8">Every message you send goes through these steps automatically</text>
+
+  <!-- INPUT -->
+  <rect x="30" y="88" width="160" height="116" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="110" y="114" text-anchor="middle" font-size="13" font-weight="700" fill="#f1f5f9">📥 INPUT</text>
+  <rect x="42" y="122" width="136" height="70" rx="8" fill="#0f172a"/>
+  <text x="110" y="142" text-anchor="middle" font-size="10" fill="#94a3b8" font-style="italic">Raw conversation:</text>
+  <text x="110" y="160" text-anchor="middle" font-size="10" fill="#06b6d4">"Hey! I just moved</text>
+  <text x="110" y="176" text-anchor="middle" font-size="10" fill="#06b6d4">from NYC to San</text>
+  <text x="110" y="192" text-anchor="middle" font-size="10" fill="#06b6d4">Francisco last week"</text>
+
+  <!-- Arrow 1 -->
+  <line x1="192" y1="146" x2="226" y2="146" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 1: Extract -->
+  <rect x="228" y="88" width="148" height="116" rx="12" fill="#2e1065" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="302" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#c084fc">STEP 1</text>
+  <text x="302" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#e9d5ff">🔍 Extract</text>
+  <text x="302" y="146" text-anchor="middle" font-size="10" fill="#94a3b8">AI reads text and</text>
+  <text x="302" y="162" text-anchor="middle" font-size="10" fill="#94a3b8">pulls out key facts</text>
+  <rect x="240" y="170" width="124" height="26" rx="6" fill="#1a0b3a"/>
+  <text x="302" y="186" text-anchor="middle" font-size="10" fill="#c084fc">NLP + LLM analysis</text>
+
+  <!-- Arrow 2 -->
+  <line x1="378" y1="146" x2="412" y2="146" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 2: Check existing -->
+  <rect x="414" y="88" width="148" height="116" rx="12" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="488" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#93c5fd">STEP 2</text>
+  <text x="488" y="128" text-anchor="middle" font-size="13" font-weight="700" fill="#bfdbfe">🗂️ Check</text>
+  <text x="488" y="146" text-anchor="middle" font-size="10" fill="#94a3b8">Search existing</text>
+  <text x="488" y="162" text-anchor="middle" font-size="10" fill="#94a3b8">memories for matches</text>
+  <rect x="426" y="170" width="124" height="26" rx="6" fill="#0d2040"/>
+  <text x="488" y="186" text-anchor="middle" font-size="10" fill="#93c5fd">Vector similarity search</text>
+
+  <!-- Arrow 3 -->
+  <line x1="564" y1="146" x2="598" y2="146" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 3: Conflict? -->
+  <!-- Diamond shape -->
+  <polygon points="672,92 740,146 672,200 604,146" fill="#3a1a00" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="672" y="138" text-anchor="middle" font-size="11" font-weight="700" fill="#fde68a">STEP 3</text>
+  <text x="672" y="156" text-anchor="middle" font-size="12" font-weight="700" fill="#f59e0b">Conflict?</text>
+
+  <!-- Arrow YES (conflict) -->
+  <line x1="740" y1="146" x2="780" y2="146" stroke="#ef4444" stroke-width="2" marker-end="url(#arrRed)"/>
+  <text x="760" y="136" text-anchor="middle" font-size="10" fill="#ef4444">YES</text>
+
+  <!-- Arrow NO (new fact) -->
+  <line x1="672" y1="200" x2="672" y2="260" stroke="#10b981" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <text x="692" y="236" font-size="10" fill="#10b981">NO</text>
+
+  <!-- RESOLVE box -->
+  <rect x="782" y="108" width="148" height="76" rx="12" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="856" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#fca5a5">RESOLVE</text>
+  <text x="856" y="150" text-anchor="middle" font-size="10" fill="#fca5a5">Update old fact</text>
+  <text x="856" y="167" text-anchor="middle" font-size="10" fill="#fca5a5">with new version</text>
+
+  <!-- Arrow resolve -> store -->
+  <line x1="856" y1="186" x2="856" y2="260" stroke="#ef4444" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ADD NEW box -->
+  <rect x="598" y="262" width="148" height="76" rx="12" fill="#14532d" stroke="#10b981" stroke-width="1.5"/>
+  <text x="672" y="286" text-anchor="middle" font-size="11" font-weight="700" fill="#86efac">ADD NEW</text>
+  <text x="672" y="304" text-anchor="middle" font-size="10" fill="#86efac">Create fresh memory</text>
+  <text x="672" y="320" text-anchor="middle" font-size="10" fill="#86efac">entry in database</text>
+
+  <!-- Arrow ADD -> store -->
+  <line x1="748" y1="300" x2="782" y2="300" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STORE -->
+  <rect x="784" y="262" width="146" height="76" rx="12" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
+  <text x="857" y="286" text-anchor="middle" font-size="18">💾</text>
+  <text x="857" y="308" text-anchor="middle" font-size="13" font-weight="700" fill="#a5b4fc">STORED</text>
+  <text x="857" y="325" text-anchor="middle" font-size="10" fill="#94a3b8">Memory saved to DB</text>
+
+  <!-- OUTPUT section -->
+  <rect x="30" y="262" width="560" height="200" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="310" y="288" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">What the Memory Engine Can Do</text>
+
+  <!-- 4 example cards -->
+  <rect x="46" y="300" width="242" height="70" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="54" y="318" font-size="11" font-weight="600" fill="#f59e0b">📍 Location Update</text>
+  <text x="54" y="336" font-size="10" fill="#ef4444">Old: "Lives in NYC"</text>
+  <text x="54" y="352" font-size="10" fill="#10b981">New: "Lives in San Francisco"</text>
+  <text x="54" y="365" font-size="10" fill="#94a3b8">→ Old fact replaced automatically</text>
+
+  <rect x="302" y="300" width="242" height="70" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="310" y="318" font-size="11" font-weight="600" fill="#06b6d4">⏰ Temporary Facts</text>
+  <text x="310" y="336" font-size="10" fill="#f1f5f9">"I have an exam tomorrow"</text>
+  <text x="310" y="352" font-size="10" fill="#94a3b8">→ Saved today</text>
+  <text x="310" y="365" font-size="10" fill="#ef4444">→ Auto-deleted after date passes</text>
+
+  <rect x="46" y="380" width="242" height="70" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="54" y="398" font-size="11" font-weight="600" fill="#8b5cf6">🔄 Preference Update</text>
+  <text x="54" y="416" font-size="10" fill="#ef4444">Old: "Drinks coffee every day"</text>
+  <text x="54" y="432" font-size="10" fill="#10b981">New: "Quit coffee 3 months ago"</text>
+  <text x="54" y="445" font-size="10" fill="#94a3b8">→ Contradiction resolved intelligently</text>
+
+  <rect x="302" y="380" width="242" height="70" rx="9" fill="#0f172a" stroke="#334155"/>
+  <text x="310" y="398" font-size="11" font-weight="600" fill="#10b981">🚫 Noise Filtering</text>
+  <text x="310" y="416" font-size="10" fill="#94a3b8">"How are you today?"</text>
+  <text x="310" y="432" font-size="10" fill="#94a3b8">"Thanks!" / "OK" / "lol"</text>
+  <text x="310" y="445" font-size="10" fill="#ef4444">→ NOT stored (irrelevant)</text>
+
+  <!-- Arrow from STORED down to legend -->
+  <line x1="856" y1="338" x2="856" y2="400" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="782" y="400" width="148" height="62" rx="10" fill="#1e293b" stroke="#334155"/>
+  <text x="856" y="422" text-anchor="middle" font-size="12" fill="#f1f5f9">Available for:</text>
+  <text x="856" y="440" text-anchor="middle" font-size="10" fill="#94a3b8">• Profile building</text>
+  <text x="856" y="455" text-anchor="middle" font-size="10" fill="#94a3b8">• Hybrid search</text>
+</svg>

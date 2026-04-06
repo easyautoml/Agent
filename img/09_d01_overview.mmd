@@ -1,0 +1,42 @@
+flowchart TB
+    classDef user  fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef omx   fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef skill fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef store fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+    classDef agent fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+
+    USER["Developer\n(you)"]:::user
+
+    subgraph OMX["oh-my-codex layer"]
+        CLI["omx CLI\n(TypeScript)"]:::omx
+        AGENTS["AGENTS.md\norchestration brain"]:::omx
+        CFG["config.toml\n(merged by omx setup)"]:::omx
+        HOOK["Notify hook\n+ HUD statusline"]:::omx
+    end
+
+    subgraph SKILLS["Skills  (workflow patterns)"]
+        DI["$deep-interview\nSocratic clarification"]:::skill
+        RP["$ralplan\nConsensus planning"]:::skill
+        RH["$ralph\nPersistence loop"]:::skill
+        TM["$team\nParallel agents"]:::skill
+        AP["$autopilot\nFull pipeline"]:::skill
+    end
+
+    subgraph EXEC["Execution Engines"]
+        CODEX["OpenAI Codex CLI\n(main agent)"]:::agent
+        CLAUDE["Anthropic Claude CLI\n(optional worker)"]:::agent
+        TMUX["tmux / psmux\n(parallel panes)"]:::agent
+    end
+
+    subgraph STATE[".omx/  persistent state"]
+        PLANS["plans/\nprd-*.md  test-spec-*.md"]:::store
+        TEAM_S["state/team/\ntask queue + worker state"]:::store
+        MEM["project-memory.json\ncross-session context"]:::store
+        LOGS["logs/\naudit trail (JSONL)"]:::store
+    end
+
+    USER -->|"omx --madmax"| OMX
+    OMX --> SKILLS
+    SKILLS --> EXEC
+    EXEC <-->|"MCP tools\nread/write"| STATE
+    STATE -->|"injected at\nsession start"| EXEC

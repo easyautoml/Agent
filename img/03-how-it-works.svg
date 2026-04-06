@@ -1,0 +1,115 @@
+<svg viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <linearGradient id="step1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0891b2"/>
+      <stop offset="100%" style="stop-color:#0e7490"/>
+    </linearGradient>
+    <linearGradient id="step2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="step3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b45309"/>
+      <stop offset="100%" style="stop-color:#92400e"/>
+    </linearGradient>
+    <linearGradient id="step4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#065f46"/>
+      <stop offset="100%" style="stop-color:#047857"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+  </defs>
+  <rect width="960" height="440" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="44" text-anchor="middle" font-size="24" font-weight="700" fill="#f1f5f9">How Supermemory Works — Step by Step</text>
+  <text x="480" y="68" text-anchor="middle" font-size="14" fill="#94a3b8">4 simple steps that happen automatically, every time you chat</text>
+
+  <!-- Step cards row -->
+  <!-- STEP 1 -->
+  <rect x="30" y="96" width="196" height="300" rx="16" fill="#164e63" stroke="#0891b2" stroke-width="1.5"/>
+  <circle cx="128" cy="126" r="22" fill="url(#step1)"/>
+  <text x="128" y="132" text-anchor="middle" font-size="18" font-weight="800" fill="white">1</text>
+  <text x="128" y="168" text-anchor="middle" font-size="32">💬</text>
+  <text x="128" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">You Talk</text>
+  <text x="128" y="222" text-anchor="middle" font-size="11" fill="#94a3b8">Normally. No special</text>
+  <text x="128" y="238" text-anchor="middle" font-size="11" fill="#94a3b8">commands needed.</text>
+  <rect x="46" y="258" width="164" height="118" rx="10" fill="#0f2030"/>
+  <text x="128" y="278" text-anchor="middle" font-size="10" fill="#67e8f9" font-style="italic">Example:</text>
+  <text x="128" y="295" text-anchor="middle" font-size="10" fill="#e0f2fe">"I'm working on a</text>
+  <text x="128" y="311" text-anchor="middle" font-size="10" fill="#e0f2fe">React app, I love</text>
+  <text x="128" y="327" text-anchor="middle" font-size="10" fill="#e0f2fe">TypeScript and I just</text>
+  <text x="128" y="343" text-anchor="middle" font-size="10" fill="#e0f2fe">moved to New York"</text>
+  <text x="128" y="368" text-anchor="middle" font-size="11" fill="#67e8f9">No setup required</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="230" y1="248" x2="274" y2="248" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- STEP 2 -->
+  <rect x="278" y="96" width="196" height="300" rx="16" fill="#2e1065" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="376" cy="126" r="22" fill="url(#step2)"/>
+  <text x="376" y="132" text-anchor="middle" font-size="18" font-weight="800" fill="white">2</text>
+  <text x="376" y="168" text-anchor="middle" font-size="32">🧠</text>
+  <text x="376" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">Extract Facts</text>
+  <text x="376" y="222" text-anchor="middle" font-size="11" fill="#94a3b8">AI reads &amp; pulls out</text>
+  <text x="376" y="238" text-anchor="middle" font-size="11" fill="#94a3b8">the important stuff</text>
+  <rect x="294" y="258" width="164" height="118" rx="10" fill="#1a0b3a"/>
+  <text x="376" y="278" text-anchor="middle" font-size="10" fill="#c084fc" font-style="italic">Extracts:</text>
+  <text x="376" y="296" text-anchor="middle" font-size="10" fill="#e9d5ff">• "Works on React"</text>
+  <text x="376" y="312" text-anchor="middle" font-size="10" fill="#e9d5ff">• "Loves TypeScript"</text>
+  <text x="376" y="328" text-anchor="middle" font-size="10" fill="#e9d5ff">• "Lives in New York"</text>
+  <text x="376" y="344" text-anchor="middle" font-size="10" fill="#94a3b8">Ignores: "I", "and", small</text>
+  <text x="376" y="358" text-anchor="middle" font-size="10" fill="#94a3b8">talk, filler words</text>
+  <text x="376" y="376" text-anchor="middle" font-size="11" fill="#c084fc">Smart filtering</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="478" y1="248" x2="522" y2="248" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- STEP 3 -->
+  <rect x="526" y="96" width="196" height="300" rx="16" fill="#451a03" stroke="#b45309" stroke-width="1.5"/>
+  <circle cx="624" cy="126" r="22" fill="url(#step3)"/>
+  <text x="624" y="132" text-anchor="middle" font-size="18" font-weight="800" fill="white">3</text>
+  <text x="624" y="168" text-anchor="middle" font-size="32">🔄</text>
+  <text x="624" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">Update Memory</text>
+  <text x="624" y="222" text-anchor="middle" font-size="11" fill="#94a3b8">Check, update, resolve</text>
+  <text x="624" y="238" text-anchor="middle" font-size="11" fill="#94a3b8">conflicts automatically</text>
+  <rect x="542" y="258" width="164" height="118" rx="10" fill="#1c0d00"/>
+  <text x="624" y="278" text-anchor="middle" font-size="10" fill="#fb923c" font-style="italic">Smart logic:</text>
+  <text x="624" y="296" text-anchor="middle" font-size="10" fill="#fed7aa">Old: "Lives in SF" →</text>
+  <text x="624" y="312" text-anchor="middle" font-size="10" fill="#fed7aa">New: "Lives in New York"</text>
+  <text x="624" y="328" text-anchor="middle" font-size="10" fill="#fed7aa">→ Updates automatically</text>
+  <text x="624" y="346" text-anchor="middle" font-size="10" fill="#fb923c">Temp facts auto-expire:</text>
+  <text x="624" y="362" text-anchor="middle" font-size="10" fill="#94a3b8">"exam tomorrow" → deleted</text>
+  <text x="624" y="376" text-anchor="middle" font-size="11" fill="#fb923c">Always up to date</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="726" y1="248" x2="770" y2="248" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- STEP 4 -->
+  <rect x="774" y="96" width="156" height="300" rx="16" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <circle cx="852" cy="126" r="22" fill="url(#step4)"/>
+  <text x="852" y="132" text-anchor="middle" font-size="18" font-weight="800" fill="white">4</text>
+  <text x="852" y="168" text-anchor="middle" font-size="32">✨</text>
+  <text x="852" y="202" text-anchor="middle" font-size="14" font-weight="700" fill="#f1f5f9">AI Knows You</text>
+  <text x="852" y="222" text-anchor="middle" font-size="11" fill="#94a3b8">Next chat starts with</text>
+  <text x="852" y="238" text-anchor="middle" font-size="11" fill="#94a3b8">full context already in</text>
+  <rect x="790" y="258" width="128" height="118" rx="10" fill="#012516"/>
+  <text x="852" y="278" text-anchor="middle" font-size="10" fill="#34d399" font-style="italic">AI already knows:</text>
+  <text x="852" y="296" text-anchor="middle" font-size="10" fill="#a7f3d0">✓ Your projects</text>
+  <text x="852" y="312" text-anchor="middle" font-size="10" fill="#a7f3d0">✓ Your preferences</text>
+  <text x="852" y="328" text-anchor="middle" font-size="10" fill="#a7f3d0">✓ Your location</text>
+  <text x="852" y="344" text-anchor="middle" font-size="10" fill="#a7f3d0">✓ Past context</text>
+  <text x="852" y="362" text-anchor="middle" font-size="10" fill="#a7f3d0">in ~50ms</text>
+  <text x="852" y="376" text-anchor="middle" font-size="11" fill="#34d399">Instant context</text>
+
+  <!-- Bottom timeline arrow -->
+  <line x1="30" y1="418" x2="930" y2="418" stroke="#334155" stroke-width="1.5"/>
+  <polygon points="930,414 942,418 930,422" fill="#334155"/>
+  <text x="100" y="432" font-size="11" fill="#64748b">First conversation</text>
+  <text x="760" y="432" font-size="11" fill="#64748b">Every future conversation</text>
+</svg>

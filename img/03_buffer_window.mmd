@@ -1,0 +1,7 @@
+graph LR
+    T1["Turn 1 - Dropped"] -. dropped .-> WIN
+    T2["Turn 2 - Dropped"] -. dropped .-> WIN
+    T3["Turn 3 - Kept"] --> WIN["Window k=3"]
+    T4["Turn 4 - Kept"] --> WIN
+    T5["Turn 5 - Kept"] --> WIN
+    WIN -->|"Only last 3 turns"| LLM["LLM"]

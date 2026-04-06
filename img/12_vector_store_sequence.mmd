@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant User
+    participant Memory
+    participant VectorDB as "Vector Store"
+    participant LLM
+
+    User->>Memory: Turn 1: I love sushi
+    Memory->>VectorDB: Store embedding of Turn 1
+
+    User->>Memory: Turn 2: I enjoy hiking in the mountains
+    Memory->>VectorDB: Store embedding of Turn 2
+
+    Note over Memory,VectorDB: ...48 more turns about work, family, travel...
+
+    User->>Memory: Turn 50: What food do I enjoy?
+    Memory->>VectorDB: Search for messages similar to food/enjoyment
+    VectorDB->>Memory: Best match: Turn 1 - I love sushi
+    Memory->>LLM: Inject: User previously said: I love sushi
+    LLM->>User: You mentioned you love sushi!

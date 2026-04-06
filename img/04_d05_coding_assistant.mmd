@@ -1,0 +1,24 @@
+graph LR
+    DEV["Developer"] --> CA["Coding Assistant"]
+
+    subgraph WIN["BufferWindowMemory — k=5"]
+        T1["Turn -5: def add(a,b)"]
+        T2["Turn -4: return a+b"]
+        T3["Turn -3: Add type hints"]
+        T4["Turn -2: def add(a: int, b: int)"]
+        T5["Turn -1 (latest): How to test it?"]
+        OLD["Turn -6+ DROPPED"]
+    end
+
+    subgraph INJECT["Injected into Prompt"]
+        P["System: You are a coding assistant\n--- Recent Context ---\n[last 5 turns]\n--- Current ---\nUser: Can you add error handling?"]
+    end
+
+    CA -->|"load last k=5"| WIN
+    WIN -->|"prepend"| INJECT
+    INJECT --> CA
+
+    style DEV fill:#4A90D9,color:#fff
+    style CA fill:#27AE60,color:#fff
+    style OLD fill:#FDEDEC
+    style WIN fill:#EBF5FB

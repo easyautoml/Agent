@@ -1,0 +1,25 @@
+graph TD
+    subgraph BAD["Anti-Patterns — What Not To Do"]
+        AP1["Buffer grows forever\nContext window explodes\nCost spikes"]
+        AP2["No session isolation\nAlice sees Bob's history\nPrivacy breach"]
+        AP3["All memory in prompt\nSlow retrieval\nIrrelevant context injected"]
+        AP4["No persistence\nServer restart = lost history\nUsers re-explain everything"]
+        AP5["Single global scope\n(CrewAI)\nAgents overwrite each other\nChaos"]
+    end
+
+    subgraph GOOD["Correct Patterns — What To Do"]
+        GP1["SummaryBufferMemory\nCap tokens, compress old\nPredictable cost"]
+        GP2["session_id per user\nRedis key isolation\nPrivacy guaranteed"]
+        GP3["VectorStore retrieval\nTop-k semantic search\nOnly relevant context"]
+        GP4["Redis or PostgreSQL backend\nPersists across restarts\nUsers never repeat"]
+        GP5["Scoped memory per agent\n/crew/agent-name\nClean isolation"]
+    end
+
+    AP1 -->|"fix with"| GP1
+    AP2 -->|"fix with"| GP2
+    AP3 -->|"fix with"| GP3
+    AP4 -->|"fix with"| GP4
+    AP5 -->|"fix with"| GP5
+
+    style BAD fill:#FDEDEC
+    style GOOD fill:#E9F7EF

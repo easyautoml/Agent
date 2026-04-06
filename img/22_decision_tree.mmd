@@ -1,0 +1,29 @@
+flowchart TD
+    START([Your Use Case]) --> Q1{Single agent\nor Multi-agent?}
+
+    Q1 -->|Single Agent| Q2{How long is\nthe conversation?}
+    Q1 -->|Multi-Agent Crew| CREWAI[Use CrewAI Memory\nwith scoped MemoryRecords]
+
+    Q2 -->|Short - under 20 turns| BUF[ConversationBufferMemory\nKeep everything raw]
+    Q2 -->|Medium - only recent matters| WIN[ConversationBufferWindowMemory\nSliding window of last N turns]
+    Q2 -->|Long - need token control| Q3{What matters more?}
+
+    Q3 -->|Meaning over detail| SUM[ConversationSummaryMemory\nCompress to rolling summary]
+    Q3 -->|Detail + context| SUMBUF[ConversationSummaryBufferMemory\nSummary + recent raw messages]
+    Q3 -->|Precise token control| TOK[ConversationTokenBufferMemory\nPrune oldest by token count]
+
+    Q2 -->|Very long - search by meaning| VEC[VectorStoreRetrieverMemory\nSemantic similarity search]
+
+    Q2 -->|Track specific people/places| ENT[ConversationEntityMemory\nBuilds entity knowledge base]
+
+    Q1 -->|Both approaches| COMB[CombinedMemory\nStack multiple types together]
+
+    style BUF fill:#4a9eff,color:#fff
+    style WIN fill:#4a9eff,color:#fff
+    style TOK fill:#ff9900,color:#fff
+    style SUM fill:#33cc66,color:#fff
+    style SUMBUF fill:#33cc66,color:#fff
+    style ENT fill:#cc44cc,color:#fff
+    style VEC fill:#cc4444,color:#fff
+    style CREWAI fill:#ff6600,color:#fff
+    style COMB fill:#666666,color:#fff

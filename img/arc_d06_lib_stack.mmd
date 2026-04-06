@@ -1,0 +1,38 @@
+graph TD
+    subgraph ORCH["Orchestration"]
+        O1["LangGraph\nReAct agent graph\nState machine + tool loop\nCheckpointing per run"]
+    end
+
+    subgraph LLM["LLM Layer"]
+        L1["langchain-anthropic\nChatAnthropic wrapper\nSonnet 4.6 — reasoning tasks\nHaiku 4.5 — fast/cheap tasks"]
+    end
+
+    subgraph TOOLS_LIB["Tool Execution"]
+        T1["langchain core tools\n@tool decorator\nStructured input/output"]
+        T2["openpyxl\nQ&A Excel read/write"]
+        T3["pypdf, python-docx\npython-pptx, pytesseract\nFile extraction"]
+        T4["chromadb\nVector store client"]
+        T5["langchain text splitters\nRecursiveCharacterTextSplitter\nMarkdownHeaderTextSplitter"]
+    end
+
+    subgraph SLACK_LIB["Slack Integration"]
+        S1["slack_bolt\nApp + event handlers"]
+        S2["slack_sdk SocketModeClient\nWebSocket connection management"]
+    end
+
+    subgraph INFRA_LIB["Infrastructure"]
+        I1["pydantic-settings\nConfig management"]
+        I2["asyncio + concurrent.futures\nBackground task execution"]
+        I3["SQLite (stdlib)\nState + job persistence"]
+        I4["watchdog\nFile system watcher (common/knowledge re-index)"]
+    end
+
+    ORCH --> LLM
+    ORCH --> TOOLS_LIB
+    SLACK_LIB --> ORCH
+
+    style ORCH fill:#FEF9E7
+    style LLM fill:#EBF5FB
+    style TOOLS_LIB fill:#E9F7EF
+    style SLACK_LIB fill:#F5EEF8
+    style INFRA_LIB fill:#FDEDEC

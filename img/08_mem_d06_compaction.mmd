@@ -1,0 +1,42 @@
+flowchart TD
+    classDef check fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef proc  fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef model fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef out   fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+
+    START(["New user message arrives"])
+
+    CHK{"Does history fit\nin model context\nwindow?"}:::check
+
+    SEND["Send to model\nas-is"]:::proc
+
+    COMPACT["Trigger compaction"]:::proc
+
+    subgraph INLINE["Option A — Local inline compaction"]
+        direction TB
+        IL1["Remove oldest history item\n(retry until it fits)"]:::proc
+        IL2["Send trimmed history\nto model with compact prompt"]:::model
+        IL3["Extract summary from\nlast assistant message"]:::proc
+        IL4["Collect up to 20,000 tokens\nof recent user messages"]:::proc
+        IL5["Rebuild history:\nsummary + recent messages\n+ ghost snapshots"]:::out
+        IL1 --> IL2 --> IL3 --> IL4 --> IL5
+    end
+
+    subgraph REMOTE["Option B — Remote model compaction"]
+        direction TB
+        RM1["Send full history\nto OpenAI compaction API"]:::model
+        RM2["API returns\ncompressed history"]:::model
+        RM3["Filter: drop developer msgs\nkeep assistant + real user msgs"]:::proc
+        RM4["Inject realtime context\ninto compressed history"]:::proc
+        RM1 --> RM2 --> RM3 --> RM4
+    end
+
+    DONE(["Compacted history\nreplaces original\nSession continues"])
+
+    START --> CHK
+    CHK -->|"Yes, fits"| SEND
+    CHK -->|"No, too large"| COMPACT
+    COMPACT --> INLINE
+    COMPACT --> REMOTE
+    INLINE --> DONE
+    REMOTE --> DONE

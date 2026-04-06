@@ -1,0 +1,32 @@
+graph TD
+    Q["Research Query"] --> RA["Research Agent"]
+
+    subgraph RECALL["VectorStoreRetrieverMemory"]
+        EMB["Embed query\n-> 1536-float vector"]
+        SRCH["Cosine similarity search\nTop-k=5 most relevant"]
+        RSLT["Retrieved chunks:\n'Paper X: AI memory uses...'\n'Meeting Y: discussed RAG...'"]
+        EMB --> SRCH --> RSLT
+    end
+
+    subgraph INDEX["Vector Index — Pinecone / FAISS"]
+        V1["Vec: past research note 1"]
+        V2["Vec: paper summary 2"]
+        V3["Vec: meeting transcript 3"]
+        VN["Vec: ... thousands more"]
+    end
+
+    subgraph SAVE["Save new findings"]
+        NS["Embed new finding\nStore in index\nNo token limit"]
+    end
+
+    RA -->|"recall(query)"| EMB
+    SRCH <-->|"ANN search"| INDEX
+    RSLT -->|"inject as context"| RA
+    RA -->|"save_context()"| NS
+    NS --> INDEX
+
+    style Q fill:#4A90D9,color:#fff
+    style RA fill:#27AE60,color:#fff
+    style RECALL fill:#F5EEF8
+    style INDEX fill:#EBF5FB
+    style SAVE fill:#E9F7EF

@@ -1,0 +1,11 @@
+flowchart LR
+    E1["Existing:\nClient John likes email"] --> SIM
+    NEW["New:\nJohn Smith prefers email communication"] --> SIM
+    SIM{"Similarity?\n0.91 > threshold 0.85"}
+    SIM -->|"Yes, similar enough"| LLM_C["LLM Decision:\nMerge, Update, or Keep?"]
+    LLM_C --> RESULT["Updated record:\nJohn Smith (client) prefers\nemail communication"]
+
+    E2["Existing:\nMeeting on Monday"] --> SIM2
+    NEW2["New:\nBudget is $500k"] --> SIM2
+    SIM2{"Similarity?\n0.08 < threshold"}
+    SIM2 -->|"No, unrelated"| SAVE["Save as new\nseparate record"]

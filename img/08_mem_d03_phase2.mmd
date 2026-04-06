@@ -1,0 +1,41 @@
+flowchart TD
+    classDef db    fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef fs    fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef agent fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+    classDef skip  fill:#3e1a1a,stroke:#e74c3c,color:#ffe0e0
+
+    START(["Phase 1 done"])
+
+    CLAIM{"Try to claim\nglobal Phase 2 job\n(mutual exclusion)"}:::db
+
+    SKIP_DIRTY["Skip:\nno new data\n(watermark unchanged)"]:::skip
+    SKIP_RUN["Skip:\nanother consolidation\nalready running"]:::skip
+
+    SEL["Query SQLite:\nselect top-N memories\nranked by usage_count\n+ recency"]:::db
+
+    SYNC["Sync filesystem artifacts\n~/.codex/memories/\n├── raw_memories.md\n└── rollout_summaries/*.md"]:::fs
+
+    DIFF["Compute selection diff\nvs previous Phase 2:\n✚ added  ✔ retained  ✖ removed"]:::db
+
+    SPAWN["Spawn consolidation\nsub-agent\n(gpt-5.3-codex, reasoning=medium)"]:::agent
+
+    subgraph AGENT_SCOPE["Sub-agent constraints"]
+        A1["cwd = memory_root\n(not user project)"]:::agent
+        A2["sandbox = workspace-write\nonly ~/.codex writable\nno network"]:::agent
+        A3["approval = Never\n(fully automatic)"]:::agent
+        A4["memory generation = OFF\n(no recursion)"]:::agent
+    end
+
+    WRITE["Agent writes to disk:\n- MEMORY.md  (curated, high signal)\n- memory_summary.md  (compact)\n- skills/*.md  (reusable patterns)"]:::fs
+
+    HEART["Heartbeat lease\nevery 90 seconds\nuntil agent finishes"]:::db
+
+    MARK["Mark job succeeded\nstore watermark\n(max source_updated_at)"]:::db
+
+    START --> CLAIM
+    CLAIM -->|"SkippedNotDirty"| SKIP_DIRTY
+    CLAIM -->|"SkippedRunning"| SKIP_RUN
+    CLAIM -->|"Claimed"| SEL
+    SEL --> SYNC --> DIFF --> SPAWN
+    SPAWN --> AGENT_SCOPE --> WRITE
+    WRITE --> HEART --> MARK

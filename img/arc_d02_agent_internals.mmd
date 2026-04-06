@@ -1,0 +1,40 @@
+graph TD
+    IN["User message\n@bot Here is the requirement..."]
+
+    subgraph REACT["ReAct Orchestrator — LangGraph"]
+        R1["Reason\nWhat do I need to do?"]
+        R2["Act\ncall a tool"]
+        R3["Observe\nread tool result"]
+        R4["Reason again\nis the task done?"]
+        DONE["Done\npost reply to Slack"]
+        R1 --> R2 --> R3 --> R4
+        R4 -->|"not done"| R1
+        R4 -->|"done"| DONE
+    end
+
+    subgraph TOOLSET["Tools available to agent"]
+        T1["search_workspace_docs\nVector search on project documents"]
+        T2["search_common_knowledge\nVector search on standards + templates"]
+        T3["read_clean_doc\nRead a full processed Markdown file"]
+        T4["read_feedback\nLoad all active feedback instructions"]
+        T5["generate_qa_excel\nCreate Q&A Excel with openpyxl"]
+        T6["read_qa_answers\nParse answered Excel from raw/"]
+        T7["write_proposal\nSave versioned proposal Markdown to output/"]
+        T8["post_to_slack\nPost message or file to channel"]
+        T9["check_job_status\nQuery jobs.sqlite for pending files"]
+    end
+
+    subgraph MEMORY["Agent Memory"]
+        M1["Short-term\nLangGraph state dict\n(current run only)"]
+        M2["Long-term\nSQLite agent.sqlite\nconversation history + Q&A answers\n(persists across sessions)"]
+        M3["Workspace context\nfeedback.jsonl\nactive instructions"]
+    end
+
+    IN --> REACT
+    REACT --> TOOLSET
+    REACT <--> MEMORY
+
+    style REACT fill:#FEF9E7
+    style TOOLSET fill:#EBF5FB
+    style MEMORY fill:#E9F7EF
+    style DONE fill:#27AE60,color:#fff

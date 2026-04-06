@@ -1,0 +1,34 @@
+sequenceDiagram
+    participant U  as You
+    participant L  as omx (Leader)
+    participant S  as .omx/state/team/
+    participant W0 as Worker 0 (tmux pane)
+    participant W1 as Worker 1 (tmux pane)
+    participant W2 as Worker 2 (tmux pane)
+
+    U->>L: $team 3:executor "implement feature"
+
+    L->>S: write config.json + manifest.json + task queue
+    L->>W0: tmux split-window → launch Codex (executor role)
+    L->>W1: tmux split-window → launch Codex (executor role)
+    L->>W2: tmux split-window → launch Codex (executor role)
+
+    L->>S: write inbox.md for each worker (task assignment)
+
+    W0->>S: read inbox.md → pick task-001
+    W1->>S: read inbox.md → pick task-002
+    W2->>S: read inbox.md → pick task-003
+
+    loop Poll progress every N seconds
+        L->>W0: tmux capture-pane → read output
+        L->>W1: tmux capture-pane → read output
+        L->>W2: tmux capture-pane → read output
+        W0->>S: write progress.json (task-001 done)
+        L->>S: read progress → rebalance → assign task-004 to W0
+    end
+
+    W0->>S: all tasks done
+    W1->>S: all tasks done
+    W2->>S: all tasks done
+
+    L->>U: team complete → shutdown panes

@@ -1,0 +1,25 @@
+graph TD
+    subgraph CATS["5 Fact Categories — DeerFlow Model"]
+        C1["preference\n─────────\nHow the user likes things done\n'Prefers bullet points'\n'Wants concise answers'\n'Hates verbose explanations'"]
+        C2["knowledge\n─────────\nWhat the user knows\n'Expert in Rust'\n'Familiar with k8s'\n'New to React'"]
+        C3["context\n─────────\nSituation and environment\n'Works at Acme startup'\n'Team of 4 engineers'\n'Uses Ubuntu 22.04 + Docker'"]
+        C4["behavior\n─────────\nHow the user acts\n'Runs tests before committing'\n'Prefers async communication'\n'Checks docs before asking'"]
+        C5["goal\n─────────\nWhat the user is trying to achieve\n'Building a TypeScript SDK'\n'Learning machine learning'\n'Migrating from MySQL to Postgres'"]
+    end
+
+    subgraph INJECT["How each category is used at injection time"]
+        I1["preference → format AI responses correctly"]
+        I2["knowledge → calibrate explanation depth"]
+        I3["context → pick relevant examples"]
+        I4["behavior → predict what user will do next"]
+        I5["goal → frame suggestions toward the target"]
+    end
+
+    C1 --> I1
+    C2 --> I2
+    C3 --> I3
+    C4 --> I4
+    C5 --> I5
+
+    style CATS fill:#EBF5FB
+    style INJECT fill:#E9F7EF

@@ -1,0 +1,29 @@
+graph LR
+    subgraph HIGH["Confidence 0.9-1.0 — Explicitly Stated"]
+        H1["User directly says the fact\n'I work at Acme'\n'My role is senior engineer'\n'I use Python not JavaScript'"]
+        H2["Treat as certain\nSave immediately\nHigh weight in recall"]
+    end
+
+    subgraph MED["Confidence 0.7-0.8 — Strongly Implied"]
+        M1["Fact is clear from actions\nbut not stated directly\nUser constantly uses TypeScript examples\nUser always tests with pytest"]
+        M2["Save with confidence marker\nVerify if contradicted later"]
+    end
+
+    subgraph LOW["Confidence 0.5-0.6 — Inferred Pattern (Use Sparingly)"]
+        L1["Tentative inference\nfrom indirect signals\nUser may prefer async work\nbased on response timing patterns"]
+        L2["Save cautiously\nFlag as low confidence\nEasy to override"]
+    end
+
+    subgraph REJECT["Below 0.5 — Do Not Save"]
+        R1["Too speculative\nCould be wrong more than right\nNoise outweighs signal"]
+    end
+
+    HIGH --> H2
+    MED --> M2
+    LOW --> L2
+    REJECT -->|"discard"| NONE["Not saved"]
+
+    style HIGH fill:#27AE60,color:#fff
+    style MED fill:#F39C12,color:#fff
+    style LOW fill:#E67E22,color:#fff
+    style REJECT fill:#E74C3C,color:#fff

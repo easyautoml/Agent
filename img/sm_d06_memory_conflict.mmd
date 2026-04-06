@@ -1,0 +1,25 @@
+graph TD
+    A["User says:\n'I used to live in NYC\nbut I just moved\nto San Francisco'"]
+
+    B["Supermemory extracts:\nFact A — 'Lives in San Francisco'\nFact B — 'Used to live in NYC'"]
+
+    C{"Check existing\nmemories"}
+
+    D["Found old memory:\n'Lives in NYC'"]
+
+    E{"Conflict\ndetected?"}
+
+    F["YES — same topic,\ndifferent value"]
+
+    G["Resolution rules:\n1. New > Old\n2. Recent > Historical\n3. Explicit > Implied"]
+
+    H["Action: REPLACE\nDelete 'Lives in NYC'\nSave 'Lives in San Francisco'"]
+
+    I["Memory bank:\nStatic: Lives in San Francisco\nContext: Recently moved from NYC"]
+
+    A --> B --> C --> D --> E --> F --> G --> H --> I
+
+    style A fill:#EBF5FB
+    style F fill:#FDEDEC
+    style H fill:#E9F7EF
+    style I fill:#27AE60,color:#fff

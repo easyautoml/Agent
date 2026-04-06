@@ -1,0 +1,86 @@
+<svg viewBox="0 0 900 580" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EFF6FF"/>
+      <stop offset="100%" style="stop-color:#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="agentBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E3A8A"/>
+      <stop offset="100%" style="stop-color:#1D4ED8"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB"/>
+    </marker>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000020"/></filter>
+  </defs>
+
+  <rect width="900" height="580" fill="url(#bg)" rx="16"/>
+  <text x="450" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E3A8A">The Lead Agent — The Brain of DeerFlow</text>
+  <text x="450" y="56" text-anchor="middle" font-size="12" fill="#64748B">How the main AI decides what to do and how to do it</text>
+
+  <!-- INPUT on left -->
+  <rect x="24" y="190" width="160" height="60" rx="12" fill="#374151" filter="url(#sh)"/>
+  <text x="104" y="217" text-anchor="middle" font-size="13" font-weight="bold" fill="white">📨 Your Message</text>
+  <text x="104" y="237" text-anchor="middle" font-size="11" fill="#D1D5DB">"Research EVs"</text>
+  <line x1="184" y1="220" x2="226" y2="220" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Main Agent Box -->
+  <rect x="228" y="80" width="448" height="400" rx="16" fill="white" filter="url(#sh)" stroke="#BFDBFE" stroke-width="2"/>
+  <rect x="228" y="80" width="448" height="50" rx="16" fill="url(#agentBg)"/>
+  <rect x="228" y="112" width="448" height="18" fill="url(#agentBg)"/>
+  <text x="452" y="113" text-anchor="middle" font-size="16" font-weight="bold" fill="white">🧠  LEAD AGENT</text>
+
+  <!-- Internal steps -->
+  <!-- Step A -->
+  <rect x="252" y="148" width="400" height="50" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="272" y="169" font-size="13" font-weight="bold" fill="#1E40AF">① Load Memory</text>
+  <text x="272" y="188" font-size="11" fill="#64748B">"User prefers bullet points and concise answers"</text>
+
+  <!-- Step B -->
+  <rect x="252" y="210" width="400" height="50" rx="10" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.2"/>
+  <text x="272" y="231" font-size="13" font-weight="bold" fill="#15803D">② Load Skill</text>
+  <text x="272" y="250" font-size="11" fill="#64748B">Auto-selects "deep-research" + "report-generation" skills</text>
+
+  <!-- Step C -->
+  <rect x="252" y="272" width="400" height="50" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.2"/>
+  <text x="272" y="293" font-size="13" font-weight="bold" fill="#C2410C">③ Pick Tools</text>
+  <text x="272" y="312" font-size="11" fill="#64748B">web_search, write_file, bash, present_files</text>
+
+  <!-- Step D -->
+  <rect x="252" y="334" width="400" height="50" rx="10" fill="#FDF4FF" stroke="#E9D5FF" stroke-width="1.2"/>
+  <text x="272" y="355" font-size="13" font-weight="bold" fill="#7E22CE">④ Plan &amp; Think (LangGraph loop)</text>
+  <text x="272" y="374" font-size="11" fill="#64748B">Decides: "I need 2 sub-agents + bash to compile result"</text>
+
+  <!-- Step E -->
+  <rect x="252" y="396" width="400" height="66" rx="10" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1.2"/>
+  <text x="272" y="417" font-size="13" font-weight="bold" fill="#BE123C">⑤ Execute &amp; Respond</text>
+  <text x="272" y="436" font-size="11" fill="#64748B">Calls tools, runs sub-agents, waits for results,</text>
+  <text x="272" y="452" font-size="11" fill="#64748B">writes final answer + presents output files</text>
+
+  <!-- Output on right -->
+  <line x1="676" y1="280" x2="718" y2="280" stroke="#2563EB" stroke-width="2.5" marker-end="url(#arr)"/>
+  <rect x="720" y="240" width="156" height="78" rx="12" fill="#059669" filter="url(#sh)"/>
+  <text x="798" y="271" text-anchor="middle" font-size="13" font-weight="bold" fill="white">📄 Final Answer</text>
+  <text x="798" y="292" text-anchor="middle" font-size="11" fill="#D1FAE5">+ downloadable</text>
+  <text x="798" y="308" text-anchor="middle" font-size="11" fill="#D1FAE5">files &amp; charts</text>
+
+  <!-- Sub-agent callout below -->
+  <line x1="452" y1="480" x2="452" y2="524" stroke="#7C3AED" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+  <rect x="200" y="526" width="504" height="40" rx="10" fill="#7C3AED" filter="url(#sh)"/>
+  <text x="452" y="542" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🤝 May spawn up to 3 Sub-Agents in parallel</text>
+  <text x="452" y="558" text-anchor="middle" font-size="11" fill="#DDD6FE">Each sub-agent runs independently with its own tools and context</text>
+
+  <!-- Memory callout -->
+  <rect x="720" y="344" width="156" height="80" rx="12" fill="#7C3AED" filter="url(#sh)"/>
+  <text x="798" y="368" text-anchor="middle" font-size="12" font-weight="bold" fill="white">🧠 Memory</text>
+  <text x="798" y="388" text-anchor="middle" font-size="11" fill="#E9D5FF">Your profile +</text>
+  <text x="798" y="404" text-anchor="middle" font-size="11" fill="#E9D5FF">preferences</text>
+  <line x1="728" y1="384" x2="690" y2="368" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Skills callout -->
+  <rect x="720" y="440" width="156" height="68" rx="12" fill="#D97706" filter="url(#sh)"/>
+  <text x="798" y="462" text-anchor="middle" font-size="12" font-weight="bold" fill="white">📚 Skills</text>
+  <text x="798" y="480" text-anchor="middle" font-size="11" fill="#FDE68A">Instruction books</text>
+  <text x="798" y="496" text-anchor="middle" font-size="11" fill="#FDE68A">loaded on-demand</text>
+  <line x1="728" y1="470" x2="690" y2="430" stroke="#D97706" stroke-width="1.5" stroke-dasharray="4,3"/>
+</svg>

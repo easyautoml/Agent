@@ -1,0 +1,50 @@
+graph TD
+    SLACK["Slack\n(WebSocket / Socket Mode)"]
+
+    subgraph APP["Application Layer"]
+        EH["Event Handler\nslack_bolt SocketModeHandler"]
+        TQ["Task Queue\nasyncio Queue"]
+    end
+
+    subgraph WORKERS["Background Workers"]
+        WM["Workspace Manager\nprovision on first event"]
+        FC["File Collector\ndownload + classify"]
+        PP["Processing Pipeline\nextract → clean → embed"]
+        QAP["QA Parser\nread answered Excel"]
+    end
+
+    subgraph AGENT["Proposal Agent"]
+        ORC["Orchestrator\nLangGraph ReAct"]
+        TOOLS["Tools\nsearch, read, write, excel"]
+        MEM["Memory\nshort-term + long-term"]
+    end
+
+    subgraph STORAGE["Storage"]
+        FS["File System\nworkspaces/{name}/data/"]
+        VDB["Vector Store\nChromaDB per workspace\n+ common knowledge"]
+        SDB["SQLite\njobs + agent state"]
+        CK["Common Knowledge\ncommon/knowledge/*.md"]
+    end
+
+    SLACK -->|"WebSocket event"| EH
+    EH -->|"enqueue task"| TQ
+    TQ --> WM
+    TQ --> FC
+    FC -->|"new doc job"| PP
+    FC -->|"qa job"| QAP
+    PP --> FS
+    PP --> VDB
+    QAP --> SDB
+    ORC --> TOOLS
+    ORC --> MEM
+    TOOLS -->|"read/write"| FS
+    TOOLS -->|"semantic search"| VDB
+    TOOLS -->|"read standards"| CK
+    MEM --> SDB
+    ORC -->|"post reply"| SLACK
+
+    style SLACK fill:#4A154B,color:#fff
+    style APP fill:#EBF5FB
+    style WORKERS fill:#E9F7EF
+    style AGENT fill:#FEF9E7
+    style STORAGE fill:#F5EEF8

@@ -1,0 +1,139 @@
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#6366f1"/>
+    </marker>
+    <marker id="arrDown" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="960" height="620" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="40" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">Supermemory — Full System Architecture</text>
+
+  <!-- LAYER 1: Users / Clients -->
+  <rect x="30" y="64" width="900" height="96" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="64" y="86" font-size="11" font-weight="600" fill="#64748b" letter-spacing="2">CLIENTS  /  USERS</text>
+
+  <rect x="52" y="96" width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="107" y="116" text-anchor="middle" font-size="20">🧑‍💻</text>
+  <text x="107" y="135" text-anchor="middle" font-size="11" fill="#94a3b8">Web App</text>
+
+  <rect x="174" y="96" width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="229" y="116" text-anchor="middle" font-size="20">🤖</text>
+  <text x="229" y="135" text-anchor="middle" font-size="11" fill="#94a3b8">Claude / Cursor</text>
+
+  <rect x="296" y="96" width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="351" y="116" text-anchor="middle" font-size="20">🧩</text>
+  <text x="351" y="135" text-anchor="middle" font-size="11" fill="#94a3b8">AI SDK App</text>
+
+  <rect x="418" y="96" width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="473" y="116" text-anchor="middle" font-size="20">🐍</text>
+  <text x="473" y="135" text-anchor="middle" font-size="11" fill="#94a3b8">Python Agent</text>
+
+  <rect x="540" y="96" width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="595" y="116" text-anchor="middle" font-size="20">🌐</text>
+  <text x="595" y="135" text-anchor="middle" font-size="11" fill="#94a3b8">Browser Ext.</text>
+
+  <rect x="662" y="96" width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="717" y="116" text-anchor="middle" font-size="20">🚀</text>
+  <text x="717" y="135" text-anchor="middle" font-size="11" fill="#94a3b8">Raycast</text>
+
+  <rect x="784" y="96" width="110" height="50" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="839" y="116" text-anchor="middle" font-size="20">📱</text>
+  <text x="839" y="135" text-anchor="middle" font-size="11" fill="#94a3b8">Any REST API</text>
+
+  <!-- Arrows down -->
+  <line x1="480" y1="162" x2="480" y2="184" stroke="#6366f1" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- LAYER 2: Entry Points -->
+  <rect x="30" y="186" width="900" height="74" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="64" y="208" font-size="11" font-weight="600" fill="#a5b4fc" letter-spacing="2">ENTRY  POINTS</text>
+
+  <rect x="52" y="218" width="178" height="34" rx="8" fill="#312e81"/>
+  <text x="141" y="239" text-anchor="middle" font-size="12" fill="#c7d2fe">🔧  REST API  (v3)</text>
+
+  <rect x="244" y="218" width="178" height="34" rx="8" fill="#312e81"/>
+  <text x="333" y="239" text-anchor="middle" font-size="12" fill="#c7d2fe">⚡  MCP Server</text>
+
+  <rect x="436" y="218" width="178" height="34" rx="8" fill="#312e81"/>
+  <text x="525" y="239" text-anchor="middle" font-size="12" fill="#c7d2fe">📦  SDK (JS/Python)</text>
+
+  <rect x="628" y="218" width="178" height="34" rx="8" fill="#312e81"/>
+  <text x="717" y="239" text-anchor="middle" font-size="12" fill="#c7d2fe">🔌  Framework Tools</text>
+
+  <!-- Arrows down -->
+  <line x1="480" y1="262" x2="480" y2="282" stroke="#6366f1" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- LAYER 3: Core Engines -->
+  <rect x="30" y="284" width="900" height="128" rx="12" fill="#1a1035" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="64" y="305" font-size="11" font-weight="600" fill="#c084fc" letter-spacing="2">CORE  ENGINES</text>
+
+  <rect x="48" y="316" width="158" height="80" rx="10" fill="#2e1065" stroke="#7c3aed" stroke-width="1"/>
+  <text x="127" y="339" text-anchor="middle" font-size="22">🧠</text>
+  <text x="127" y="359" text-anchor="middle" font-size="13" font-weight="600" fill="#e9d5ff">Memory Engine</text>
+  <text x="127" y="375" text-anchor="middle" font-size="10" fill="#94a3b8">Extract, update,</text>
+  <text x="127" y="388" text-anchor="middle" font-size="10" fill="#94a3b8">resolve, forget</text>
+
+  <rect x="218" y="316" width="158" height="80" rx="10" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="297" y="339" text-anchor="middle" font-size="22">👤</text>
+  <text x="297" y="359" text-anchor="middle" font-size="13" font-weight="600" fill="#bfdbfe">User Profiles</text>
+  <text x="297" y="375" text-anchor="middle" font-size="10" fill="#94a3b8">Static + dynamic</text>
+  <text x="297" y="388" text-anchor="middle" font-size="10" fill="#94a3b8">user context</text>
+
+  <rect x="388" y="316" width="158" height="80" rx="10" fill="#1a3a3a" stroke="#06b6d4" stroke-width="1"/>
+  <text x="467" y="339" text-anchor="middle" font-size="22">🔍</text>
+  <text x="467" y="359" text-anchor="middle" font-size="13" font-weight="600" fill="#a5f3fc">Hybrid Search</text>
+  <text x="467" y="375" text-anchor="middle" font-size="10" fill="#94a3b8">RAG + memory</text>
+  <text x="467" y="388" text-anchor="middle" font-size="10" fill="#94a3b8">in one query</text>
+
+  <rect x="558" y="316" width="158" height="80" rx="10" fill="#1a3020" stroke="#10b981" stroke-width="1"/>
+  <text x="637" y="339" text-anchor="middle" font-size="22">🔌</text>
+  <text x="637" y="359" text-anchor="middle" font-size="13" font-weight="600" fill="#a7f3d0">Connectors</text>
+  <text x="637" y="375" text-anchor="middle" font-size="10" fill="#94a3b8">Drive, Gmail,</text>
+  <text x="637" y="388" text-anchor="middle" font-size="10" fill="#94a3b8">Notion, GitHub…</text>
+
+  <rect x="728" y="316" width="184" height="80" rx="10" fill="#3a1a00" stroke="#f59e0b" stroke-width="1"/>
+  <text x="820" y="339" text-anchor="middle" font-size="22">📄</text>
+  <text x="820" y="359" text-anchor="middle" font-size="13" font-weight="600" fill="#fde68a">File Processing</text>
+  <text x="820" y="375" text-anchor="middle" font-size="10" fill="#94a3b8">PDF, images,</text>
+  <text x="820" y="388" text-anchor="middle" font-size="10" fill="#94a3b8">video, code</text>
+
+  <!-- Arrows down -->
+  <line x1="480" y1="414" x2="480" y2="434" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- LAYER 4: Infrastructure -->
+  <rect x="30" y="436" width="900" height="104" rx="12" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="64" y="458" font-size="11" font-weight="600" fill="#64748b" letter-spacing="2">INFRASTRUCTURE  (Cloudflare)</text>
+
+  <rect x="52" y="470" width="190" height="54" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="147" y="493" text-anchor="middle" font-size="12" font-weight="600" fill="#f1f5f9">⚙️  Workers</text>
+  <text x="147" y="511" text-anchor="middle" font-size="10" fill="#64748b">Serverless API runtime</text>
+
+  <rect x="256" y="470" width="190" height="54" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="351" y="493" text-anchor="middle" font-size="12" font-weight="600" fill="#f1f5f9">🗄️  Hyperdrive DB</text>
+  <text x="351" y="511" text-anchor="middle" font-size="10" fill="#64748b">Memories + documents</text>
+
+  <rect x="460" y="470" width="190" height="54" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="555" y="493" text-anchor="middle" font-size="12" font-weight="600" fill="#f1f5f9">🤖  Cloudflare AI</text>
+  <text x="555" y="511" text-anchor="middle" font-size="10" fill="#64748b">Embeddings + vectors</text>
+
+  <rect x="664" y="470" width="190" height="54" rx="10" fill="#0f172a" stroke="#334155"/>
+  <text x="759" y="493" text-anchor="middle" font-size="12" font-weight="600" fill="#f1f5f9">⚡  KV Storage</text>
+  <text x="759" y="511" text-anchor="middle" font-size="10" fill="#64748b">Sessions + cache</text>
+
+  <!-- Arrows down -->
+  <line x1="480" y1="542" x2="480" y2="562" stroke="#475569" stroke-width="2" marker-end="url(#arrDown)"/>
+
+  <!-- LAYER 5: Auth / Monitoring -->
+  <rect x="30" y="564" width="900" height="44" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="64" y="582" font-size="11" font-weight="600" fill="#64748b" letter-spacing="2">AUTH  &amp;  MONITORING</text>
+  <text x="420" y="590" font-size="12" fill="#94a3b8">Better Auth (OAuth + API keys)</text>
+  <text x="700" y="590" font-size="12" fill="#94a3b8">Sentry (error tracking)</text>
+  <text x="168" y="590" font-size="12" fill="#94a3b8">Drizzle ORM</text>
+</svg>

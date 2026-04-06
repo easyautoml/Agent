@@ -1,0 +1,34 @@
+graph LR
+    subgraph BUDGET["Memory Budget — Character Limits"]
+        M1["MEMORY.md\n2,200 chars\n~800 tokens\n8-15 entries"]
+        M2["USER.md\n1,375 chars\n~500 tokens\n5-10 entries"]
+        M3["Total injected: ~1,300 tokens\nper session (fixed cost)"]
+    end
+
+    subgraph LEVEL["Usage Thresholds"]
+        L1["0-60%\nFreely add new entries"]
+        L2["60-80%\nAdd normally\nbut prefer updating existing"]
+        L3["80-100%\nConsolidate FIRST\nbefore adding new entries"]
+        L4["100% (full)\nTool returns error with\ncurrent entries shown\nAgent must replace/remove first"]
+    end
+
+    subgraph GOOD["Good Entries — Information Dense"]
+        G1["User runs macOS 14, uses Homebrew\nDocker Desktop + Podman. Shell: zsh.\nEditor: VS Code + Vim keybindings."]
+        G2["Project ~/code/api: Go 1.22\nsqlc for DB, chi router\nRun tests: 'make test'. CI: GitHub Actions."]
+        G3["Staging (10.0.1.50): SSH port 2222\nKey: ~/.ssh/staging_ed25519"]
+    end
+
+    subgraph BAD["Bad Entries — Avoid These"]
+        B1["User has a project\n(too vague)"]
+        B2["On January 5th, the user\nasked me to look at...\n(too verbose)"]
+        B3["Python 3.12 supports f-strings\n(easily web-searchable)"]
+    end
+
+    BUDGET --> LEVEL
+    GOOD -->|"model entries"| M1
+    BAD -->|"avoid"| NULL["Wasted budget"]
+
+    style L3 fill:#FEF9E7
+    style L4 fill:#FDEDEC
+    style GOOD fill:#E9F7EF
+    style BAD fill:#FDEDEC

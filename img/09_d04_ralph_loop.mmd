@@ -1,0 +1,36 @@
+flowchart TD
+    classDef exec  fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef check fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef fix   fill:#3e2a1a,stroke:#e67e22,color:#ffe0cc
+    classDef done  fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+
+    START(["Approved plan\n+ task description"])
+
+    EXEC["Execute\n(implement code,\nrun commands)"]:::exec
+
+    VERIFY{"Verify with\nfresh evidence\n(run tests / proof cmd)"}:::check
+
+    FIX["Fix issues\n(iteration N of max)"]:::fix
+
+    ARCH{"Architect\nsign-off\n(by risk tier)"}:::check
+
+    DESLOP["Deslop pass\n(clean up AI artifacts,\nremove dead code)"]:::exec
+
+    REVERIFY{"Re-verify\nafter deslop"}:::check
+
+    DONE(["Complete\nverified output"])
+
+    FAIL(["Escalate to user\n(max iterations hit)"])
+
+    START --> EXEC --> VERIFY
+    VERIFY -->|"Pass"| ARCH
+    VERIFY -->|"Fail"| FIX
+    FIX --> EXEC
+
+    ARCH -->|"Approved\n(or low-risk auto-pass)"| DESLOP
+    ARCH -->|"Issues found"| FIX
+
+    DESLOP --> REVERIFY
+    REVERIFY -->|"Pass"| DONE
+    REVERIFY -->|"Fail"| FIX
+    FIX -->|"Too many iterations"| FAIL

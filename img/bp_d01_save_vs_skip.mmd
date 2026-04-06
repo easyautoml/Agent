@@ -1,0 +1,25 @@
+graph TD
+    subgraph SAVE["SAVE — Worth Keeping"]
+        S1["User facts\n'I've written Go for 10 years'\n'I prefer bullets over prose'\n'I'm a data scientist'"]
+        S2["Corrections\n'Don't use sudo with docker'\n'Stop mocking the DB in tests'\n'Never add docstrings unless asked'"]
+        S3["Confirmations (non-obvious)\n'Yes, the single PR was right'\n'That approach worked perfectly'\n'Keep doing that'"]
+        S4["Project context\n(not derivable from code)\n'Auth rewrite: compliance issue'\n'Merge freeze starts Thursday'\n'Team of 4, deadline Mar 15'"]
+        S5["External pointers\n'Bugs in Linear project INGEST'\n'Grafana at grafana.internal/d/api'\n'Staging: SSH port 2222'"]
+    end
+
+    subgraph SKIP["SKIP — Do Not Save"]
+        D1["Code patterns / architecture\nDerivable by reading the files"]
+        D2["Git history\ngit log and git blame are authoritative"]
+        D3["Debugging fixes\nThe fix is in the code"]
+        D4["Already in CLAUDE.md\nRedundant — do not duplicate"]
+        D5["Ephemeral session state\nTemp paths, one-off debug context\nFile upload events"]
+        D6["Obvious / trivially searchable\n'Python 3.12 supports f-strings'\n'User asked about Python'"]
+    end
+
+    SAVE -->|"worth persisting"| MEM["Persistent Memory"]
+    SKIP -->|"discard"| NULL["Not saved"]
+
+    style SAVE fill:#E9F7EF
+    style SKIP fill:#FDEDEC
+    style MEM fill:#27AE60,color:#fff
+    style NULL fill:#95A5A6,color:#fff

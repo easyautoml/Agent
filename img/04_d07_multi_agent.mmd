@@ -1,0 +1,32 @@
+graph TD
+    subgraph CREW["CrewAI Research Crew"]
+        MGR["Manager Agent\nscope: /crew/mgr"]
+        RES["Researcher\nscope: /crew/researcher"]
+        ANA["Analyst\nscope: /crew/analyst"]
+        WRI["Writer\nscope: /crew/writer"]
+    end
+
+    subgraph SCOPES["Memory Scopes — LanceDB"]
+        SM["Shared Memory\nscope: /crew\n(all agents can read)"]
+        RM["Researcher Memory\nscope: /crew/researcher\n(private)"]
+        AM["Analyst Memory\nscope: /crew/analyst\n(private)"]
+        WM["Writer Memory\nscope: /crew/writer\n(private)"]
+    end
+
+    subgraph SLICE["MemorySlice — Manager reads all"]
+        MS["slice([/crew/researcher,\n/crew/analyst,\n/crew/writer])\n-> merged results ranked by score"]
+    end
+
+    RES <-->|"remember + recall"| RM
+    ANA <-->|"remember + recall"| AM
+    WRI <-->|"remember + recall"| WM
+    MGR -->|"cross-agent search"| MS
+    MS --> RM
+    MS --> AM
+    MS --> WM
+    CREW -->|"shared findings"| SM
+
+    style CREW fill:#EBF5FB
+    style SCOPES fill:#E9F7EF
+    style SLICE fill:#F5EEF8
+    style MGR fill:#E74C3C,color:#fff

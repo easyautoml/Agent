@@ -1,0 +1,37 @@
+graph TD
+    subgraph BUFFER["Buffer — Keep Everything"]
+        B1[Turn 1] --> BSTORE["Full History"]
+        B2[Turn 2] --> BSTORE
+        B3[Turn 3] --> BSTORE
+        BSTORE -->|"All turns"| BLLM["LLM"]
+    end
+
+    subgraph WINDOW["Window — Last K Turns (k=2)"]
+        W1["Turn 1 - dropped"]
+        W2[Turn 2] --> WSTORE["Recent Only"]
+        W3[Turn 3] --> WSTORE
+        WSTORE -->|"Turns 2-3 only"| WLLM["LLM"]
+    end
+
+    subgraph SUMMARY["Summary — Compress Old"]
+        S1["Turn 1+2+3 - Summary"] --> SSTORE["Summary Text"]
+        SSTORE -->|"Short summary"| SLLM["LLM"]
+    end
+
+    subgraph SUMBUF["Summary Buffer — Best of Both"]
+        SB1["Old turns - Summary"] --> SBSTORE["Summary + Recent Raw"]
+        SB2["Recent raw turns"] --> SBSTORE
+        SBSTORE -->|"Summary + detail"| SBLLM["LLM"]
+    end
+
+    subgraph ENTITY["Entity — Track Named Things"]
+        E1["Alice: doctor in Paris"] --> ESTORE["Entity Store"]
+        E2["Bob: engineer in NYC"] --> ESTORE
+        ESTORE -->|"Relevant entities"| ELLM["LLM"]
+    end
+
+    subgraph VECTOR["Vector — Search by Meaning"]
+        V1["All turns as vectors"] --> VSTORE["Vector DB"]
+        VQUERY["Current query"] --> VSTORE
+        VSTORE -->|"Top-k similar"| VLLM["LLM"]
+    end

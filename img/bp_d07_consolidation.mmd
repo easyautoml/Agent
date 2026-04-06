@@ -1,0 +1,35 @@
+graph TD
+    TRIG["Auto-Dream triggered\n(post-session, fire-and-forget)"]
+
+    subgraph PH1["Phase 1 — Orient"]
+        O1["ls memory directory"]
+        O2["Read MEMORY.md index"]
+        O3["Skim existing topic files"]
+    end
+
+    subgraph PH2["Phase 2 — Gather Signal"]
+        G1["Check daily logs (if KAIROS mode)"]
+        G2["Find drifted or stale facts"]
+        G3["Narrow grep on transcripts\nfor missing context"]
+    end
+
+    subgraph PH3["Phase 3 — Consolidate"]
+        C1["Merge new signal into topic files"]
+        C2["Avoid near-duplicates"]
+        C3["Convert relative → absolute dates\n'next Thursday' → '2026-04-10'"]
+        C4["Delete contradicted facts\n(new info defeats old)"]
+    end
+
+    subgraph PH4["Phase 4 — Prune + Index"]
+        P1["Keep MEMORY.md under 200 lines / 25KB"]
+        P2["Demote verbose index entries\n(content belongs in topic files)"]
+        P3["Remove pointers to stale memories"]
+        P4["Resolve contradictions between files"]
+    end
+
+    TRIG --> PH1 --> PH2 --> PH3 --> PH4
+
+    style PH1 fill:#EBF5FB
+    style PH2 fill:#FEF9E7
+    style PH3 fill:#E9F7EF
+    style PH4 fill:#F5EEF8

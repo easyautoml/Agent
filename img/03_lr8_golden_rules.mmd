@@ -1,0 +1,9 @@
+graph LR
+    R1["1. Start simple\nUse Buffer, upgrade when needed"]
+    R2["2. Scope memory\nDon't mix unrelated data"]
+    R3["3. Persist in production\nIn-memory = data loss on restart"]
+    R4["4. Control token usage\nBuffer grows forever - plan ahead"]
+    R5["5. Use vector search for long history\nKeyword search misses semantic matches"]
+    R6["6. Let CrewAI deduplicate\nDon't build your own merge logic"]
+
+    R1 --- R2 --- R3 --- R4 --- R5 --- R6

@@ -1,0 +1,14 @@
+graph TD
+    subgraph "What Memory Contains"
+        SUM["Summary of old turns\nAlice is a doctor in Paris..."]
+        RAW["Recent raw messages\nTurn 9: I want to visit Japan\nTurn 10: Any recommendations?"]
+    end
+
+    SUM --> PROMPT["Injected into Prompt"]
+    RAW --> PROMPT
+    PROMPT --> LLM["LLM"]
+
+    subgraph "When limit is exceeded"
+        OLD["Oldest raw message\nTurn 9: I want to visit Japan"]
+        OLD -->|"Gets summarized and folded in"| SUM
+    end

@@ -1,0 +1,168 @@
+<svg viewBox="0 0 960 560" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F8FAFF"/>
+      <stop offset="100%" style="stop-color:#EFF6FF"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000018"/></filter>
+  </defs>
+
+  <rect width="960" height="560" fill="url(#bg)" rx="16"/>
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#1E3A8A">5 Fact Categories — What DeerFlow Learns</text>
+  <text x="480" y="54" text-anchor="middle" font-size="12" fill="#64748B">Every fact stored in memory.json belongs to one of these five types</text>
+
+  <!-- Category 1: preference -->
+  <rect x="20" y="72" width="176" height="450" rx="14" fill="white" filter="url(#sh)" stroke="#FDE68A" stroke-width="2"/>
+  <rect x="20" y="72" width="176" height="50" rx="14" fill="#D97706"/>
+  <rect x="20" y="104" width="176" height="18" fill="#D97706"/>
+  <text x="108" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="white">preference</text>
+
+  <text x="108" y="140" text-anchor="middle" font-size="11" fill="#374151">What the user</text>
+  <text x="108" y="156" text-anchor="middle" font-size="11" fill="#374151">LIKES or DISLIKES</text>
+
+  <rect x="36" y="168" width="144" height="26" rx="6" fill="#FEF3C7"/>
+  <text x="108" y="185" text-anchor="middle" font-size="10" fill="#92400E">Prefers bullet points</text>
+  <rect x="36" y="200" width="144" height="26" rx="6" fill="#FEF3C7"/>
+  <text x="108" y="217" text-anchor="middle" font-size="10" fill="#92400E">Dislikes long intros</text>
+  <rect x="36" y="232" width="144" height="26" rx="6" fill="#FEF3C7"/>
+  <text x="108" y="249" text-anchor="middle" font-size="10" fill="#92400E">Likes dark mode themes</text>
+  <rect x="36" y="264" width="144" height="26" rx="6" fill="#FEF3C7"/>
+  <text x="108" y="281" text-anchor="middle" font-size="10" fill="#92400E">Prefers Python over JS</text>
+  <rect x="36" y="296" width="144" height="26" rx="6" fill="#FEF3C7"/>
+  <text x="108" y="313" text-anchor="middle" font-size="10" fill="#92400E">Prefers short reports</text>
+
+  <text x="108" y="350" text-anchor="middle" font-size="10" fill="#6B7280">Triggered by:</text>
+  <text x="108" y="368" text-anchor="middle" font-size="10" fill="#374151">"I prefer..." / "I like..."</text>
+  <text x="108" y="384" text-anchor="middle" font-size="10" fill="#374151">"Don't include..."</text>
+
+  <rect x="36" y="404" width="144" height="24" rx="6" fill="#FEF3C7"/>
+  <text x="108" y="420" text-anchor="middle" font-size="10" fill="#B45309" font-weight="bold">Confidence: 0.9+ typical</text>
+  <text x="108" y="442" text-anchor="middle" font-size="10" fill="#6B7280">(user usually states</text>
+  <text x="108" y="458" text-anchor="middle" font-size="10" fill="#6B7280">preferences directly)</text>
+  <text x="108" y="480" text-anchor="middle" font-size="11" fill="#F59E0B" font-weight="bold">⭐ Highest impact</text>
+  <text x="108" y="496" text-anchor="middle" font-size="10" fill="#6B7280">on AI responses</text>
+
+  <!-- Category 2: knowledge -->
+  <rect x="208" y="72" width="176" height="450" rx="14" fill="white" filter="url(#sh)" stroke="#86EFAC" stroke-width="2"/>
+  <rect x="208" y="72" width="176" height="50" rx="14" fill="#059669"/>
+  <rect x="208" y="104" width="176" height="18" fill="#059669"/>
+  <text x="296" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="white">knowledge</text>
+
+  <text x="296" y="140" text-anchor="middle" font-size="11" fill="#374151">What the user</text>
+  <text x="296" y="156" text-anchor="middle" font-size="11" fill="#374151">KNOWS or is EXPERT in</text>
+
+  <rect x="224" y="168" width="144" height="26" rx="6" fill="#DCFCE7"/>
+  <text x="296" y="185" text-anchor="middle" font-size="10" fill="#15803D">Python expert (5 yrs)</text>
+  <rect x="224" y="200" width="144" height="26" rx="6" fill="#DCFCE7"/>
+  <text x="296" y="217" text-anchor="middle" font-size="10" fill="#15803D">Uses React + Next.js</text>
+  <rect x="224" y="232" width="144" height="26" rx="6" fill="#DCFCE7"/>
+  <text x="296" y="249" text-anchor="middle" font-size="10" fill="#15803D">Knows SQL well</text>
+  <rect x="224" y="264" width="144" height="26" rx="6" fill="#DCFCE7"/>
+  <text x="296" y="281" text-anchor="middle" font-size="10" fill="#15803D">Studies ML/LLM topics</text>
+  <rect x="224" y="296" width="144" height="26" rx="6" fill="#DCFCE7"/>
+  <text x="296" y="313" text-anchor="middle" font-size="10" fill="#15803D">Familiar with LangChain</text>
+
+  <text x="296" y="350" text-anchor="middle" font-size="10" fill="#6B7280">Triggered by:</text>
+  <text x="296" y="368" text-anchor="middle" font-size="10" fill="#374151">"I built..." / "I know..."</text>
+  <text x="296" y="384" text-anchor="middle" font-size="10" fill="#374151">"I've been using..."</text>
+
+  <rect x="224" y="404" width="144" height="24" rx="6" fill="#DCFCE7"/>
+  <text x="296" y="420" text-anchor="middle" font-size="10" fill="#065F46" font-weight="bold">Confidence: 0.7–0.95</text>
+  <text x="296" y="442" text-anchor="middle" font-size="10" fill="#6B7280">(affects depth &amp;</text>
+  <text x="296" y="458" text-anchor="middle" font-size="10" fill="#6B7280">technicality of answers)</text>
+  <text x="296" y="480" text-anchor="middle" font-size="11" fill="#10B981" font-weight="bold">🎯 Calibrates depth</text>
+  <text x="296" y="496" text-anchor="middle" font-size="10" fill="#6B7280">of explanations</text>
+
+  <!-- Category 3: context -->
+  <rect x="396" y="72" width="176" height="450" rx="14" fill="white" filter="url(#sh)" stroke="#BFDBFE" stroke-width="2"/>
+  <rect x="396" y="72" width="176" height="50" rx="14" fill="#1D4ED8"/>
+  <rect x="396" y="104" width="176" height="18" fill="#1D4ED8"/>
+  <text x="484" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="white">context</text>
+
+  <text x="484" y="140" text-anchor="middle" font-size="11" fill="#374151">Background facts</text>
+  <text x="484" y="156" text-anchor="middle" font-size="11" fill="#374151">about WHO the user is</text>
+
+  <rect x="412" y="168" width="144" height="26" rx="6" fill="#EFF6FF"/>
+  <text x="484" y="185" text-anchor="middle" font-size="10" fill="#1E40AF">PM at a tech startup</text>
+  <rect x="412" y="200" width="144" height="26" rx="6" fill="#EFF6FF"/>
+  <text x="484" y="217" text-anchor="middle" font-size="10" fill="#1E40AF">Team of 5 engineers</text>
+  <rect x="412" y="232" width="144" height="26" rx="6" fill="#EFF6FF"/>
+  <text x="484" y="249" text-anchor="middle" font-size="10" fill="#1E40AF">Based in Vietnam UTC+7</text>
+  <rect x="412" y="264" width="144" height="26" rx="6" fill="#EFF6FF"/>
+  <text x="484" y="281" text-anchor="middle" font-size="10" fill="#1E40AF">Bilingual EN + VI</text>
+  <rect x="412" y="296" width="144" height="26" rx="6" fill="#EFF6FF"/>
+  <text x="484" y="313" text-anchor="middle" font-size="10" fill="#1E40AF">Works on AI products</text>
+
+  <text x="484" y="350" text-anchor="middle" font-size="10" fill="#6B7280">Triggered by:</text>
+  <text x="484" y="368" text-anchor="middle" font-size="10" fill="#374151">profile questions, intro,</text>
+  <text x="484" y="384" text-anchor="middle" font-size="10" fill="#374151">job mentions in context</text>
+
+  <rect x="412" y="404" width="144" height="24" rx="6" fill="#EFF6FF"/>
+  <text x="484" y="420" text-anchor="middle" font-size="10" fill="#1E40AF" font-weight="bold">Confidence: 0.8–0.95</text>
+  <text x="484" y="442" text-anchor="middle" font-size="10" fill="#6B7280">(shapes relevance</text>
+  <text x="484" y="458" text-anchor="middle" font-size="10" fill="#6B7280">of examples &amp; framing)</text>
+  <text x="484" y="480" text-anchor="middle" font-size="11" fill="#3B82F6" font-weight="bold">🌍 Shapes framing</text>
+  <text x="484" y="496" text-anchor="middle" font-size="10" fill="#6B7280">of every answer</text>
+
+  <!-- Category 4: behavior -->
+  <rect x="584" y="72" width="176" height="450" rx="14" fill="white" filter="url(#sh)" stroke="#DDD6FE" stroke-width="2"/>
+  <rect x="584" y="72" width="176" height="50" rx="14" fill="#7C3AED"/>
+  <rect x="584" y="104" width="176" height="18" fill="#7C3AED"/>
+  <text x="672" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="white">behavior</text>
+
+  <text x="672" y="140" text-anchor="middle" font-size="11" fill="#374151">How the user</text>
+  <text x="672" y="156" text-anchor="middle" font-size="11" fill="#374151">WORKS and THINKS</text>
+
+  <rect x="600" y="168" width="144" height="26" rx="6" fill="#F5F3FF"/>
+  <text x="672" y="185" text-anchor="middle" font-size="10" fill="#6D28D9">Works morning time</text>
+  <rect x="600" y="200" width="144" height="26" rx="6" fill="#F5F3FF"/>
+  <text x="672" y="217" text-anchor="middle" font-size="10" fill="#6D28D9">Iterates rapidly</text>
+  <rect x="600" y="232" width="144" height="26" rx="6" fill="#F5F3FF"/>
+  <text x="672" y="249" text-anchor="middle" font-size="10" fill="#6D28D9">Uses Slack + Notion</text>
+  <rect x="600" y="264" width="144" height="26" rx="6" fill="#F5F3FF"/>
+  <text x="672" y="281" text-anchor="middle" font-size="10" fill="#6D28D9">Reviews code carefully</text>
+  <rect x="600" y="296" width="144" height="26" rx="6" fill="#F5F3FF"/>
+  <text x="672" y="313" text-anchor="middle" font-size="10" fill="#6D28D9">Asks follow-up ?s often</text>
+
+  <text x="672" y="350" text-anchor="middle" font-size="10" fill="#6B7280">Triggered by:</text>
+  <text x="672" y="368" text-anchor="middle" font-size="10" fill="#374151">observed patterns over</text>
+  <text x="672" y="384" text-anchor="middle" font-size="10" fill="#374151">multiple sessions</text>
+
+  <rect x="600" y="404" width="144" height="24" rx="6" fill="#F5F3FF"/>
+  <text x="672" y="420" text-anchor="middle" font-size="10" fill="#6D28D9" font-weight="bold">Confidence: 0.5–0.75</text>
+  <text x="672" y="442" text-anchor="middle" font-size="10" fill="#6B7280">(usually inferred,</text>
+  <text x="672" y="458" text-anchor="middle" font-size="10" fill="#6B7280">lower certainty)</text>
+  <text x="672" y="480" text-anchor="middle" font-size="11" fill="#8B5CF6" font-weight="bold">🔮 Inferred over time</text>
+  <text x="672" y="496" text-anchor="middle" font-size="10" fill="#6B7280">builds up slowly</text>
+
+  <!-- Category 5: goal -->
+  <rect x="772" y="72" width="176" height="450" rx="14" fill="white" filter="url(#sh)" stroke="#FCA5A5" stroke-width="2"/>
+  <rect x="772" y="72" width="176" height="50" rx="14" fill="#B91C1C"/>
+  <rect x="772" y="104" width="176" height="18" fill="#B91C1C"/>
+  <text x="860" y="104" text-anchor="middle" font-size="14" font-weight="bold" fill="white">goal</text>
+
+  <text x="860" y="140" text-anchor="middle" font-size="11" fill="#374151">What the user WANTS</text>
+  <text x="860" y="156" text-anchor="middle" font-size="11" fill="#374151">to achieve or learn</text>
+
+  <rect x="788" y="168" width="144" height="26" rx="6" fill="#FEF2F2"/>
+  <text x="860" y="185" text-anchor="middle" font-size="10" fill="#B91C1C">Learning ML Ops</text>
+  <rect x="788" y="200" width="144" height="26" rx="6" fill="#FEF2F2"/>
+  <text x="860" y="217" text-anchor="middle" font-size="10" fill="#B91C1C">Launch product Q3</text>
+  <rect x="788" y="232" width="144" height="26" rx="6" fill="#FEF2F2"/>
+  <text x="860" y="249" text-anchor="middle" font-size="10" fill="#B91C1C">Improve public speaking</text>
+  <rect x="788" y="264" width="144" height="26" rx="6" fill="#FEF2F2"/>
+  <text x="860" y="281" text-anchor="middle" font-size="10" fill="#B91C1C">Build RAG system</text>
+  <rect x="788" y="296" width="144" height="26" rx="6" fill="#FEF2F2"/>
+  <text x="860" y="313" text-anchor="middle" font-size="10" fill="#B91C1C">Grow team from 5→10</text>
+
+  <text x="860" y="350" text-anchor="middle" font-size="10" fill="#6B7280">Triggered by:</text>
+  <text x="860" y="368" text-anchor="middle" font-size="10" fill="#374151">"I want to..." / "My goal"</text>
+  <text x="860" y="384" text-anchor="middle" font-size="10" fill="#374151">"I'm trying to..."</text>
+
+  <rect x="788" y="404" width="144" height="24" rx="6" fill="#FEF2F2"/>
+  <text x="860" y="420" text-anchor="middle" font-size="10" fill="#991B1B" font-weight="bold">Confidence: 0.8–0.95</text>
+  <text x="860" y="442" text-anchor="middle" font-size="10" fill="#6B7280">(stated goals are</text>
+  <text x="860" y="458" text-anchor="middle" font-size="10" fill="#6B7280">usually explicit)</text>
+  <text x="860" y="480" text-anchor="middle" font-size="11" fill="#EF4444" font-weight="bold">🎯 Guides advice</text>
+  <text x="860" y="496" text-anchor="middle" font-size="10" fill="#6B7280">toward user's goals</text>
+</svg>

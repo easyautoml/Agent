@@ -1,0 +1,22 @@
+flowchart TB
+    classDef policy fill:#1e3a5f,stroke:#4a90d9,color:#fff
+    classDef plat   fill:#163020,stroke:#52b788,color:#bef0cc
+    classDef mode   fill:#2a1a3e,stroke:#9b59b6,color:#e8d0ff
+
+    CMD["Command to execute"]
+
+    subgraph POL["Policy Layer  (platform-agnostic)"]
+        P1["read-only\n(default)"]:::policy
+        P2["workspace-write"]:::policy
+        P3["danger-full-access\n(containers only)"]:::policy
+    end
+
+    subgraph PLAT["Platform Layer"]
+        MAC["macOS\nSeatbelt\n(sandbox-exec)"]:::plat
+        LIN["Linux\nLandlock LSM\n(kernel 5.13+)"]:::plat
+        WIN["Windows\nRestricted Token\n+ optional VM sandbox"]:::plat
+    end
+
+    CMD --> POL
+    POL --> PLAT
+    PLAT --> RUN["Isolated execution"]:::mode

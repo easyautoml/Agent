@@ -1,0 +1,96 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFBEB"/>
+      <stop offset="100%" style="stop-color:#FEF3C7"/>
+    </linearGradient>
+    <linearGradient id="leadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1D4ED8"/>
+      <stop offset="100%" style="stop-color:#1E40AF"/>
+    </linearGradient>
+    <linearGradient id="subGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D97706"/>
+      <stop offset="100%" style="stop-color:#B45309"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB"/>
+    </marker>
+    <marker id="arrG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+    <marker id="arrO" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#D97706"/>
+    </marker>
+    <filter id="sh"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#00000022"/></filter>
+  </defs>
+
+  <rect width="900" height="600" fill="url(#bg)" rx="16"/>
+  <text x="450" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#78350F">Sub-Agents — The Team of Helpers</text>
+  <text x="450" y="57" text-anchor="middle" font-size="12" fill="#92400E">Big tasks are split and run in parallel by multiple AI workers</text>
+
+  <!-- Lead Agent box top -->
+  <rect x="290" y="72" width="320" height="76" rx="14" fill="url(#leadGrad)" filter="url(#sh)"/>
+  <text x="450" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="white">🧠 Lead Agent</text>
+  <text x="450" y="120" text-anchor="middle" font-size="12" fill="#BFDBFE">"This task needs multiple workers."</text>
+  <text x="450" y="138" text-anchor="middle" font-size="11" fill="#93C5FD">Uses the  task()  tool to delegate</text>
+
+  <!-- 3 arrows going down -->
+  <line x1="340" y1="148" x2="190" y2="210" stroke="#D97706" stroke-width="2.2" marker-end="url(#arrO)"/>
+  <line x1="450" y1="148" x2="450" y2="210" stroke="#D97706" stroke-width="2.2" marker-end="url(#arrO)"/>
+  <line x1="560" y1="148" x2="710" y2="210" stroke="#D97706" stroke-width="2.2" marker-end="url(#arrO)"/>
+
+  <!-- Sub-Agent 1 -->
+  <rect x="60" y="212" width="260" height="160" rx="14" fill="white" filter="url(#sh)" stroke="#FCD34D" stroke-width="2"/>
+  <rect x="60" y="212" width="260" height="42" rx="14" fill="url(#subGrad)"/>
+  <rect x="60" y="238" width="260" height="16" fill="url(#subGrad)"/>
+  <text x="190" y="237" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🔍 Sub-Agent 1</text>
+  <text x="190" y="270" text-anchor="middle" font-size="12" fill="#374151" font-weight="bold">Web Search</text>
+  <text x="190" y="292" text-anchor="middle" font-size="11" fill="#6B7280">Uses: web_search</text>
+  <text x="190" y="310" text-anchor="middle" font-size="11" fill="#6B7280">Task: Find AI news</text>
+  <text x="190" y="328" text-anchor="middle" font-size="11" fill="#6B7280">from last 7 days</text>
+  <rect x="80" y="344" width="220" height="20" rx="6" fill="#FEF3C7"/>
+  <text x="190" y="358" text-anchor="middle" font-size="10" fill="#92400E">⏱ up to 15 min · type: general</text>
+
+  <!-- Sub-Agent 2 -->
+  <rect x="320" y="212" width="260" height="160" rx="14" fill="white" filter="url(#sh)" stroke="#FCD34D" stroke-width="2"/>
+  <rect x="320" y="212" width="260" height="42" rx="14" fill="url(#subGrad)"/>
+  <rect x="320" y="238" width="260" height="16" fill="url(#subGrad)"/>
+  <text x="450" y="237" text-anchor="middle" font-size="13" font-weight="bold" fill="white">📊 Sub-Agent 2</text>
+  <text x="450" y="270" text-anchor="middle" font-size="12" fill="#374151" font-weight="bold">Data Analysis</text>
+  <text x="450" y="292" text-anchor="middle" font-size="11" fill="#6B7280">Uses: bash, read_file</text>
+  <text x="450" y="310" text-anchor="middle" font-size="11" fill="#6B7280">Task: Build chart from</text>
+  <text x="450" y="328" text-anchor="middle" font-size="11" fill="#6B7280">competitor data</text>
+  <rect x="340" y="344" width="220" height="20" rx="6" fill="#FEF3C7"/>
+  <text x="450" y="358" text-anchor="middle" font-size="10" fill="#92400E">⏱ up to 15 min · type: bash</text>
+
+  <!-- Sub-Agent 3 -->
+  <rect x="580" y="212" width="260" height="160" rx="14" fill="white" filter="url(#sh)" stroke="#FCD34D" stroke-width="2"/>
+  <rect x="580" y="212" width="260" height="42" rx="14" fill="url(#subGrad)"/>
+  <rect x="580" y="238" width="260" height="16" fill="url(#subGrad)"/>
+  <text x="710" y="237" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🖼️ Sub-Agent 3</text>
+  <text x="710" y="270" text-anchor="middle" font-size="12" fill="#374151" font-weight="bold">File Creation</text>
+  <text x="710" y="292" text-anchor="middle" font-size="11" fill="#6B7280">Uses: write_file, bash</text>
+  <text x="710" y="310" text-anchor="middle" font-size="11" fill="#6B7280">Task: Create slide deck</text>
+  <text x="710" y="328" text-anchor="middle" font-size="11" fill="#6B7280">as PowerPoint file</text>
+  <rect x="600" y="344" width="220" height="20" rx="6" fill="#FEF3C7"/>
+  <text x="710" y="358" text-anchor="middle" font-size="10" fill="#92400E">⏱ up to 15 min · type: general</text>
+
+  <!-- "Running in parallel" label -->
+  <rect x="120" y="390" width="660" height="28" rx="6" fill="#FEF9C3" stroke="#FDE047" stroke-width="1.2"/>
+  <text x="450" y="408" text-anchor="middle" font-size="12" fill="#713F12" font-weight="bold">⚡ All 3 run at the same time (in parallel) — max 3 allowed simultaneously</text>
+
+  <!-- 3 arrows going up to Lead Agent -->
+  <line x1="190" y1="430" x2="380" y2="490" stroke="#059669" stroke-width="2.2" marker-end="url(#arrG)"/>
+  <line x1="450" y1="430" x2="450" y2="490" stroke="#059669" stroke-width="2.2" marker-end="url(#arrG)"/>
+  <line x1="710" y1="430" x2="520" y2="490" stroke="#059669" stroke-width="2.2" marker-end="url(#arrG)"/>
+
+  <text x="230" y="458" font-size="10" fill="#059669">result 1</text>
+  <text x="456" y="458" font-size="10" fill="#059669">result 2</text>
+  <text x="650" y="458" font-size="10" fill="#059669">result 3</text>
+
+  <!-- Final combine box -->
+  <rect x="260" y="492" width="380" height="68" rx="14" fill="#059669" filter="url(#sh)"/>
+  <text x="450" y="518" text-anchor="middle" font-size="14" font-weight="bold" fill="white">🧠 Lead Agent Combines Results</text>
+  <text x="450" y="538" text-anchor="middle" font-size="12" fill="#D1FAE5">Reads all 3 outputs → writes the final</text>
+  <text x="450" y="555" text-anchor="middle" font-size="12" fill="#D1FAE5">report / presentation for you</text>
+</svg>

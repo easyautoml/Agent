@@ -1,0 +1,29 @@
+graph TD
+    ROOT["project-root/"]
+
+    subgraph SRC["src/  — application code"]
+        S1["main.py\nEntry point — starts the bot"]
+        S2["config.py\nSettings from .env"]
+        S3["slack/\n  handler.py — event routing\n  collector.py — file download"]
+        S4["workspace/\n  manager.py — create + manage workspaces"]
+        S5["pipeline/\n  processor.py — extract + chunk + embed\n  parsers.py — PDF, DOCX, XLSX, PPT"]
+        S6["agent/\n  graph.py — LangGraph ReAct setup\n  state.py — AgentState TypedDict\n  tools.py — all 11 tools\n  prompts.py — system prompt"]
+        S7["knowledge/\n  indexer.py — index common/knowledge/"]
+    end
+
+    subgraph DATA["workspaces/  — runtime data"]
+        D1["proj-acme-crm/data/\n  raw/ clean/ output/\n  vector_index/ state/"]
+    end
+
+    subgraph CK["common/knowledge/  — shared docs"]
+        C1["proposal_template.md\ntech_standards.md\npricing_guide.md"]
+    end
+
+    ROOT --> SRC
+    ROOT --> DATA
+    ROOT --> CK
+
+    style SRC fill:#EBF5FB
+    style DATA fill:#E9F7EF
+    style CK fill:#FEF9E7
+    style ROOT fill:#4A154B,color:#fff

@@ -1,0 +1,11 @@
+graph TD
+    WIN["ConversationBufferWindowMemory\nLast 3 turns verbatim"] --> COMBINED["CombinedMemory"]
+    ENT["ConversationEntityMemory\nKnown facts about Alice and Bob"] --> COMBINED
+
+    COMBINED --> PROMPT["Final Prompt"]
+    PROMPT --> LLM["LLM"]
+
+    subgraph "What LLM sees"
+        P1["history: last 3 turns"]
+        P2["entities: Alice is a doctor. Bob is an engineer."]
+    end

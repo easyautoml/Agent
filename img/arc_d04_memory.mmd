@@ -1,0 +1,26 @@
+graph LR
+    subgraph SHORT["Short-term Memory\n(within one agent run)"]
+        S1["LangGraph State Dict\n─────────────────────\nrequirement: str\nretrieved_chunks: list\ngap_analysis: dict\nqa_iteration: int\nproposal_draft: str\ntool_calls: list\nmessages: list"]
+        S2["Stored in: Python dict\nLifetime: one agent invocation\nCleared: when run ends"]
+    end
+
+    subgraph LONG["Long-term Memory\n(persists across sessions)"]
+        L1["agent.sqlite\n─────────────────────\nagent_sessions table\nagent_messages table\nqa_answers table\nfeedback_instructions table"]
+        L2["Loaded at: start of each run\nQueried by: read_feedback tool\nUpdated by: write_proposal, qa tools"]
+    end
+
+    subgraph EXTERNAL["External Memory\n(retrieved, not stored by agent)"]
+        E1["workspace vector index\n─────────────────────\nChromaDB collection\nper workspace_name\nchunks of processed docs"]
+        E2["common knowledge index\n─────────────────────\nChromaDB collection\ncommon_knowledge\nstandards + templates"]
+        E3["feedback.jsonl\n─────────────────────\nActive instructions\nappend-only log\nall loaded at run start"]
+    end
+
+    SHORT -->|"saved to"| LONG
+    LONG -->|"loaded into"| SHORT
+    E1 -->|"retrieved via tool"| SHORT
+    E2 -->|"retrieved via tool"| SHORT
+    E3 -->|"loaded at start"| SHORT
+
+    style SHORT fill:#FEF9E7
+    style LONG fill:#EBF5FB
+    style EXTERNAL fill:#E9F7EF

@@ -1,0 +1,115 @@
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F3FF"/>
+      <stop offset="100%" style="stop-color:#EDE9FE"/>
+    </linearGradient>
+    <linearGradient id="memGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="100%" style="stop-color:#6D28D9"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00000020"/></filter>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7C3AED"/>
+    </marker>
+    <marker id="arrB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563EB"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="640" fill="url(#bg)" rx="16"/>
+  <text x="450" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#4C1D95">The Memory System — DeerFlow Never Forgets</text>
+  <text x="450" y="57" text-anchor="middle" font-size="12" fill="#6D28D9">How DeerFlow learns about you over time</text>
+
+  <!-- STEP 1: Conversation -->
+  <rect x="30" y="76" width="200" height="100" rx="12" fill="white" filter="url(#sh)" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="130" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="#7C3AED">💬 Conversation</text>
+  <text x="130" y="122" text-anchor="middle" font-size="11" fill="#6B7280">You chat with</text>
+  <text x="130" y="138" text-anchor="middle" font-size="11" fill="#6B7280">DeerFlow as</text>
+  <text x="130" y="154" text-anchor="middle" font-size="11" fill="#6B7280">normal</text>
+
+  <line x1="230" y1="126" x2="266" y2="126" stroke="#7C3AED" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 2: Memory Middleware -->
+  <rect x="268" y="76" width="200" height="100" rx="12" fill="white" filter="url(#sh)" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="368" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="#7C3AED">🔧 Middleware</text>
+  <text x="368" y="120" text-anchor="middle" font-size="11" fill="#6B7280">Filters messages:</text>
+  <text x="368" y="138" text-anchor="middle" font-size="11" fill="#6B7280">• User inputs</text>
+  <text x="368" y="154" text-anchor="middle" font-size="11" fill="#6B7280">• AI final replies</text>
+
+  <line x1="468" y1="126" x2="504" y2="126" stroke="#7C3AED" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 3: Queue waits 30s -->
+  <rect x="506" y="76" width="200" height="100" rx="12" fill="white" filter="url(#sh)" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="606" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="#7C3AED">⏳ Queue (30s wait)</text>
+  <text x="606" y="120" text-anchor="middle" font-size="11" fill="#6B7280">Batches updates,</text>
+  <text x="606" y="138" text-anchor="middle" font-size="11" fill="#6B7280">avoids duplicates,</text>
+  <text x="606" y="154" text-anchor="middle" font-size="11" fill="#6B7280">works in background</text>
+
+  <line x1="706" y1="126" x2="742" y2="126" stroke="#7C3AED" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- STEP 4: AI extracts -->
+  <rect x="744" y="76" width="130" height="100" rx="12" fill="white" filter="url(#sh)" stroke="#C4B5FD" stroke-width="1.5"/>
+  <text x="809" y="100" text-anchor="middle" font-size="12" font-weight="bold" fill="#7C3AED">🧠 AI reads</text>
+  <text x="809" y="120" text-anchor="middle" font-size="11" fill="#6B7280">Extracts</text>
+  <text x="809" y="138" text-anchor="middle" font-size="11" fill="#6B7280">key facts &amp;</text>
+  <text x="809" y="154" text-anchor="middle" font-size="11" fill="#6B7280">preferences</text>
+
+  <!-- Arrow down to storage -->
+  <line x1="809" y1="176" x2="809" y2="210" stroke="#7C3AED" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="809" y1="216" x2="450" y2="216" stroke="#7C3AED" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Memory Storage Box -->
+  <rect x="100" y="218" width="700" height="250" rx="14" fill="white" filter="url(#sh)" stroke="#A78BFA" stroke-width="2"/>
+  <rect x="100" y="218" width="700" height="46" rx="14" fill="url(#memGrad)"/>
+  <rect x="100" y="248" width="700" height="16" fill="url(#memGrad)"/>
+  <text x="450" y="248" text-anchor="middle" font-size="15" font-weight="bold" fill="white">🗄️  memory.json  — Stored on disk, persists forever</text>
+
+  <!-- Three sections -->
+  <!-- User Context -->
+  <rect x="118" y="280" width="200" height="170" rx="10" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.2"/>
+  <text x="218" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#7C3AED">👤 User Context</text>
+  <text x="218" y="320" text-anchor="middle" font-size="10" fill="#6B7280">workContext:</text>
+  <text x="218" y="336" text-anchor="middle" font-size="10" fill="#374151">"Product manager at</text>
+  <text x="218" y="350" text-anchor="middle" font-size="10" fill="#374151"> a tech startup"</text>
+  <text x="218" y="372" text-anchor="middle" font-size="10" fill="#6B7280">personalContext:</text>
+  <text x="218" y="388" text-anchor="middle" font-size="10" fill="#374151">"Prefers bullet points</text>
+  <text x="218" y="402" text-anchor="middle" font-size="10" fill="#374151"> and concise answers"</text>
+  <text x="218" y="424" text-anchor="middle" font-size="10" fill="#6B7280">topOfMind:</text>
+  <text x="218" y="440" text-anchor="middle" font-size="10" fill="#374151">"Preparing Q3 report"</text>
+
+  <!-- History -->
+  <rect x="340" y="280" width="200" height="170" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2"/>
+  <text x="440" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#1D4ED8">📅 History</text>
+  <text x="440" y="322" text-anchor="middle" font-size="10" fill="#6B7280">recentMonths:</text>
+  <text x="440" y="338" text-anchor="middle" font-size="10" fill="#374151">"Has asked about AI,</text>
+  <text x="440" y="352" text-anchor="middle" font-size="10" fill="#374151"> reports, and slides"</text>
+  <text x="440" y="374" text-anchor="middle" font-size="10" fill="#6B7280">longTermBackground:</text>
+  <text x="440" y="390" text-anchor="middle" font-size="10" fill="#374151">"Works in AI industry,</text>
+  <text x="440" y="404" text-anchor="middle" font-size="10" fill="#374151"> uses Python stack"</text>
+
+  <!-- Facts -->
+  <rect x="562" y="280" width="220" height="170" rx="10" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.2"/>
+  <text x="672" y="302" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">📋 Facts  (scored)</text>
+  <rect x="572" y="312" width="200" height="24" rx="6" fill="#DCFCE7"/>
+  <text x="672" y="328" text-anchor="middle" font-size="10" fill="#15803D">Likes bullet points  [0.95]</text>
+  <rect x="572" y="340" width="200" height="24" rx="6" fill="#DCFCE7"/>
+  <text x="672" y="356" text-anchor="middle" font-size="10" fill="#15803D">Uses Python + React  [0.88]</text>
+  <rect x="572" y="368" width="200" height="24" rx="6" fill="#DCFCE7"/>
+  <text x="672" y="384" text-anchor="middle" font-size="10" fill="#15803D">Morning worker, UTC+7  [0.72]</text>
+  <rect x="572" y="396" width="200" height="24" rx="6" fill="#F3F4F6"/>
+  <text x="672" y="412" text-anchor="middle" font-size="10" fill="#6B7280">max 100 facts stored</text>
+  <text x="672" y="434" text-anchor="middle" font-size="10" fill="#6B7280">threshold: 0.70 confidence</text>
+
+  <!-- Arrow: memory injected into next chat -->
+  <line x1="450" y1="468" x2="450" y2="510" stroke="#7C3AED" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <rect x="180" y="512" width="540" height="60" rx="12" fill="url(#memGrad)" filter="url(#sh)"/>
+  <text x="450" y="536" text-anchor="middle" font-size="13" font-weight="bold" fill="white">🚀 Next Conversation: Top 15 facts auto-injected</text>
+  <text x="450" y="556" text-anchor="middle" font-size="11" fill="#DDD6FE">AI reads your profile before every response — like a loyal assistant who reviewed their notes</text>
+
+  <!-- Note -->
+  <rect x="100" y="586" width="700" height="36" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="450" y="602" text-anchor="middle" font-size="11" fill="#64748B">💡 Memory stores locally on your machine (memory.json) — you own your data completely</text>
+  <text x="450" y="618" text-anchor="middle" font-size="11" fill="#64748B">Duplicates are automatically removed · max 2000 tokens injected per session</text>
+</svg>

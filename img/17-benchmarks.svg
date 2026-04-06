@@ -1,0 +1,107 @@
+<svg viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1a1040"/>
+    </linearGradient>
+    <linearGradient id="barGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="barBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="barGray" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#475569"/>
+      <stop offset="100%" style="stop-color:#64748b"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="440" fill="url(#bg)"/>
+
+  <text x="480" y="36" text-anchor="middle" font-size="23" font-weight="700" fill="#f1f5f9">Benchmark Results — #1 in AI Memory</text>
+  <text x="480" y="60" text-anchor="middle" font-size="13" fill="#94a3b8">Tested against the hardest AI memory challenges in the world. Supermemory ranked first in all three.</text>
+
+  <!-- LongMemEval -->
+  <rect x="30" y="80" width="278" height="240" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="30" y="80" width="278" height="46" rx="14" fill="#3a2000"/>
+  <rect x="30" y="108" width="278" height="18" fill="#3a2000"/>
+  <text x="169" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#fde68a">LongMemEval</text>
+  <text x="169" y="122" text-anchor="middle" font-size="10" fill="#f59e0b">Long-term memory benchmark</text>
+
+  <text x="169" y="158" text-anchor="middle" font-size="38" fill="#fbbf24">🥇</text>
+  <text x="169" y="192" text-anchor="middle" font-size="28" font-weight="800" fill="#fde68a">81.6%</text>
+  <text x="169" y="212" text-anchor="middle" font-size="11" fill="#94a3b8">accuracy score</text>
+
+  <!-- Bar chart -->
+  <text x="44" y="238" font-size="10" fill="#94a3b8">Supermemory</text>
+  <rect x="130" y="226" width="163" height="16" rx="4" fill="url(#barGold)"/>
+  <text x="297" y="238" font-size="10" fill="#fde68a" dx="4">81.6%</text>
+
+  <text x="44" y="262" font-size="10" fill="#94a3b8">Competitor A</text>
+  <rect x="130" y="250" width="110" height="16" rx="4" fill="url(#barBlue)"/>
+  <text x="244" y="262" font-size="10" fill="#93c5fd" dx="4">55%</text>
+
+  <text x="44" y="286" font-size="10" fill="#94a3b8">Competitor B</text>
+  <rect x="130" y="274" width="80" height="16" rx="4" fill="url(#barGray)"/>
+  <text x="214" y="286" font-size="10" fill="#94a3b8" dx="4">40%</text>
+
+  <text x="44" y="306" font-size="10" fill="#64748b" font-style="italic">What it tests:</text>
+  <text x="44" y="320" font-size="10" fill="#94a3b8">Remember facts across sessions,</text>
+
+  <!-- LoCoMo -->
+  <rect x="340" y="80" width="278" height="240" rx="14" fill="#1e293b" stroke="#6366f1" stroke-width="2"/>
+  <rect x="340" y="80" width="278" height="46" rx="14" fill="#1e1b4b"/>
+  <rect x="340" y="108" width="278" height="18" fill="#1e1b4b"/>
+  <text x="479" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#c7d2fe">LoCoMo</text>
+  <text x="479" y="122" text-anchor="middle" font-size="10" fill="#a5b4fc">Long Conversation Memory</text>
+
+  <text x="479" y="158" text-anchor="middle" font-size="38">🥇</text>
+  <text x="479" y="192" text-anchor="middle" font-size="28" font-weight="800" fill="#c7d2fe">#1</text>
+  <text x="479" y="212" text-anchor="middle" font-size="11" fill="#94a3b8">ranked first</text>
+
+  <!-- Comparison bars -->
+  <text x="354" y="238" font-size="10" fill="#94a3b8">Supermemory</text>
+  <rect x="440" y="226" width="155" height="16" rx="4" fill="#6366f1"/>
+  <text x="599" y="238" font-size="10" fill="#a5b4fc" dx="4">1st</text>
+
+  <text x="354" y="262" font-size="10" fill="#94a3b8">Others</text>
+  <rect x="440" y="250" width="90" height="16" rx="4" fill="url(#barGray)"/>
+  <text x="534" y="262" font-size="10" fill="#94a3b8" dx="4">lower</text>
+
+  <text x="354" y="286" font-size="10" fill="#64748b">4 test categories:</text>
+  <text x="354" y="302" font-size="10" fill="#94a3b8">Single-hop, multi-hop, temporal,</text>
+  <text x="354" y="316" font-size="10" fill="#94a3b8">adversarial fact recall questions</text>
+
+  <!-- ConvoMem -->
+  <rect x="650" y="80" width="278" height="240" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <rect x="650" y="80" width="278" height="46" rx="14" fill="#064e3b"/>
+  <rect x="650" y="108" width="278" height="18" fill="#064e3b"/>
+  <text x="789" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#a7f3d0">ConvoMem</text>
+  <text x="789" y="122" text-anchor="middle" font-size="10" fill="#6ee7b7">Conversation Memory (Salesforce)</text>
+
+  <text x="789" y="158" text-anchor="middle" font-size="38">🥇</text>
+  <text x="789" y="192" text-anchor="middle" font-size="28" font-weight="800" fill="#a7f3d0">#1</text>
+  <text x="789" y="212" text-anchor="middle" font-size="11" fill="#94a3b8">ranked first</text>
+
+  <text x="664" y="238" font-size="10" fill="#94a3b8">Supermemory</text>
+  <rect x="750" y="226" width="155" height="16" rx="4" fill="#10b981"/>
+  <text x="909" y="238" font-size="10" fill="#6ee7b7" dx="4">1st</text>
+
+  <text x="664" y="262" font-size="10" fill="#94a3b8">Others</text>
+  <rect x="750" y="250" width="90" height="16" rx="4" fill="url(#barGray)"/>
+  <text x="844" y="262" font-size="10" fill="#94a3b8" dx="4">lower</text>
+
+  <text x="664" y="286" font-size="10" fill="#64748b">Tests:</text>
+  <text x="664" y="302" font-size="10" fill="#94a3b8">Personalization and preference</text>
+  <text x="664" y="316" font-size="10" fill="#94a3b8">learning across conversations</text>
+
+  <!-- What this means section -->
+  <rect x="30" y="336" width="900" height="84" rx="14" fill="#1e293b" stroke="#334155"/>
+  <text x="480" y="360" text-anchor="middle" font-size="13" font-weight="700" fill="#f1f5f9">What These Numbers Mean in Plain Words</text>
+  <line x1="44" y1="370" x2="916" y2="370" stroke="#334155" stroke-width="1"/>
+  <text x="44" y="390" font-size="11" fill="#94a3b8">LongMemEval 81.6%:</text>
+  <text x="180" y="390" font-size="11" fill="#f1f5f9">If you had 100 conversations and were tested on them later, Supermemory correctly remembers over 81 of them</text>
+  <text x="44" y="410" font-size="11" fill="#94a3b8">LoCoMo / ConvoMem:</text>
+  <text x="180" y="410" font-size="11" fill="#f1f5f9">In head-to-head tests with every other memory AI system, Supermemory answered the most questions correctly</text>
+</svg>
