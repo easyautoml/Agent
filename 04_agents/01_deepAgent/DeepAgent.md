@@ -137,12 +137,18 @@ Control where files and state live.
 | Backend | Class | Files | Shell (`execute`) |
 |---|---|---|---|
 | Default | `StateBackend` | In-memory (passed via `invoke(files={...})`) | No |
-| Disk | `FilesystemBackend` | Local disk at `root_dir` | Yes (in process) |
+| Disk | `FilesystemBackend` | Local disk at `root_dir` | No |
+| Disk + Shell | `LocalShellBackend` | Local disk at `root_dir` | Yes (in process) |
 | Sandbox | Custom `SandboxBackendProtocol` | Isolated container | Yes |
+
+`LocalShellBackend` extends `FilesystemBackend` with `SandboxBackendProtocol`, which is what enables the built-in `execute` tool. Use it whenever skills or agents need to run shell commands or Python scripts on disk.
 
 ```python
 from deepagents.backends import StateBackend
-agent = create_deep_agent(model=model, backend=StateBackend())  # default
+from deepagents.backends.local_shell import LocalShellBackend
+
+agent = create_deep_agent(model=model, backend=StateBackend())          # default, no execute
+agent = create_deep_agent(model=model, backend=LocalShellBackend(root_dir="/workspace"))  # execute enabled
 ```
 
 ---
@@ -319,6 +325,41 @@ agent = create_deep_agent(
 `SkillsMiddleware` reads skill files from the given source paths. With `StateBackend`,
 supply skill file contents via `invoke(files={"/skills/project/my_skill.md": b"..."})`.
 Later sources override earlier ones for skills with the same name.
+
+### Tools inside Skill Directories
+
+A skill can bundle executable Python scripts alongside its `SKILL.md`. The `SKILL.md` documents what scripts exist and how to invoke them; the agent runs them with the built-in `execute` tool — no `@tool` registration needed.
+
+```
+skills/
+├── sql-helper/
+│   ├── SKILL.md          ← documents run_query.py and explain_query.py
+│   ├── run_query.py      ← runs SQL against orders.db
+│   ├── explain_query.py  ← shows query plan
+│   └── setup_db.py       ← one-time DB seed (run manually)
+└── text-summarizer/
+    ├── SKILL.md          ← documents analyze_text.py
+    └── analyze_text.py   ← counts words + extracts keywords
+```
+
+`SKILL.md` instructs the agent to call scripts with absolute paths:
+```
+python /skills/sql-helper/run_query.py "<SQL>"
+```
+
+**Requirement:** the backend must be `LocalShellBackend` (or another `SandboxBackendProtocol` implementation) — `FilesystemBackend` alone cannot run shell commands.
+
+```python
+from deepagents.backends.local_shell import LocalShellBackend
+
+agent = create_deep_agent(
+    model=model,
+    skills=["/skills"],
+    backend=LocalShellBackend(root_dir=str(SCRIPT_DIR)),
+)
+```
+
+The `SKILL.md` frontmatter `allowed-tools` field lists which built-in tools the skill may use (e.g. `execute, read_file`). This documents intent but is not enforced by the framework.
 
 ---
 

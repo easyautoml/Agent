@@ -8,7 +8,7 @@ import os
 
 load_dotenv()
 
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, AzureChatOpenAI
 from deepagents import create_deep_agent
 
 # Azure AI Foundry endpoints expose an OpenAI-compatible /openai/v1 base URL.
